@@ -15,6 +15,6 @@ public class Species extends Model {
 
 	public String name;
 	
-	@ManyToMany(mappedBy="TFsites", cascade=CascadeType.ALL)
+	@ManyToMany(mappedBy="species", cascade=CascadeType.ALL)
 	public List<TFsite> TFsites;
 }

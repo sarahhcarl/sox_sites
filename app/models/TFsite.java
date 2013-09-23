@@ -8,33 +8,39 @@ import java.util.*;
 
 @Entity
 public class TFsite extends Model {
-	
-	public TFsite(String TF, String sequence, int start, int end) {
+
+	public TFsite(String TF, String sequence, int start, double wscore) {
 		this.TF = TF;
 		this.sequence = sequence;
 		this.start = start;
-		this.end = end;
+		this.wscore = wscore;
 		this.species = new ArrayList<>();
 	}
 
-	@Required
 	public String sequence;
-	
-	@Required
 	public String TF;
 	
-	@Required
 	@ManyToMany(cascade=CascadeType.ALL)
 	public List<Species> species;
 	
-	@Required
 	public int start;
+	public double wscore;
 	
-	@Required
-	public int end;
-	
-	@Required
 	@ManyToOne(cascade=CascadeType.ALL)
 	public Enhancer enhancer;
+
+	public void tagSpecies(Species species) {
+		this.species.add(species);
+		species.TFsites.add(this);
+		species.save();
+		
+	}
+
+	public void tagEnhancer(Enhancer enhancer) {
+		this.enhancer = enhancer;
+		enhancer.TFsites.add(this);
+		enhancer.save();
+		
+	}
 	
 }

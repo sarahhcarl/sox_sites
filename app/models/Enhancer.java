@@ -15,6 +15,7 @@ public class Enhancer extends Model {
 
 	public String name;
 	
-	@OneToMany(mappedBy="TFsites", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="enhancer", cascade=CascadeType.ALL)
 	public List<TFsite> TFsites;
+		
 }
