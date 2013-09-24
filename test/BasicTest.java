@@ -1,60 +1,62 @@
 import org.junit.*;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
+
+import play.Logger;
 import play.test.*;
 import models.*;
 
 public class BasicTest extends UnitTest {
-	
+
 	@Before
 	public void setup() {
 		Fixtures.deleteDatabase();
 	}
 
-    @Test
-    public void createEntities() {
-    	
-    	//Create and save some test entities
-    	
-    	TFsite site1 = new TFsite("Dichaete", "AACAAG", 302, 4.5).save();
-    	
-    	Enhancer enhancer1 = new Enhancer("Abd-B.35C08").save();
-    	
-    	Species mel = new Species("Drosophila melanogaster").save();
-    	Species yak = new Species("Drosophila yakuba").save();
-    	
-    	//Test that they've been saved
-    	
-    	assertNotNull(site1.TF);
-    	assertNotNull(site1.sequence);
-    	assertNotNull(site1.start);
-    	assertNotNull(enhancer1.name);
-    	assertNotNull(mel.name);
-    	assertNotNull(yak.name);
-    	assertNotNull(site1.wscore);
-    	
-    	
-    	//Tag the enhancer with a site
-    	
-    	site1.tagEnhancer(enhancer1);
-    	site1.save();
-    	
-    	//Test that it worked
-    	
-    	assertEquals(1, enhancer1.TFsites.size());
-    	assertNotNull(site1.enhancer);
-    	
-    	//Tag the site with a species
-    	site1.tagSpecies(mel);
-    	site1.tagSpecies(yak);
-    	site1.save();
-    	
-    	//Test that it worked
-    	
-    	assertEquals(2, site1.species.size());
-    	assertEquals(1, mel.TFsites.size());
-    	assertEquals(1, yak.TFsites.size());
-    	
-    }
+	@Test
+	public void loadEntities() throws NumberFormatException, IOException {
+		//Read flat file
+		BufferedReader reader = new BufferedReader(new FileReader("/home/sarah/Documents/PhD/Janelia/Enhancers/rsat/D_scan/Abd-B.35C08_Dscan.ft"));
+		String line = null;
+		String speciesname = null;
+		String sequence = null;
+		int start = 0;
+		double wscore = 0;
+		while ((line = reader.readLine()) != null) {
+			if ((line.indexOf(";") == -1) && (line.indexOf("#seq_id") == -1)) {
+				String[] parts = line.split("\\s");
+				speciesname = parts[0];
+				sequence = parts[6];
+				start = Integer.parseInt(parts[4]);
+				wscore = Double.parseDouble(parts[7]);
+
+				Species newSpecies = null;
+				newSpecies = Species.find("byName", speciesname).first();
+				if (newSpecies == null) {
+					newSpecies = new Species(speciesname);
+					newSpecies.save();
+				}
+
+				TFsite siteOfInterest = null;
+				siteOfInterest = TFsite.find("byStart", start).first();
+				if (siteOfInterest == null) {
+					siteOfInterest = new TFsite(speciesname, "Dichaete", sequence, start, wscore);
+					siteOfInterest.tagSpecies(newSpecies);
+					siteOfInterest.save();
+				} else {
+					siteOfInterest.tagSpecies(newSpecies);
+				}
+			}
+		}
+		reader.close();
+		
+		//Test that objects were created properly
+		assertEquals(9, TFsite.count());
+		assertEquals(7, Species.count());
+	}
 
 }
