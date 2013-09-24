@@ -17,10 +17,18 @@ public class BasicTest extends UnitTest {
 		Fixtures.deleteDatabase();
 	}
 
+	//TODO: Figure out how to grab enhancer name from input file, automate loading of input files
+	
 	@Test
 	public void loadEntities() throws NumberFormatException, IOException {
+		//Start off by creating one of each class to create the relations
+		Species firstSpecies = new Species("test");
+		Enhancer firstEnhancer = new Enhancer("test");
+		TFsite firstSite = new TFsite(firstEnhancer, firstSpecies.name, "Dichaete", "TCTTTGTT", 450, 3.4);
+		
 		//Read flat file
 		BufferedReader reader = new BufferedReader(new FileReader("/home/sarah/Documents/PhD/Janelia/Enhancers/rsat/D_scan/Abd-B.35C08_Dscan.ft"));
+		Enhancer enhancer = new Enhancer("Abd-B.35C08");
 		String line = null;
 		String speciesname = null;
 		String sequence = null;
@@ -44,15 +52,22 @@ public class BasicTest extends UnitTest {
 				TFsite siteOfInterest = null;
 				siteOfInterest = TFsite.find("byStart", start).first();
 				if (siteOfInterest == null) {
-					siteOfInterest = new TFsite(speciesname, "Dichaete", sequence, start, wscore);
-					siteOfInterest.tagSpecies(newSpecies);
-					siteOfInterest.save();
-				} else {
-					siteOfInterest.tagSpecies(newSpecies);
-				}
+					siteOfInterest = new TFsite(enhancer, speciesname, "Dichaete", sequence, start, wscore);
+				} 
+				siteOfInterest.tagSpecies(newSpecies);
+				//siteOfInterest.tagEnhancer(enhancer);
+				siteOfInterest.save();
+				
+				enhancer.tagTF(siteOfInterest);
+				enhancer.save();
+				
 			}
 		}
 		reader.close();
+		
+		firstSpecies.delete();
+		firstEnhancer.delete();
+		firstSite.delete();
 		
 		//Test that objects were created properly
 		assertEquals(9, TFsite.count());

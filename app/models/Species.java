@@ -10,7 +10,7 @@ public class Species extends Model {
 
 	public Species(String name) {
 		this.name = name;
-		this.TFsites = new ArrayList<>();
+		this.TFsites = new ArrayList<TFsite>();
 	}
 
 	public String name;
