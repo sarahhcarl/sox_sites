@@ -1,0 +1,56 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.222445_70L35Q -m $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.222445_cFCmUg -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.222445_uAAXPa -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.222445_70L35Q
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.222445_uAAXPa
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.222445_cFCmUg
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dpse	site	VGVACAAAGG	D	777	786	CGGTCAAAGG	4.9	1.1e-04	-9.098	3.951
+dpse	site	VGVACAAAGG	D	853	862	AGGAAAAAGG	5.5	1.7e-05	-10.977	4.767
+dpse	site	VGVACAAAGG	D	972	981	TCGAAAAAGG	4.6	2.3e-04	-8.357	3.629
+#3#	site	VGVACAAAGG	D	853	862	AGGAAAAAGG	5.5	1.7e-05	-10.977	4.767
+#3#	site	VGVACAAAGG	D	972	981	TCGAAAAAGG	4.6	2.3e-04	-8.357	3.629
+;
+; Matrices
+;	matrix	name      	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	VGVACAAAGG	10	4	1	-5.800	6.100	11.900	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	9044
+; N residues           	0
+; Matches per matrix
+;	matrix	name      	matches	scored
+;	1	VGVACAAAGG     	5	17962
+;		TOTAL          	5	17962
+; Host name	rsat
+; Job started	2013-09-04.222445
+; Job done	2013-09-04.222452
+; Seconds	6.72
+;	user	6.72
+;	system	0.03
+;	cuser	0
+;	csystem	0

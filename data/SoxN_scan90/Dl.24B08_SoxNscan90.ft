@@ -1,0 +1,85 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.211346_pyIhiW -m $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.211346_fGp4ZE -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.211346_asiTbK -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.211346_pyIhiW
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.211346_asiTbK
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.211346_fGp4ZE
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dyak	site	VGVACAAAGG	R	89	98	AAGGCAAAGG	4.6	2.3e-04	-8.357	3.629
+dyak	site	VGVACAAAGG	R	1870	1879	CCCAAAAAAG	4.1	7.3e-04	-7.217	3.134
+dyak	site	VGVACAAAGG	R	2693	2702	GGAAAAAATG	4.1	7.3e-04	-7.217	3.134
+dyak	site	VGVACAAAGG	D	3472	3481	TGGAAAATGG	4.2	6.0e-04	-7.421	3.223
+dsim	site	VGVACAAAGG	R	89	98	AAGGCAAAGG	4.6	2.3e-04	-8.357	3.629
+dsim	site	VGVACAAAGG	R	896	905	AGCACCAAAG	4.0	9.1e-04	-6.998	3.039
+dsim	site	VGVACAAAGG	R	1870	1879	CCCAAAAAAG	4.1	7.3e-04	-7.217	3.134
+dmel	site	VGVACAAAGG	R	89	98	AAGGCAAAGG	4.6	2.3e-04	-8.357	3.629
+dmel	site	VGVACAAAGG	R	896	905	GGCACCAAAG	4.1	7.3e-04	-7.217	3.134
+dmel	site	VGVACAAAGG	R	1870	1879	CCCAAAAAAG	4.1	7.3e-04	-7.217	3.134
+dmel	site	VGVACAAAGG	R	3324	3333	GGGCCAAAAG	4.8	1.4e-04	-8.859	3.848
+#1#	site	VGVACAAAGG	R	89	98	AAGGCAAAGG	4.6	2.3e-04	-8.357	3.629
+#1#	site	VGVACAAAGG	R	896	905	GGCACCAAAG	4.1	7.3e-04	-7.217	3.134
+#1#	site	VGVACAAAGG	R	1870	1879	CCCAAAAAAG	4.1	7.3e-04	-7.217	3.134
+#1#	site	VGVACAAAGG	D	3472	3481	TGGAAAATGG	4.2	6.0e-04	-7.421	3.223
+#3#	site	VGVACAAAGG	R	89	98	AAGGCAAAGG	4.6	2.3e-04	-8.357	3.629
+#3#	site	VGVACAAAGG	R	128	137	CCCCCAAAGG	4.4	3.8e-04	-7.864	3.415
+#3#	site	VGVACAAAGG	R	896	905	GGCACCAAAG	4.1	7.3e-04	-7.217	3.134
+#3#	site	VGVACAAAGG	R	1870	1879	CCCAAAAAAG	4.1	7.3e-04	-7.217	3.134
+#3#	site	VGVACAAAGG	D	3472	3481	TGGAAAATGG	4.2	6.0e-04	-7.421	3.223
+#2#	site	VGVACAAAGG	R	89	98	AAGGCAAAGG	4.6	2.3e-04	-8.357	3.629
+#2#	site	VGVACAAAGG	R	896	905	GGCACCAAAG	4.1	7.3e-04	-7.217	3.134
+#2#	site	VGVACAAAGG	R	1870	1879	CCCAAAAAAG	4.1	7.3e-04	-7.217	3.134
+#2#	site	VGVACAAAGG	D	3472	3481	TGGAAAATGG	4.2	6.0e-04	-7.421	3.223
+dpse	site	VGVACAAAGG	R	67	76	ACGGCAAAAG	4.2	6.0e-04	-7.421	3.223
+dpse	site	VGVACAAAGG	R	89	98	AAGGCAAAGG	4.6	2.3e-04	-8.357	3.629
+dpse	site	VGVACAAAGG	R	128	137	CCCCCAAAGG	4.4	3.8e-04	-7.864	3.415
+dpse	site	VGVACAAAGG	D	780	789	AAGACAAAGG	5.4	2.6e-05	-10.544	4.579
+dpse	site	VGVACAAAGG	R	1856	1865	TGGAAAAAGG	5.1	6.7e-05	-9.614	4.175
+dpse	site	VGVACAAAGG	R	2713	2722	GCCGCAAAGG	4.6	2.3e-04	-8.357	3.629
+dpse	site	VGVACAAAGG	D	3425	3434	AAAAAAAAGG	4.2	6.0e-04	-7.421	3.223
+dpse	site	VGVACAAAGG	D	3434	3443	GGGGAAAAGG	4.7	1.9e-04	-8.548	3.712
+dpse	site	VGVACAAAGG	D	3435	3444	GGGAAAAGGG	4.3	4.8e-04	-7.651	3.323
+dpse	site	VGVACAAAGG	R	3587	3596	CCCGCAAAGG	4.5	3.1e-04	-8.087	3.512
+;
+; Matrices
+;	matrix	name      	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	VGVACAAAGG	10	4	1	-5.800	6.100	11.900	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	27496
+; N residues           	0
+; Matches per matrix
+;	matrix	name      	matches	scored
+;	1	VGVACAAAGG     	34	54866
+;		TOTAL          	34	54866
+; Host name	rsat
+; Job started	2013-09-04.211346
+; Job done	2013-09-04.211402
+; Seconds	15.45
+;	user	15.45
+;	system	0.04
+;	cuser	0
+;	csystem	0

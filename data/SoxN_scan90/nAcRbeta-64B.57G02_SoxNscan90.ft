@@ -1,0 +1,86 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.223414_0sFiQR -m $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.223414_TF6xxC -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.223414_2s8nXl -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.223414_0sFiQR
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.223414_2s8nXl
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.223414_TF6xxC
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dyak	site	VGVACAAAGG	R	2495	2504	GCGAAAAACG	4.1	7.3e-04	-7.217	3.134
+dyak	site	VGVACAAAGG	D	2585	2594	CGAAAAAAAG	4.4	3.8e-04	-7.864	3.415
+dyak	site	VGVACAAAGG	D	2586	2595	GAAAAAAAGG	4.3	4.8e-04	-7.651	3.323
+dyak	site	VGVACAAAGG	R	2941	2950	TGCCCAAAGG	4.7	1.9e-04	-8.548	3.712
+dyak	site	VGVACAAAGG	R	3755	3764	TAAACAAAAG	4.0	9.1e-04	-6.998	3.039
+#3#	site	VGVACAAAGG	D	1642	1651	GAAACAAAAG	4.5	3.1e-04	-8.087	3.512
+#3#	site	VGVACAAAGG	R	1759	1768	ACAGCAAAGG	4.3	4.8e-04	-7.651	3.323
+#3#	site	VGVACAAAGG	D	2197	2206	GCGGCAAAAG	4.3	4.8e-04	-7.651	3.323
+#3#	site	VGVACAAAGG	D	2362	2371	GACACAAAGG	5.3	3.7e-05	-10.192	4.426
+#3#	site	VGVACAAAGG	R	2495	2504	GCGAAAAACG	4.1	7.3e-04	-7.217	3.134
+#3#	site	VGVACAAAGG	R	2941	2950	TGCCCAAAGG	4.7	1.9e-04	-8.548	3.712
+#3#	site	VGVACAAAGG	R	3504	3513	ACGCAAAAGG	4.0	9.1e-04	-6.998	3.039
+#3#	site	VGVACAAAGG	R	3755	3764	TAAACAAAAG	4.0	9.1e-04	-6.998	3.039
+#2#	site	VGVACAAAGG	R	2495	2504	GCGAAAAACG	4.1	7.3e-04	-7.217	3.134
+#2#	site	VGVACAAAGG	R	2941	2950	TGCCCAAAGG	4.7	1.9e-04	-8.548	3.712
+#2#	site	VGVACAAAGG	R	3755	3764	TAAACAAAAG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	R	908	917	GCGGCAAAAG	4.3	4.8e-04	-7.651	3.323
+dpse	site	VGVACAAAGG	R	1244	1253	CCAACAAATG	4.1	7.3e-04	-7.217	3.134
+dpse	site	VGVACAAAGG	R	1485	1494	TGGCCAAACG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	D	1642	1651	GAAACAAAAG	4.5	3.1e-04	-8.087	3.512
+dpse	site	VGVACAAAGG	R	1783	1792	TGAGCAAAGG	4.5	3.1e-04	-8.087	3.512
+dpse	site	VGVACAAAGG	D	1943	1952	GGGGCAATAG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	D	2077	2086	CGGCCAAAAG	4.7	1.9e-04	-8.548	3.712
+dpse	site	VGVACAAAGG	D	2362	2371	GACACAAAGG	5.3	3.7e-05	-10.192	4.426
+dpse	site	VGVACAAAGG	R	2985	2994	GCCACAATGG	4.6	2.3e-04	-8.357	3.629
+dpse	site	VGVACAAAGG	R	3338	3347	TGCACAAAAG	5.1	6.7e-05	-9.614	4.175
+dpse	site	VGVACAAAGG	R	3903	3912	CGGATAAAAG	4.4	3.8e-04	-7.864	3.415
+dmel	site	VGVACAAAGG	D	1658	1667	CACACAAAAG	4.6	2.3e-04	-8.357	3.629
+dmel	site	VGVACAAAGG	R	2495	2504	GCGAAAAACG	4.1	7.3e-04	-7.217	3.134
+dmel	site	VGVACAAAGG	R	2941	2950	TGCCCAAAGG	4.7	1.9e-04	-8.548	3.712
+dsim	site	VGVACAAAGG	R	2495	2504	GCGAAAAACG	4.1	7.3e-04	-7.217	3.134
+dsim	site	VGVACAAAGG	R	2941	2950	TGCCCAAAGG	4.7	1.9e-04	-8.548	3.712
+dsim	site	VGVACAAAGG	R	2973	2982	ACCAAAAAAG	4.1	7.3e-04	-7.217	3.134
+#1#	site	VGVACAAAGG	R	2495	2504	GCGAAAAACG	4.1	7.3e-04	-7.217	3.134
+#1#	site	VGVACAAAGG	R	2941	2950	TGCCCAAAGG	4.7	1.9e-04	-8.548	3.712
+;
+; Matrices
+;	matrix	name      	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	VGVACAAAGG	10	4	1	-5.800	6.100	11.900	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	28511
+; N residues           	0
+; Matches per matrix
+;	matrix	name      	matches	scored
+;	1	VGVACAAAGG     	35	56896
+;		TOTAL          	35	56896
+; Host name	rsat
+; Job started	2013-09-04.223415
+; Job done	2013-09-04.223433
+; Seconds	15.68
+;	user	15.68
+;	system	0.04
+;	cuser	0
+;	csystem	0

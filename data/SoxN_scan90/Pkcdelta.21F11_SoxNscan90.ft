@@ -1,0 +1,55 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.225407_GhWEZL -m $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.225407_JOgZp1 -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.225407_YH5oXc -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.225407_GhWEZL
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.225407_YH5oXc
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.225407_JOgZp1
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dpse	site	VGVACAAAGG	R	140	149	AAAAAAAAGG	4.2	6.0e-04	-7.421	3.223
+dpse	site	VGVACAAAGG	D	341	350	AAGACAAAAG	4.9	1.1e-04	-9.098	3.951
+#3#	site	VGVACAAAGG	D	341	350	AAGACAAAAG	4.9	1.1e-04	-9.098	3.951
+dsim	site	VGVACAAAGG	R	484	493	CGGCCAAATG	4.3	4.8e-04	-7.651	3.323
+;
+; Matrices
+;	matrix	name      	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	VGVACAAAGG	10	4	1	-5.800	6.100	11.900	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	7868
+; N residues           	0
+; Matches per matrix
+;	matrix	name      	matches	scored
+;	1	VGVACAAAGG     	4	15610
+;		TOTAL          	4	15610
+; Host name	rsat
+; Job started	2013-09-04.225408
+; Job done	2013-09-04.225415
+; Seconds	6.1
+;	user	6.1
+;	system	0.03
+;	cuser	0
+;	csystem	0

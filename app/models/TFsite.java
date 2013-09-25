@@ -9,17 +9,15 @@ import java.util.*;
 @Entity
 public class TFsite extends Model {
 
-	public TFsite(Enhancer enhancer, String speciesname, String TF, String sequence, int start, double wscore) {
+	public TFsite(Enhancer enhancer, String TF, String sequence, int start, double wscore) {
 		this.TF = TF;
 		this.sequence = sequence;
 		this.start = start;
 		this.wscore = wscore;
 		this.species = new ArrayList<Species>();
-		this.speciesname = speciesname;
 		this.enhancer = enhancer;
 	}
 
-	public String speciesname;
 	public String sequence;
 	public String TF;
 	public int start;

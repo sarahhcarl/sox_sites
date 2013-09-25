@@ -1,0 +1,95 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.224039_JacuYd -m $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.224039_t7N1R9 -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.224039_IckhRc -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.224039_JacuYd
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.224039_IckhRc
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.224039_t7N1R9
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dyak	site	VGVACAAAGG	D	42	51	ACAGCAAAGG	4.3	4.8e-04	-7.651	3.323
+dyak	site	VGVACAAAGG	D	514	523	GAGACAAATG	4.6	2.3e-04	-8.357	3.629
+dyak	site	VGVACAAAGG	D	882	891	TGAACAAAGG	5.3	3.7e-05	-10.192	4.426
+dyak	site	VGVACAAAGG	D	1191	1200	CGTACAAAAG	4.7	1.9e-04	-8.548	3.712
+dyak	site	VGVACAAAGG	R	1738	1747	GGCAGAAAAG	4.1	7.3e-04	-7.217	3.134
+dyak	site	VGVACAAAGG	D	2014	2023	CAAACAAACG	4.0	9.1e-04	-6.998	3.039
+dyak	site	VGVACAAAGG	R	4740	4749	GGCA-AAAGG	4.8	1.4e-04	-8.859	3.848
+dyak	site	VGVACAAAGG	R	4996	5005	AGCATAAAAG	4.3	4.8e-04	-7.651	3.323
+#3#	site	VGVACAAAGG	D	514	523	GAGACAAATG	4.6	2.3e-04	-8.357	3.629
+#3#	site	VGVACAAAGG	D	731	740	AGGACAAAGC	4.4	3.8e-04	-7.864	3.415
+#3#	site	VGVACAAAGG	D	1191	1200	CGTACAAAAG	4.7	1.9e-04	-8.548	3.712
+#3#	site	VGVACAAAGG	D	1888	1897	GGCACACAGG	4.6	2.3e-04	-8.357	3.629
+#3#	site	VGVACAAAGG	D	2014	2023	CAAACAAACG	4.0	9.1e-04	-6.998	3.039
+#3#	site	VGVACAAAGG	R	2079	2088	TCGCCAAAGG	4.3	4.8e-04	-7.651	3.323
+#3#	site	VGVACAAAGG	D	2208	2217	AGGAAAATGG	4.6	2.3e-04	-8.357	3.629
+#3#	site	VGVACAAAGG	R	3542	3551	ACCATAAAGG	4.2	6.0e-04	-7.421	3.223
+#3#	site	VGVACAAAGG	R	4740	4749	GGCA-AAAGG	4.8	1.4e-04	-8.859	3.848
+#2#	site	VGVACAAAGG	D	514	523	GAGACAAATG	4.6	2.3e-04	-8.357	3.629
+#2#	site	VGVACAAAGG	D	1191	1200	CGTACAAAAG	4.7	1.9e-04	-8.548	3.712
+#2#	site	VGVACAAAGG	D	2014	2023	CAAACAAACG	4.0	9.1e-04	-6.998	3.039
+#2#	site	VGVACAAAGG	R	4740	4749	GGCA-AAAGG	4.8	1.4e-04	-8.859	3.848
+dsim	site	VGVACAAAGG	D	514	523	GAGACAAATG	4.6	2.3e-04	-8.357	3.629
+dsim	site	VGVACAAAGG	D	989	998	CGGATAAAAG	4.4	3.8e-04	-7.864	3.415
+dsim	site	VGVACAAAGG	D	1191	1200	CGTACAAAAG	4.7	1.9e-04	-8.548	3.712
+dsim	site	VGVACAAAGG	D	2014	2023	CAAACAAACG	4.0	9.1e-04	-6.998	3.039
+#1#	site	VGVACAAAGG	D	514	523	GAGACAAATG	4.6	2.3e-04	-8.357	3.629
+#1#	site	VGVACAAAGG	D	989	998	CGGATAAAAG	4.4	3.8e-04	-7.864	3.415
+#1#	site	VGVACAAAGG	D	1191	1200	CGTACAAAAG	4.7	1.9e-04	-8.548	3.712
+#1#	site	VGVACAAAGG	D	2014	2023	CAAACAAACG	4.0	9.1e-04	-6.998	3.039
+dmel	site	VGVACAAAGG	D	514	523	GAGACAAATG	4.6	2.3e-04	-8.357	3.629
+dmel	site	VGVACAAAGG	D	1191	1200	CGAACAAATG	4.7	1.9e-04	-8.548	3.712
+dmel	site	VGVACAAAGG	R	1326	1335	TGATCAAAGG	4.0	9.1e-04	-6.998	3.039
+dmel	site	VGVACAAAGG	D	2014	2023	CAAACAAACG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	D	514	523	GAGACAAATG	4.6	2.3e-04	-8.357	3.629
+dpse	site	VGVACAAAGG	D	731	740	AGGACAAAGC	4.4	3.8e-04	-7.864	3.415
+dpse	site	VGVACAAAGG	R	1094	1103	AGGAAGAAGG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	R	1605	1614	GGGGGAAAGG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	D	1888	1897	GGCACACAGG	4.6	2.3e-04	-8.357	3.629
+dpse	site	VGVACAAAGG	D	2014	2023	CAAACAAACG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	D	2208	2217	AGGAAAATGG	4.6	2.3e-04	-8.357	3.629
+dpse	site	VGVACAAAGG	D	3354	3363	GGGAGAAACG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	D	3691	3700	TGCAAAAACG	4.0	9.1e-04	-6.998	3.039
+dpse	site	VGVACAAAGG	R	4740	4749	GGCA-AAAGG	4.8	1.4e-04	-8.859	3.848
+dpse	site	VGVACAAAGG	D	4825	4834	GGAACGAAGG	4.3	4.8e-04	-7.651	3.323
+;
+; Matrices
+;	matrix	name      	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	VGVACAAAGG	10	4	1	-5.800	6.100	11.900	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	35693
+; N residues           	0
+; Matches per matrix
+;	matrix	name      	matches	scored
+;	1	VGVACAAAGG     	44	71260
+;		TOTAL          	44	71260
+; Host name	rsat
+; Job started	2013-09-04.224040
+; Job done	2013-09-04.224101
+; Seconds	18.96
+;	user	18.96
+;	system	0.05
+;	cuser	0
+;	csystem	0

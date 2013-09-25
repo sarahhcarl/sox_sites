@@ -1,0 +1,98 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.172725_IpIptE -m $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.172725_zTqZJP -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.172725_vFv1oM -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.172725_IpIptE
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.172725_vFv1oM
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.172725_zTqZJP
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dyak	site	CCWTTGTT	D	218	225	TCTTTGTT	4.3	3.9e-04	-7.846	3.408
+dyak	site	CCWTTGTT	D	2075	2082	TCATTGTC	4.1	5.5e-04	-7.498	3.256
+dyak	site	CCWTTGTT	D	3371	3378	GCTTTGTC	4.5	2.5e-04	-8.307	3.608
+dyak	site	CCWTTGTT	D	4346	4353	TCTTTGTT	4.3	3.9e-04	-7.846	3.408
+dyak	site	CCWTTGTT	R	5064	5071	CTTTTGTT	4.0	6.4e-04	-7.353	3.193
+#1#	site	CCWTTGTT	R	1873	1880	CCGTTGTG	4.4	3.0e-04	-8.106	3.520
+#1#	site	CCWTTGTT	D	2075	2082	TCATTGTC	4.1	5.5e-04	-7.498	3.256
+#1#	site	CCWTTGTT	D	3371	3378	GCTTTGTC	4.5	2.5e-04	-8.307	3.608
+#1#	site	CCWTTGTT	D	4454	4461	CCATTGTT	5.2	3.8e-05	-10.191	4.426
+#1#	site	CCWTTGTT	R	5064	5071	CTTTTGTT	4.0	6.4e-04	-7.353	3.193
+#1#	site	CCWTTGTT	D	6136	6143	GCGTTGTT	4.1	5.5e-04	-7.498	3.256
+#3#	site	CCWTTGTT	D	218	225	TCTTTGTT	4.3	3.9e-04	-7.846	3.408
+#3#	site	CCWTTGTT	R	1873	1880	CCGTTGTG	4.4	3.0e-04	-8.106	3.520
+#3#	site	CCWTTGTT	D	2075	2082	TCATTGTC	4.1	5.5e-04	-7.498	3.256
+#3#	site	CCWTTGTT	R	2778	2785	CCATAGTT	4.4	3.0e-04	-8.106	3.520
+#3#	site	CCWTTGTT	D	3371	3378	GCTTTGTC	4.5	2.5e-04	-8.307	3.608
+#3#	site	CCWTTGTT	R	3483	3490	GCTTTGTC	4.5	2.5e-04	-8.307	3.608
+#3#	site	CCWTTGTT	R	3516	3523	GCTTTGTG	4.6	2.1e-04	-8.453	3.671
+#3#	site	CCWTTGTT	R	4379	4386	CCATAGTC	4.2	4.5e-04	-7.697	3.343
+#3#	site	CCWTTGTT	R	5064	5071	CTTTTGTT	4.0	6.4e-04	-7.353	3.193
+#3#	site	CCWTTGTT	D	6136	6143	GCGTTGTT	4.1	5.5e-04	-7.498	3.256
+#2#	site	CCWTTGTT	D	218	225	TCTTTGTT	4.3	3.9e-04	-7.846	3.408
+#2#	site	CCWTTGTT	R	1873	1880	CCGTTGTG	4.4	3.0e-04	-8.106	3.520
+#2#	site	CCWTTGTT	D	2075	2082	TCATTGTC	4.1	5.5e-04	-7.498	3.256
+#2#	site	CCWTTGTT	D	3371	3378	GCTTTGTC	4.5	2.5e-04	-8.307	3.608
+#2#	site	CCWTTGTT	R	5064	5071	CTTTTGTT	4.0	6.4e-04	-7.353	3.193
+#2#	site	CCWTTGTT	D	6136	6143	GCGTTGTT	4.1	5.5e-04	-7.498	3.256
+dsim	site	CCWTTGTT	R	1873	1880	CCGTTGTG	4.4	3.0e-04	-8.106	3.520
+dsim	site	CCWTTGTT	D	2075	2082	TCATTGTC	4.1	5.5e-04	-7.498	3.256
+dsim	site	CCWTTGTT	D	3371	3378	GCTTTGTC	4.5	2.5e-04	-8.307	3.608
+dsim	site	CCWTTGTT	D	4454	4461	CCATTGTT	5.2	3.8e-05	-10.191	4.426
+dsim	site	CCWTTGTT	R	5064	5071	CTTTTGTT	4.0	6.4e-04	-7.353	3.193
+dsim	site	CCWTTGTT	D	6136	6143	GCGTTGTT	4.1	5.5e-04	-7.498	3.256
+dmel	site	CCWTTGTT	D	2075	2082	TCATTGTC	4.1	5.5e-04	-7.498	3.256
+dmel	site	CCWTTGTT	D	3371	3378	GCTTTGTC	4.5	2.5e-04	-8.307	3.608
+dmel	site	CCWTTGTT	D	4809	4816	GCTTTGTT	4.7	1.3e-04	-8.986	3.903
+dmel	site	CCWTTGTT	R	5064	5071	CTTTTGTT	4.0	6.4e-04	-7.353	3.193
+dmel	site	CCWTTGTT	D	6136	6143	GCGTTGTT	4.1	5.5e-04	-7.498	3.256
+dpse	site	CCWTTGTT	R	632	639	CCCTTGTG	4.5	2.5e-04	-8.307	3.608
+dpse	site	CCWTTGTT	R	639	646	CCCTTGTC	4.4	3.0e-04	-8.106	3.520
+dpse	site	CCWTTGTT	D	2075	2082	TCATTGTC	4.1	5.5e-04	-7.498	3.256
+dpse	site	CCWTTGTT	R	2528	2535	CCAGTGTT	4.0	6.4e-04	-7.353	3.193
+dpse	site	CCWTTGTT	R	2778	2785	CCATAGTT	4.4	3.0e-04	-8.106	3.520
+dpse	site	CCWTTGTT	R	3483	3490	TCTTTGTC	4.1	5.5e-04	-7.498	3.256
+dpse	site	CCWTTGTT	R	3499	3506	TCTTTGTC	4.1	5.5e-04	-7.498	3.256
+dpse	site	CCWTTGTT	R	4379	4386	CCATAGTC	4.2	4.5e-04	-7.697	3.343
+dpse	site	CCWTTGTT	D	6106	6113	-CTTTGTT	4.0	6.4e-04	-7.353	3.193
+;
+; Matrices
+;	matrix	name    	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	CCWTTGTT	8	4	1	-4.900	5.300	10.200	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	43323
+; N residues           	0
+; Matches per matrix
+;	matrix	name    	matches	scored
+;	1	CCWTTGTT       	47	86548
+;		TOTAL          	47	86548
+; Host name	rsat
+; Job started	2013-09-04.172726
+; Job done	2013-09-04.172745
+; Seconds	17.98
+;	user	17.98
+;	system	0.02
+;	cuser	0
+;	csystem	0

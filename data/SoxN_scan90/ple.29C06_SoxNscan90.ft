@@ -1,0 +1,57 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.225453_OpLFV5 -m $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.225453_qKAeJ1 -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.225453_Cg72jv -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.225453_OpLFV5
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.225453_Cg72jv
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.225453_qKAeJ1
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dpse	site	VGVACAAAGG	R	830	839	GCGACAGAGG	4.3	4.8e-04	-7.651	3.323
+dsim	site	VGVACAAAGG	D	882	891	GGCCCAAAAG	4.6	2.3e-04	-8.357	3.629
+#3#	site	VGVACAAAGG	R	941	950	CCCACAACGG	4.0	9.1e-04	-6.998	3.039
+#3#	site	VGVACAAAGG	D	1100	1109	AGAAAAATGG	4.1	7.3e-04	-7.217	3.134
+dyak	site	VGVACAAAGG	D	53	62	GAAACAAAAG	4.5	3.1e-04	-8.087	3.512
+dyak	site	VGVACAAAGG	D	565	574	TGGAAAAAGG	5.1	6.7e-05	-9.614	4.175
+;
+; Matrices
+;	matrix	name      	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	VGVACAAAGG	10	4	1	-5.800	6.100	11.900	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	9345
+; N residues           	0
+; Matches per matrix
+;	matrix	name      	matches	scored
+;	1	VGVACAAAGG     	6	18564
+;		TOTAL          	6	18564
+; Host name	rsat
+; Job started	2013-09-04.225453
+; Job done	2013-09-04.225500
+; Seconds	6.84
+;	user	6.84
+;	system	0.03
+;	cuser	0
+;	csystem	0

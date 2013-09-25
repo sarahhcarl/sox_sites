@@ -1,4 +1,18 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+<h1>Coming soon: Sox TF binding site analysis</h1>
+
+<div class="analysis">
+	<h2 class="analysis-name">
+		<div>
+			<a href="@{Application.pairwise()}">Calculate pairwise site conservation</a>	
+		</div>
+		<div>	
+			<a href="@{Application.rateOfLoss()}">Calculate rate of binding site loss</a>
+		</div>	
+		<div>
+			<a href="@{Application.rateOfGain()}">Calculate the rate of binding site gain</a>
+		</div>	
+	</h2>
+</div>		

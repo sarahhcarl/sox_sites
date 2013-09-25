@@ -1,0 +1,64 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.172747_qFiAI3 -m $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.172747_fSIaVy -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.172747_im21kz -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-sequence_2013-09-04.172747_qFiAI3
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan_bg_2013-09-04.172747_im21kz
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/04/matrix-scan-matrix_2013-09-04.172747_fSIaVy
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dmel	site	CCWTTGTT	D	250	257	TCTTTGTT	4.3	3.9e-04	-7.846	3.408
+dmel	site	CCWTTGTT	R	2099	2106	TCATTGTG	4.2	4.5e-04	-7.697	3.343
+dmel	site	CCWTTGTT	D	2361	2368	CCATAGTT	4.4	3.0e-04	-8.106	3.520
+dsim	site	CCWTTGTT	R	2099	2106	TCATTGTG	4.2	4.5e-04	-7.697	3.343
+dsim	site	CCWTTGTT	R	2248	2255	GCGTTGTT	4.1	5.5e-04	-7.498	3.256
+dsim	site	CCWTTGTT	D	2361	2368	CCATAGTT	4.4	3.0e-04	-8.106	3.520
+#1#	site	CCWTTGTT	R	2099	2106	TCATTGTG	4.2	4.5e-04	-7.697	3.343
+#1#	site	CCWTTGTT	D	2361	2368	CCATAGTT	4.4	3.0e-04	-8.106	3.520
+dyak	site	CCWTTGTT	R	2099	2106	TCATTGTG	4.2	4.5e-04	-7.697	3.343
+dyak	site	CCWTTGTT	D	2361	2368	CCATAGTT	4.4	3.0e-04	-8.106	3.520
+#3#	site	CCWTTGTT	R	2891	2898	CTTTTGTT	4.0	6.4e-04	-7.353	3.193
+#2#	site	CCWTTGTT	R	2099	2106	TCATTGTG	4.2	4.5e-04	-7.697	3.343
+#2#	site	CCWTTGTT	D	2361	2368	CCATAGTT	4.4	3.0e-04	-8.106	3.520
+;
+; Matrices
+;	matrix	name    	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	CCWTTGTT	8	4	1	-4.900	5.300	10.200	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	24500
+; N residues           	0
+; Matches per matrix
+;	matrix	name    	matches	scored
+;	1	CCWTTGTT       	13	48902
+;		TOTAL          	13	48902
+; Host name	rsat
+; Job started	2013-09-04.172748
+; Job done	2013-09-04.172759
+; Seconds	10.51
+;	user	10.51
+;	system	0.02
+;	cuser	0
+;	csystem	0
