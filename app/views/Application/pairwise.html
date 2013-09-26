@@ -1,4 +1,15 @@
 #{extends 'main.html' /}
 #{set title:'Pairwise Conservation' /}
 
-<h1>Pairwise conservation relative to ${refSpecies}</h1>
+<h1>Pairwise conservation relative to reference species</h1>
+
+  <p>
+    <label>Reference species:</label><br />
+    <select name="species">
+      <option value="dmel">Drosophila melanogaster</option>
+      <option value="dsim">Drosophila simulans</option>
+      <option value="dyak">Drosophila yakuba</option>
+      <option value="dpse">Drosophila pseudoobscura</option>
+    </select> 
+  </p>
+

@@ -37,7 +37,7 @@ public class BasicTest extends UnitTest {
 		//String TF = m.group();
 		for (File childfile : dir.listFiles()) {
 			System.out.println(childfile.getName());
-			Pattern p1 = Pattern.compile("/home/sarah/utilities/play-1.2.7/sox_sites/data/test/(.+)_(.+).ft");
+			Pattern p1 = Pattern.compile("/home/sarah/utilities/play-1.2.7/sox_sites/test/testdata/(.+)_(.+).ft");
 			Matcher m1 = p1.matcher(childfile.getPath());
 			m1.lookingAt();
 			Enhancer enhancer = new Enhancer(m1.group(1));

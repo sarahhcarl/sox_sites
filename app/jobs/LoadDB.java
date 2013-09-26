@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.junit.Before;
+
 
 import models.Enhancer;
 import models.Species;
@@ -16,11 +18,28 @@ import models.TFsite;
 
 import play.Logger;
 import play.jobs.Job;
+import play.jobs.OnApplicationStart;
+import play.test.Fixtures;
 
+
+
+@OnApplicationStart
 public class LoadDB extends Job {
+
+	@Before
+	public void setup() {
+		Fixtures.deleteDatabase();
+	}
 
 	public void doJob() throws NumberFormatException, IOException{
 		Logger.info("loading DB now...");
+
+		//Start off by creating one of each class to create the relations
+		Species firstSpecies = new Species("test");
+		Enhancer firstEnhancer = new Enhancer("test");
+		TFsite firstSite = new TFsite(firstEnhancer, "test", "test", 450, 3.4);
+
+		int counter = 0;
 		//Read flat file
 		File dir = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/");
 		for (File childdir : dir.listFiles()) {
@@ -30,7 +49,14 @@ public class LoadDB extends Job {
 			m.lookingAt();
 			String TF = m.group();
 			for (File childfile : childdir.listFiles()) {
-				System.out.println(childfile.getName());
+				counter++;
+				if (counter%10==0) {
+						flush(TFsite.class);
+						flush(Enhancer.class);
+						flush(Species.class);
+				}
+
+				System.out.printf("Looking at: %s%n", childfile.getName());
 				Pattern p1 = Pattern.compile("(.+)_(.+).ft");
 				Matcher m1 = p1.matcher(childfile.getPath());
 				m1.lookingAt();
@@ -56,6 +82,7 @@ public class LoadDB extends Job {
 						if (newSpecies == null) {
 							newSpecies = new Species(speciesname);
 							newSpecies.save();
+							//System.out.printf("Species %s saved%n", newSpecies.name);
 						}
 
 						TFsite siteOfInterest = null;
@@ -65,13 +92,32 @@ public class LoadDB extends Job {
 						} 
 						siteOfInterest.tagSpecies(newSpecies);
 						siteOfInterest.save();
+						//System.out.printf("TFsite %s saved%n", siteOfInterest.sequence);
 
 						enhancer.tagTF(siteOfInterest);
 						enhancer.save();
 					}
 				}
 				reader.close();
-			}		
+			}
 		}
+		firstSpecies.delete();
+		firstEnhancer.delete();
+		firstSite.delete();
+	}
+
+	private void flush(Class<?> type) {
+		Logger.info("Flushing...");
+		if(type == TFsite.class){
+			TFsite.em().flush();
+			//TFsite.em().clear();
+		} else if (type == Enhancer.class){
+			Enhancer.em().flush();
+			//Enhancer.em().clear();
+		} else if (type == Species.class) {
+			Species.em().flush();
+			//Species.em().clear();
+		}
+		
 	}
 }
