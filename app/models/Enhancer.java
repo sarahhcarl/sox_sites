@@ -14,6 +14,10 @@ public class Enhancer extends Model {
 	}
 
 	public String name;
+	public String expressionStage;
+	public String expressionSubset;
+	public String soxBindPattern;
+	public Boolean transcomp;
 	
 	@OneToMany(mappedBy="enhancer", cascade=CascadeType.ALL)
 	public List<TFsite> TFsites;
@@ -24,5 +28,6 @@ public class Enhancer extends Model {
 		tfsite.enhancer = this;
 		tfsite.save();
 	}
+	
 		
 }

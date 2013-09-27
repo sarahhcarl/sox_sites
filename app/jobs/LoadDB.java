@@ -6,8 +6,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.persistence.Query;
 
 import org.junit.Before;
 
@@ -17,6 +20,7 @@ import models.Species;
 import models.TFsite;
 
 import play.Logger;
+import play.db.jpa.JPA;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.test.Fixtures;
@@ -86,7 +90,14 @@ public class LoadDB extends Job {
 						}
 
 						TFsite siteOfInterest = null;
-						siteOfInterest = TFsite.find("byEnhancerAndTFAndStart", enhancer, TF, start).first();
+						Query newquery = JPA.em().createQuery("Select t from TFsite t where t.enhancer = :enhancer AND t.TF = :TF AND t.start = :start");
+						newquery.setParameter("enhancer", enhancer);
+						newquery.setParameter("TF", TF);
+						newquery.setParameter("start", start);
+						List results = newquery.getResultList();
+						if (results.size() > 0) {
+							siteOfInterest = (TFsite) results.get(0);
+						}	
 						if (siteOfInterest == null) {
 							siteOfInterest = new TFsite(enhancer, TF, sequence, start, wscore);
 						} 
