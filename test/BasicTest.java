@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import jobs.AddEnhancerInfo;
 import play.test.*;
 import models.*;
 
@@ -28,7 +30,7 @@ public class BasicTest extends UnitTest {
 		TFsite firstSite = new TFsite(firstEnhancer, "test", "test", 450, 3.4);
 
 		//Read flat file
-		File dir = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/test/");
+		File dir = new File("/home/sarah/utilities/play-1.2.7/sox_sites/test/testdata/");
 		//for (File childdir : dir.listFiles()) {
 		//System.out.println(childdir.getName());
 		//Pattern p = Pattern.compile("(.+)_scan90");
@@ -87,6 +89,17 @@ public class BasicTest extends UnitTest {
 
 		//Test that objects were created properly
 		assertEquals(7, Species.count());
+	}
+	
+	@Test
+	public void annotateEnhancers() {
+		new AddEnhancerInfo().now();
+		System.out.println("Annotating enhancers");
+		
+		//Test annotations
+		assertNotNull(Enhancer.find("byExpressionStage", "GBE"));
+		assertNotNull(Enhancer.find("byExpressionSubset", "neurons"));
+		
 	}
 
 }

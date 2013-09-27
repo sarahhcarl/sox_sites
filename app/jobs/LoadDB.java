@@ -27,7 +27,7 @@ import play.test.Fixtures;
 
 
 
-@OnApplicationStart
+//@OnApplicationStart
 public class LoadDB extends Job {
 
 	@Before
