@@ -51,17 +51,16 @@ public class LoadDB extends Job {
 			Pattern p = Pattern.compile("(.+)_scan90");
 			Matcher m = p.matcher(childdir.getName());
 			m.lookingAt();
-			String TF = m.group();
+			String TF = m.group(1);
 			for (File childfile : childdir.listFiles()) {
 				counter++;
+				Logger.info("Counter: " + counter);
 				if (counter%10==0) {
 						flush(TFsite.class);
 						flush(Enhancer.class);
 						flush(Species.class);
 				}
-
-				System.out.printf("Looking at: %s%n", childfile.getName());
-				Pattern p1 = Pattern.compile("(.+)_(.+).ft");
+				Pattern p1 = Pattern.compile("/home/sarah/utilities/play-1.2.7/sox_sites/data/" + TF + "_scan90/(.+)_(.+).ft");
 				Matcher m1 = p1.matcher(childfile.getPath());
 				m1.lookingAt();
 				Enhancer enhancer = new Enhancer(m1.group(1));
@@ -80,7 +79,9 @@ public class LoadDB extends Job {
 						sequence = parts[6];
 						start = Integer.parseInt(parts[4]);
 						wscore = Double.parseDouble(parts[7]);
-
+						
+						
+						//Hard code species?
 						Species newSpecies = null;
 						newSpecies = Species.find("byName", speciesname).first();
 						if (newSpecies == null) {
@@ -121,13 +122,13 @@ public class LoadDB extends Job {
 		Logger.info("Flushing...");
 		if(type == TFsite.class){
 			TFsite.em().flush();
-			//TFsite.em().clear();
+			TFsite.em().clear();
 		} else if (type == Enhancer.class){
 			Enhancer.em().flush();
-			//Enhancer.em().clear();
+			Enhancer.em().clear();
 		} else if (type == Species.class) {
 			Species.em().flush();
-			//Species.em().clear();
+			Species.em().clear();
 		}
 		
 	}

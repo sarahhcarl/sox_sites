@@ -5,6 +5,13 @@
 	
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/framework/play-1.2.7.jar" sourcepath="/home/sarah/utilities/play-1.2.7/framework/src" />
+	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/javassist-3.12.0.GA.jar"/>
+	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/cglib-2.2.jar"/>
+	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/hibernate-core-3.6.8.Final.jar" sourcepath="/home/sarah/.ivy2/cache/org.hibernate/hibernate-core/sources/hibernate-core-3.6.8.Final-sources.jar"/>
+	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/jboss-jacc-api_JDK4-1.1.0.jar"/>
+	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/ant-1.6.5.jar"/>
+	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/asm-3.1.jar"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/framework/lib/ehcache-core-2.4.3.jar"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/framework/lib/jj-textile.jar"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/framework/lib/slf4j-api-1.6.1.jar"/>

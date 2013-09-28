@@ -22,11 +22,12 @@ public class Enhancer extends Model {
 	@OneToMany(mappedBy="enhancer", cascade=CascadeType.ALL)
 	public List<TFsite> TFsites;
 	
+	//TODO changed
 	public void tagTF(TFsite tfsite) {
 		this.TFsites.add(tfsite);
-		this.save();
+		//this.save();
 		tfsite.enhancer = this;
-		tfsite.save();
+		//tfsite.save();
 	}
 	
 		
