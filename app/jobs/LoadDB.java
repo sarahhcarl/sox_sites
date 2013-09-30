@@ -37,9 +37,24 @@ public class LoadDB extends Job {
 
 	public void doJob() throws NumberFormatException, IOException{
 		Logger.info("loading DB now...");
+		
+		Species dmel = new Species("dmel");
+		Species dsim = new Species("dsim");
+		Species dyak = new Species("dyak");
+		Species dpse = new Species("dpse");
+		Species anc1 = new Species("#1#");
+		Species anc2 = new Species("#2#");
+		Species anc3 = new Species("#3#");
+		dmel.save();
+		dsim.save();
+		dyak.save();
+		dpse.save();
+		anc1.save();
+		anc2.save();
+		anc3.save();
+		
 
 		//Start off by creating one of each class to create the relations
-		Species firstSpecies = new Species("test");
 		Enhancer firstEnhancer = new Enhancer("test");
 		TFsite firstSite = new TFsite(firstEnhancer, "test", "test", 450, 3.4);
 
@@ -63,8 +78,12 @@ public class LoadDB extends Job {
 				Pattern p1 = Pattern.compile("/home/sarah/utilities/play-1.2.7/sox_sites/data/" + TF + "_scan90/(.+)_(.+).ft");
 				Matcher m1 = p1.matcher(childfile.getPath());
 				m1.lookingAt();
-				Enhancer enhancer = new Enhancer(m1.group(1));
-				enhancer.save();
+				String eName = m1.group(1);
+				Enhancer enhancer = null;
+				if (counter <= 725) {
+					enhancer = new Enhancer(eName);
+					enhancer.save();
+				}
 
 				BufferedReader reader = new BufferedReader(new FileReader(childfile));
 				String line = null;
@@ -79,17 +98,8 @@ public class LoadDB extends Job {
 						sequence = parts[6];
 						start = Integer.parseInt(parts[4]);
 						wscore = Double.parseDouble(parts[7]);
-						
-						
-						//Hard code species?
-						Species newSpecies = null;
-						newSpecies = Species.find("byName", speciesname).first();
-						if (newSpecies == null) {
-							newSpecies = new Species(speciesname);
-							newSpecies.save();
-							//System.out.printf("Species %s saved%n", newSpecies.name);
-						}
 
+						Species currentSpecies = Species.find("byName", speciesname).first();
 						TFsite siteOfInterest = null;
 						Query newquery = JPA.em().createQuery("Select t from TFsite t where t.enhancer = :enhancer AND t.TF = :TF AND t.start = :start");
 						newquery.setParameter("enhancer", enhancer);
@@ -102,10 +112,13 @@ public class LoadDB extends Job {
 						if (siteOfInterest == null) {
 							siteOfInterest = new TFsite(enhancer, TF, sequence, start, wscore);
 						} 
-						siteOfInterest.tagSpecies(newSpecies);
+						siteOfInterest.tagSpecies(currentSpecies);
 						siteOfInterest.save();
 						//System.out.printf("TFsite %s saved%n", siteOfInterest.sequence);
 
+						if (enhancer == null) {
+							enhancer = Enhancer.find("byName", eName).first();
+						}
 						enhancer.tagTF(siteOfInterest);
 						enhancer.save();
 					}
@@ -113,7 +126,6 @@ public class LoadDB extends Job {
 				reader.close();
 			}
 		}
-		firstSpecies.delete();
 		firstEnhancer.delete();
 		firstSite.delete();
 	}

@@ -7,6 +7,7 @@ import java.util.*;
 
 @Entity
 public class Enhancer extends Model {
+
 	
 	public Enhancer(String name) {
 		this.name = name;
@@ -14,8 +15,13 @@ public class Enhancer extends Model {
 	}
 
 	public String name;
-	public String expressionStage;
-	public String expressionSubset;
+	
+	@ElementCollection
+	public List<String> expressionStage = new ArrayList<String>();
+	
+	@ElementCollection
+	public List<String> expressionSubset = new ArrayList<String>();
+
 	public String soxBindPattern;
 	public Boolean transcomp;
 	
@@ -28,6 +34,16 @@ public class Enhancer extends Model {
 		//this.save();
 		tfsite.enhancer = this;
 		//tfsite.save();
+	}
+	
+	public void tagExpStage(String stage){
+		this.expressionStage.add(stage);
+		this.save();
+	}
+	
+	public void tagExpSubset(String subset){
+		this.expressionSubset.add(subset);
+		this.save();
 	}
 	
 		
