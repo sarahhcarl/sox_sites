@@ -61,6 +61,10 @@ public class Application extends Controller {
     	//Do stuff
     }
     
+    public static void test_bootstrap() {
+    	render();
+    }
+    
     
 
 }

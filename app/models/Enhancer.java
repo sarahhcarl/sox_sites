@@ -16,6 +16,8 @@ public class Enhancer extends Model {
 
 	public String name;
 	
+	public String melCoords;
+	
 	@ElementCollection
 	public List<String> expressionStage = new ArrayList<String>();
 	
@@ -37,13 +39,19 @@ public class Enhancer extends Model {
 	}
 	
 	public void tagExpStage(String stage){
-		this.expressionStage.add(stage);
-		this.save();
+		if (this.expressionStage.contains(stage)) {
+		} else {
+			this.expressionStage.add(stage);
+			this.save();
+		}	
 	}
 	
 	public void tagExpSubset(String subset){
-		this.expressionSubset.add(subset);
-		this.save();
+		if (this.expressionSubset.contains(subset)) {
+		} else {
+			this.expressionSubset.add(subset);
+			this.save();
+		}	
 	}
 	
 		
