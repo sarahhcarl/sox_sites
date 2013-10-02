@@ -16,7 +16,9 @@ public class Enhancer extends Model {
 
 	public String name;
 	
-	public String melCoords;
+	public String chrom;
+	public int startCoords;
+	public int endCoords;
 	
 	@ElementCollection
 	public List<String> expressionStage = new ArrayList<String>();

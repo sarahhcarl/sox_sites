@@ -37,7 +37,7 @@ public class LoadDB extends Job {
 
 	public void doJob() throws NumberFormatException, IOException{
 		Logger.info("loading DB now...");
-		
+
 		Species dmel = new Species("dmel");
 		Species dsim = new Species("dsim");
 		Species dyak = new Species("dyak");
@@ -52,11 +52,11 @@ public class LoadDB extends Job {
 		anc1.save();
 		anc2.save();
 		anc3.save();
-		
+
 
 		//Start off by creating one of each class to create the relations
 		Enhancer firstEnhancer = new Enhancer("test");
-		TFsite firstSite = new TFsite(firstEnhancer, "test", "test", 450, 3.4);
+		TFsite firstSite = new TFsite(firstEnhancer, "test", "test", 450, 451, 3.4);
 
 		int counter = 0;
 		//Read flat file
@@ -65,65 +65,68 @@ public class LoadDB extends Job {
 			System.out.println(childdir.getName());
 			Pattern p = Pattern.compile("(.+)_scan90");
 			Matcher m = p.matcher(childdir.getName());
-			m.lookingAt();
-			String TF = m.group(1);
-			for (File childfile : childdir.listFiles()) {
-				counter++;
-				Logger.info("Counter: " + counter);
-				if (counter%10==0) {
+			if (m.lookingAt() == true) {
+				String TF = m.group(1);
+				for (File childfile : childdir.listFiles()) {
+					counter++;
+					Logger.info("Counter: " + counter);
+					if (counter%10==0) {
 						flush(TFsite.class);
 						flush(Enhancer.class);
 						flush(Species.class);
-				}
-				Pattern p1 = Pattern.compile("/home/sarah/utilities/play-1.2.7/sox_sites/data/" + TF + "_scan90/(.+)_(.+).ft");
-				Matcher m1 = p1.matcher(childfile.getPath());
-				m1.lookingAt();
-				String eName = m1.group(1);
-				Enhancer enhancer = null;
-				if (counter <= 725) {
-					enhancer = new Enhancer(eName);
-					enhancer.save();
-				}
-
-				BufferedReader reader = new BufferedReader(new FileReader(childfile));
-				String line = null;
-				String speciesname = null;
-				String sequence = null;
-				int start = 0;
-				double wscore = 0;
-				while ((line = reader.readLine()) != null) {
-					if ((line.indexOf(";") == -1) && (line.indexOf("#seq_id") == -1)) {
-						String[] parts = line.split("\\s");
-						speciesname = parts[0];
-						sequence = parts[6];
-						start = Integer.parseInt(parts[4]);
-						wscore = Double.parseDouble(parts[7]);
-
-						Species currentSpecies = Species.find("byName", speciesname).first();
-						TFsite siteOfInterest = null;
-						Query newquery = JPA.em().createQuery("Select t from TFsite t where t.enhancer = :enhancer AND t.TF = :TF AND t.start = :start");
-						newquery.setParameter("enhancer", enhancer);
-						newquery.setParameter("TF", TF);
-						newquery.setParameter("start", start);
-						List results = newquery.getResultList();
-						if (results.size() > 0) {
-							siteOfInterest = (TFsite) results.get(0);
-						}	
-						if (siteOfInterest == null) {
-							siteOfInterest = new TFsite(enhancer, TF, sequence, start, wscore);
-						} 
-						siteOfInterest.tagSpecies(currentSpecies);
-						siteOfInterest.save();
-						//System.out.printf("TFsite %s saved%n", siteOfInterest.sequence);
-
-						if (enhancer == null) {
-							enhancer = Enhancer.find("byName", eName).first();
-						}
-						enhancer.tagTF(siteOfInterest);
+					}
+					Pattern p1 = Pattern.compile("/home/sarah/utilities/play-1.2.7/sox_sites/data/" + TF + "_scan90/(.+)_(.+).ft");
+					Matcher m1 = p1.matcher(childfile.getPath());
+					m1.lookingAt();
+					String eName = m1.group(1);
+					Enhancer enhancer = null;
+					if (counter <= 725) {
+						enhancer = new Enhancer(eName);
 						enhancer.save();
 					}
+
+					BufferedReader reader = new BufferedReader(new FileReader(childfile));
+					String line = null;
+					String speciesname = null;
+					String sequence = null;
+					int relstart = 0;
+					int relend = 0;
+					double wscore = 0;
+					while ((line = reader.readLine()) != null) {
+						if ((line.indexOf(";") == -1) && (line.indexOf("#seq_id") == -1)) {
+							String[] parts = line.split("\\s");
+							speciesname = parts[0];
+							sequence = parts[6];
+							relstart = Integer.parseInt(parts[4]);
+							relend = Integer.parseInt(parts[5]);
+							wscore = Double.parseDouble(parts[7]);
+
+							Species currentSpecies = Species.find("byName", speciesname).first();
+							TFsite siteOfInterest = null;
+							Query newquery = JPA.em().createQuery("Select t from TFsite t where t.enhancer = :enhancer AND t.TF = :TF AND t.relstart = :relstart");
+							newquery.setParameter("enhancer", enhancer);
+							newquery.setParameter("TF", TF);
+							newquery.setParameter("relstart", relstart);
+							List results = newquery.getResultList();
+							if (results.size() > 0) {
+								siteOfInterest = (TFsite) results.get(0);
+							}	
+							if (siteOfInterest == null) {
+								siteOfInterest = new TFsite(enhancer, TF, sequence, relstart, relend, wscore);
+							} 
+							siteOfInterest.tagSpecies(currentSpecies);
+							siteOfInterest.save();
+							//System.out.printf("TFsite %s saved%n", siteOfInterest.sequence);
+
+							if (enhancer == null) {
+								enhancer = Enhancer.find("byName", eName).first();
+							}
+							enhancer.tagTF(siteOfInterest);
+							enhancer.save();
+						}
+					}
+					reader.close();
 				}
-				reader.close();
 			}
 		}
 		firstEnhancer.delete();
@@ -142,6 +145,6 @@ public class LoadDB extends Job {
 			Species.em().flush();
 			Species.em().clear();
 		}
-		
+
 	}
 }

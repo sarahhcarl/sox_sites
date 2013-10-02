@@ -9,10 +9,11 @@ import java.util.*;
 @Entity
 public class TFsite extends Model {
 
-	public TFsite(Enhancer enhancer, String TF, String sequence, int start, double wscore) {
+	public TFsite(Enhancer enhancer, String TF, String sequence, int startcoord, int endcoord, double wscore) {
 		this.TF = TF;
 		this.sequence = sequence;
-		this.start = start;
+		this.relstart = startcoord;
+		this.relend = endcoord;
 		this.wscore = wscore;
 		this.species = new ArrayList<Species>();
 		this.enhancer = enhancer;
@@ -20,7 +21,8 @@ public class TFsite extends Model {
 
 	public String sequence;
 	public String TF;
-	public int start;
+	public int relstart;
+	public int relend;
 	public double wscore;
 	
 	@ManyToMany(cascade=CascadeType.ALL)
