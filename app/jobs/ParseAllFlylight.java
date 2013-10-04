@@ -17,7 +17,7 @@ import play.Logger;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 
-@OnApplicationStart
+//@OnApplicationStart
 public class ParseAllFlylight extends Job {
 
 	public void doJob() throws IOException {

@@ -1,0 +1,45 @@
+#{extends 'main.html' /}
+#{set title:'TFsites' /}
+
+	<div class="container">
+		<div class="row">
+			<h2>Browse predicted TF binding sites</h2>
+	  		<div class="col-md-2">
+	  			<div class="btn-group">
+	  				<button type="button" class="btn btn-info">All TFs</button>
+	  				<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+	   					<span class="caret"></span>
+	 				</button>
+	  				<ul class="dropdown-menu" role="menu">
+					    <li><a href="#">D</a></li>
+					    <li><a href="#">SoxN</a></li>
+	 				</ul>
+	 			</div>
+	 		</div>
+	 		<div class="col-md-8">	
+	 			<form role="form">
+	 				<div class="form-group">
+		 				<div class="checkbox-inline">
+				 			<label class="checkbox-inline">
+				 				<input type="checkbox" id="Species" value="option1"> D. melanogaster
+				 			</label>
+				 			<label class="checkbox-inline">
+				 				<input type="checkbox" id="Species" value="option2"> D. simulans
+				 			</label>			
+				 			<label class="checkbox-inline">
+				 				<input type="checkbox" id="Species" value="option3"> D. yakuba
+				 			</label>
+				 			<label class="checkbox-inline">
+				 				<input type="checkbox" id="Species" value="option4"> D. pseudoobscura
+				 			</label>
+				 			<p class="help-block">Please select which species to view. You may select multiple species, but note that this implies viewing <b>only</b> sites that are present in <b>all</b> of those species (AND rather than OR).</p>
+				 		</div>	
+			 		</div>		
+		 		</form>	
+		 	</div>			
+	  	</div>
+
+		<table class="table table-bordered">
+	
+		</table>
+	</div>	

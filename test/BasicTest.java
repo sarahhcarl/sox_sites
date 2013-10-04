@@ -27,7 +27,7 @@ public class BasicTest extends UnitTest {
 		//Start off by creating one of each class to create the relations
 		Species firstSpecies = new Species("test");
 		Enhancer firstEnhancer = new Enhancer("test");
-		TFsite firstSite = new TFsite(firstEnhancer, "test", "test", 450, 3.4);
+		TFsite firstSite = new TFsite(firstEnhancer, "test", "test", 450, 451, 3.4);
 
 		//Read flat file
 		File dir = new File("/home/sarah/utilities/play-1.2.7/sox_sites/test/testdata/");
@@ -50,14 +50,16 @@ public class BasicTest extends UnitTest {
 			String line = null;
 			String speciesname = null;
 			String sequence = null;
-			int start = 0;
+			int relstart = 0;
+			int relend = 0;
 			double wscore = 0;
 			while ((line = reader.readLine()) != null) {
 				if ((line.indexOf(";") == -1) && (line.indexOf("#seq_id") == -1)) {
 					String[] parts = line.split("\\s");
 					speciesname = parts[0];
 					sequence = parts[6];
-					start = Integer.parseInt(parts[4]);
+					relstart = Integer.parseInt(parts[4]);
+					relend = Integer.parseInt(parts[5]);
 					wscore = Double.parseDouble(parts[7]);
 
 					Species newSpecies = null;
@@ -68,9 +70,9 @@ public class BasicTest extends UnitTest {
 					}
 
 					TFsite siteOfInterest = null;
-					siteOfInterest = TFsite.find("byEnhancerAndTFAndStart", enhancer, TF, start).first();
+					siteOfInterest = TFsite.find("byEnhancerAndTFAndStart", enhancer, TF, relstart).first();
 					if (siteOfInterest == null) {
-						siteOfInterest = new TFsite(enhancer, TF, sequence, start, wscore);
+						siteOfInterest = new TFsite(enhancer, TF, sequence, relstart, relend, wscore);
 					} 
 					siteOfInterest.tagSpecies(newSpecies);
 					siteOfInterest.save();
