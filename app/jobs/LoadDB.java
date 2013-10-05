@@ -27,7 +27,7 @@ import play.test.Fixtures;
 
 
 
-//@OnApplicationStart
+@OnApplicationStart
 public class LoadDB extends Job {
 
 	@Before
@@ -83,6 +83,8 @@ public class LoadDB extends Job {
 					if (counter <= 725) {
 						enhancer = new Enhancer(eName);
 						enhancer.save();
+					} else {
+						enhancer = Enhancer.find("byName", eName).first();
 					}
 
 					BufferedReader reader = new BufferedReader(new FileReader(childfile));

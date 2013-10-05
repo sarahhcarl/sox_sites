@@ -20,11 +20,24 @@ public class Application extends Controller {
     }
     
     public static void enhancers() {
-    	render();
+    	List<Enhancer> enhancers = Enhancer.all().fetch(25);
+    	render(enhancers);
+    }
+    
+    public static void enhancersByName(String name) {
+    	Enhancer enhancer = Enhancer.find("byName", name).first();
+    	render(enhancer);
     }
     
     public static void tfsites() {
-    	render();
+    	List<TFsite> tfsites = TFsite.all().fetch(25);
+    	render(tfsites);
+    }
+    
+    public static void tfsitesByTF(String TF) {
+    	List<TFsite> tfsites = TFsite.find("byTF", TF).fetch(25);
+    	Logger.info(tfsites.toString());
+    	render(tfsites);
     }
     
     public static void analyses() {

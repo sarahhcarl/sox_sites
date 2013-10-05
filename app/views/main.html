@@ -5,18 +5,10 @@
 	    <title>FlyLighthouse test</title>
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <!-- Bootstrap -->
+	    <script src="//code.jquery.com/jquery.js"></script>
 	    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 	    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css">
 	    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	
-	    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	    <!--[if lt IE 9]>
-	      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	    <![endif]-->
-	     <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-	    <script src="//code.jquery.com/jquery.js"></script>
-	    <!-- Include all compiled plugins (below), or include individual files as needed -->
-	    <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
     	<div class="container">
@@ -35,7 +27,8 @@
 			 		</div>
 			 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			   			<ul class="nav navbar-nav">
-			      			<li><a href="@{Application.index()}">Home</a></li>
+			      			<li><a href="@{Application.index()}"><span class="glyphicon glyphicon-home"></span>
+			      			 Home</a></li>
 			      			<li><a href="@{Application.enhancers()}">Browse enhancers</a></li>
 			      			<li><a href="@{Application.tfsites()}">Browse predicted TF sites</a></li>
 			      			<li><a href="@{Application.analyses()}">View analyses</a></li>

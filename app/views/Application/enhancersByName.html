@@ -39,7 +39,7 @@
 	  		</div>				
 	  	</div>
 	  	
- #{if enhancers.size()}
+
           	<div class="panel panel-default">
           		<div class="panel-heading">Browse Flylight enhancers</div>      			
 				<table class="table table-bordered">
@@ -52,16 +52,13 @@
 				         </tr>
 				       </thead>
 				       <tbody>
-				       #{list items:enhancers, as:'enhancer'}
 			         	<tr>
 				           	<td>${enhancer.name}</td>
 			           		<td>${enhancer.chrom}</td>
 			           		<td>${enhancer.startCoords}</td>	
 			           		<td>${enhancer.endCoords}</td>	
-			           </tr>
-			           #{/list} 		
+			           </tr>		
 				      </tbody>
 				 </table>	
 			</div>	
 		</div>	
-#{/if}			
