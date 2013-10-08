@@ -38,7 +38,6 @@
 	 		</div>
 	 	</div>
 	 </div>		
-			 			
 
  #{if tfsites.size()}
           	<div class="panel panel-default">
@@ -69,5 +68,11 @@
 				 </table>	
 			</div>	
 		</div>	
-#{/if}			
-	</div>	
+#{/if}	
+
+#{else}
+	<p>
+		<h4>Sorry, no TF sites have been predicted for this enhancer.</h4>
+	</p>
+#{/else}			
+	</div>				 			

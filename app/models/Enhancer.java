@@ -37,7 +37,7 @@ public class Enhancer extends Model {
 		this.TFsites.add(tfsite);
 		//this.save();
 		tfsite.enhancer = this;
-		//tfsite.save();
+		tfsite.save();
 	}
 	
 	public void tagExpStage(String stage){

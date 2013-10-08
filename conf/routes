@@ -7,7 +7,8 @@ GET     /                                       Application.index
 GET     /enhancers                              Application.enhancers
 GET     /enhancers/{name}                       Application.enhancersByName
 GET		/tfsites								Application.tfsites  
-GET		/tfsites/{TF}							Application.tfsitesByTF      
+GET		/tfsites/{TF}							Application.tfsitesByTF   
+GET		/about									Application.about   
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -3,41 +3,42 @@
 
 	<div class="container">
 		<div class="row">
-	  		<div class="col-md-4"></div>
-	  			<div class="btn-group">
-	  				<button type="button" class="btn btn-success">All Sox binding patterns</button>
-	  				<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-	   					<span class="caret"></span>
-	 				</button>
-	  				<ul class="dropdown-menu" role="menu">
-					    <li><a href="#">D unique</a></li>
-					    <li><a href="#">SoxN unique</a></li>
-					    <li><a href="#">D and SoxN</a></li>
-	 				</ul>
-	 			</div>
-	 			<div class="btn-group">	
-		  			<button type="button" class="btn btn-success">All expression stages</button>
-		  			<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-		  				<span class="caret"></span>
-		  			</button>
-		  			<ul class="dropdown-menu" role="menu">
-		  				<li><a href="#">GBE</a></li>
-		  				<li><a href="#">Stage 16</a></li>
-		  			</ul>
-		  		</div>
-		  		<div class="btn-group">	
-		  			<button type="button" class="btn btn-success">All expression subsets</button>
-		  			<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-		  				<span class="caret"></span>
-		  			</button>
-		  			<ul class="dropdown-menu" role="menu">
-		  				<li><a href="#">NBs</a></li>
-		  				<li><a href="#">Neurons</a></li>
-		  				<li><a href="#">Midline</a></li>
-		  			</ul>
-		  		</div>	
-	  		</div>				
+			<div class="panel panel-default">
+				<div class="panel-heading">Filter results by:</div>
+  				<div class="panel-body">
+					<form class="form-inline" action="@{Application.enhancersByInput()}" method="GET" role="form">
+							<div class="form-group">
+								<label for="selector1">Sox binding pattern</label>
+								<select multiple class="form-control" name="soxBind">
+								  <option>Dichaete unique</option>
+								  <option>SoxN unique</option>
+								  <option>Common</option>
+								  <option>All</option>
+								</select>
+							</div>
+							<div class="form-group">	
+					  			<label for="selector2">Expression stage</label>
+								<select multiple class="form-control" name="expStage">
+								  <option>GBE</option>
+								  <option>Stage 16</option>
+								  <option>All</option>
+								</select>
+							</div>
+							<div class="form-group">	
+								<label for="selector3">Expression subset</label>
+								<select multiple class="form-control" name="expSubset">
+								  <option>NBs</option>
+								  <option>Neurons</option>
+								  <option>Midline</option>
+								  <option>All</option>
+								</select>
+							</div>	
+					 		<button type="submit" class="btn btn-info">Submit</button>	
+			 		</form>	
+			 	</div>
+			 </div>						
 	  	</div>
+	  </div>	
 	  	
  #{if enhancers.size()}
           	<div class="panel panel-default">
@@ -54,7 +55,7 @@
 				       <tbody>
 				       #{list items:enhancers, as:'enhancer'}
 			         	<tr>
-				           	<td>${enhancer.name}</td>
+				           	<td><a href="@{Application.tfsitesByEnhancer()}" data-toggle="tooltip" title="View TF binding sites">${enhancer.name}</a></td>
 			           		<td>${enhancer.chrom}</td>
 			           		<td>${enhancer.startCoords}</td>	
 			           		<td>${enhancer.endCoords}</td>	
@@ -63,5 +64,13 @@
 				      </tbody>
 				 </table>	
 			</div>	
-		</div>	
+		</div>
+		<ul class="pagination">
+		  <li><a href="@{Application.enhancers(page-1)}">&laquo;</a></li>
+		  #{list items:pages, as:'page'}
+		  	<li><a href="@{Application.enhancers(page)}">${page}</a></li>
+		  #{/list}	
+		  <li><a href="@{Application.enhancers(page+1)})">&raquo;</a></li>
+		</ul>
+			
 #{/if}			
