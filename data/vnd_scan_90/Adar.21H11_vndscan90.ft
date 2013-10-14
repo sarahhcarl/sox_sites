@@ -1,0 +1,59 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan-sequence_2013-09-10.123422_7Iuu7b -m $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan-matrix_2013-09-10.123422_lEYxN3 -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan_bg_2013-09-10.123422_scnOO2 -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan-sequence_2013-09-10.123422_7Iuu7b
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan_bg_2013-09-10.123422_scnOO2
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan-matrix_2013-09-10.123422_lEYxN3
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dpse	site	TCAAKTCT	R	49	56	TGGAGTGT	4.1	4.2e-04	-7.771	3.375
+dpse	site	TCAAKTCT	R	2209	2216	TCAATTCA	4.0	5.1e-04	-7.582	3.293
+#3#	site	TCAAKTCT	R	2209	2216	TCAATTCA	4.0	5.1e-04	-7.582	3.293
+dmel	site	TCAAKTCT	R	2209	2216	TCAATTCA	4.0	5.1e-04	-7.582	3.293
+#1#	site	TCAAKTCT	R	2209	2216	TCAATTCA	4.0	5.1e-04	-7.582	3.293
+dsim	site	TCAAKTCT	R	2209	2216	TCAATTCA	4.0	5.1e-04	-7.582	3.293
+#2#	site	TCAAKTCT	R	2209	2216	TCAATTCA	4.0	5.1e-04	-7.582	3.293
+dyak	site	TCAAKTCT	R	2209	2216	TCAATTCA	4.0	5.1e-04	-7.582	3.293
+;
+; Matrices
+;	matrix	name    	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	TCAAKTCT	8	4	1	-5.600	5.400	11.000	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	20433
+; N residues           	0
+; Matches per matrix
+;	matrix	name    	matches	scored
+;	1	TCAAKTCT       	8	40768
+;		TOTAL          	8	40768
+; Host name	rsat
+; Job started	2013-09-10.123422
+; Job done	2013-09-10.123427
+; Seconds	5.07
+;	user	5.07
+;	system	0.01
+;	cuser	0
+;	csystem	0

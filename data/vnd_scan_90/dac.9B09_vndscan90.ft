@@ -1,0 +1,56 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan-sequence_2013-09-10.130301_qI43lS -m $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan-matrix_2013-09-10.130301_9MI23N -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan_bg_2013-09-10.130301_JomrJ5 -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan-sequence_2013-09-10.130301_qI43lS
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan_bg_2013-09-10.130301_JomrJ5
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan-matrix_2013-09-10.130301_9MI23N
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dpse	site	TCAAKTCT	R	3136	3143	TGAGTTCT	4.1	4.2e-04	-7.771	3.375
+dpse	site	TCAAKTCT	D	3644	3651	TGGATTCT	4.4	2.6e-04	-8.258	3.587
+dmel	site	TCAAKTCT	R	821	828	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+dmel	site	TCAAKTCT	D	3703	3710	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+dsim	site	TCAAKTCT	R	26	33	TCGATTCT	4.7	9.9e-05	-9.220	4.004
+;
+; Matrices
+;	matrix	name    	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	TCAAKTCT	8	4	1	-5.600	5.400	11.000	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	27398
+; N residues           	0
+; Matches per matrix
+;	matrix	name    	matches	scored
+;	1	TCAAKTCT       	5	54698
+;		TOTAL          	5	54698
+; Host name	rsat
+; Job started	2013-09-10.130301
+; Job done	2013-09-10.130308
+; Seconds	6.69
+;	user	6.69
+;	system	0.01
+;	cuser	0
+;	csystem	0

@@ -1,0 +1,86 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan-sequence_2013-09-10.134909_nDcv7E -m $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan-matrix_2013-09-10.134909_5lAuoI -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan_bg_2013-09-10.134909_E5MwGX -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan-sequence_2013-09-10.134909_nDcv7E
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan_bg_2013-09-10.134909_E5MwGX
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan-matrix_2013-09-10.134909_5lAuoI
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+#1#	site	TCAAKTCT	D	1809	1816	TGGGGTCT	4.1	4.2e-04	-7.771	3.375
+#1#	site	TCAAKTCT	D	2828	2835	TCACGTCT	4.0	5.1e-04	-7.582	3.293
+#1#	site	TCAAKTCT	D	3068	3075	TCAGGTGT	4.2	3.3e-04	-8.004	3.476
+#1#	site	TCAAKTCT	D	3924	3931	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+dsim	site	TCAAKTCT	D	1809	1816	TGGGGTCT	4.1	4.2e-04	-7.771	3.375
+dsim	site	TCAAKTCT	D	2828	2835	TCACGTCT	4.0	5.1e-04	-7.582	3.293
+dsim	site	TCAAKTCT	D	3068	3075	TCAGGTGT	4.2	3.3e-04	-8.004	3.476
+dsim	site	TCAAKTCT	D	3924	3931	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+dmel	site	TCAAKTCT	D	2828	2835	TCACGTCT	4.0	5.1e-04	-7.582	3.293
+dmel	site	TCAAKTCT	D	3068	3075	TCAGGTGT	4.2	3.3e-04	-8.004	3.476
+dmel	site	TCAAKTCT	D	3924	3931	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+#3#	site	TCAAKTCT	R	273	280	TCAGTTGT	4.0	5.1e-04	-7.582	3.293
+#3#	site	TCAAKTCT	R	398	405	TGAAGTCT	4.7	9.9e-05	-9.220	4.004
+#3#	site	TCAAKTCT	D	1809	1816	TGGGGTCT	4.1	4.2e-04	-7.771	3.375
+#3#	site	TCAAKTCT	D	2790	2797	TCAGGTCT	4.6	1.6e-04	-8.744	3.798
+#3#	site	TCAAKTCT	D	2828	2835	TCACGTCT	4.0	5.1e-04	-7.582	3.293
+#3#	site	TCAAKTCT	D	3068	3075	TCAGGTGT	4.2	3.3e-04	-8.004	3.476
+#3#	site	TCAAKTCT	D	3924	3931	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+#3#	site	TCAAKTCT	D	4131	4138	TGGAGTGT	4.1	4.2e-04	-7.771	3.375
+#3#	site	TCAAKTCT	D	4688	4695	TGGAGTCT	4.5	2.0e-04	-8.515	3.698
+#2#	site	TCAAKTCT	R	273	280	TCAGTTGT	4.0	5.1e-04	-7.582	3.293
+#2#	site	TCAAKTCT	D	1809	1816	TGGGGTCT	4.1	4.2e-04	-7.771	3.375
+#2#	site	TCAAKTCT	D	2828	2835	TCACGTCT	4.0	5.1e-04	-7.582	3.293
+#2#	site	TCAAKTCT	D	3068	3075	TCAGGTGT	4.2	3.3e-04	-8.004	3.476
+#2#	site	TCAAKTCT	D	3924	3931	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+dyak	site	TCAAKTCT	R	273	280	TCAGTTGT	4.0	5.1e-04	-7.582	3.293
+dyak	site	TCAAKTCT	D	830	837	TCGATTGT	4.3	3.2e-04	-8.042	3.493
+dyak	site	TCAAKTCT	D	1809	1816	TGGGGTCT	4.1	4.2e-04	-7.771	3.375
+dyak	site	TCAAKTCT	D	2828	2835	TCACGTCT	4.0	5.1e-04	-7.582	3.293
+dyak	site	TCAAKTCT	D	3068	3075	TCAGGTGT	4.2	3.3e-04	-8.004	3.476
+dyak	site	TCAAKTCT	D	3924	3931	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+dpse	site	TCAAKTCT	D	1847	1854	TGGGGTCT	4.1	4.2e-04	-7.771	3.375
+dpse	site	TCAAKTCT	D	2790	2797	TCAGGTCT	4.6	1.6e-04	-8.744	3.798
+dpse	site	TCAAKTCT	D	3068	3075	TCAGGTGT	4.2	3.3e-04	-8.004	3.476
+dpse	site	TCAAKTCT	D	3924	3931	TGAATTGT	4.1	4.2e-04	-7.771	3.375
+;
+; Matrices
+;	matrix	name    	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	TCAAKTCT	8	4	1	-5.600	5.400	11.000	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	38220
+; N residues           	0
+; Matches per matrix
+;	matrix	name    	matches	scored
+;	1	TCAAKTCT       	35	76342
+;		TOTAL          	35	76342
+; Host name	rsat
+; Job started	2013-09-10.134909
+; Job done	2013-09-10.134918
+; Seconds	9.17
+;	user	9.17
+;	system	0.01
+;	cuser	0
+;	csystem	0

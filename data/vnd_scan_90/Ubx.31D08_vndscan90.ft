@@ -1,0 +1,57 @@
+; matrix-scan  -i $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan-sequence_2013-09-10.141047_zhw7Ya -m $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan-matrix_2013-09-10.141047_K9BJqa -matrix_format cb -n score -bgfile $RSAT/public_html/tmp/wwwrun/2013/09/10/matrix-scan_bg_2013-09-10.141047_rx6BH4 -lth score 4 -uth pval 1e-3 -2str -v 1 -crer_ids
+; Slow counting mode           
+; Input files
+;	input	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan-sequence_2013-09-10.141047_zhw7Ya
+;	bg	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan_bg_2013-09-10.141047_rx6BH4
+; Matrix files
+;	matrix 1	/home/rsat/rsa-tools/public_html/tmp/wwwrun/2013/09/10/matrix-scan-matrix_2013-09-10.141047_K9BJqa
+; Sequence format      	fasta
+; Pseudo counts        	1
+; Background model
+;	Method        	file
+;	Bernoulli model (order=0)
+;	Strand        	undef
+;	Background pseudo-frequency	0.01
+;	Residue probabilities
+;		a	0.30319
+;		c	0.20103
+;		g	0.19882
+;		t	0.29697
+; Thresholds	lower	upper
+;	pval  	NA	0.001
+;	score 	4    	NA
+; Output columns
+;	1	seq_id
+;	2	ft_type
+;	3	ft_name
+;	4	strand
+;	5	start
+;	6	end
+;	7	sequence
+;	8	weight
+#seq_id	ft_type	ft_name	strand	start	end	sequence	weight	Pval	ln_Pval	sig
+dmel	site	TCAAKTCT	R	2385	2392	TCAAGTCT	5.0	1.9e-05	-10.853	4.713
+dsim	site	TCAAKTCT	R	2385	2392	TCAAGTCT	5.0	1.9e-05	-10.853	4.713
+#3#	site	TCAAKTCT	R	2385	2392	TCAAGTCT	5.0	1.9e-05	-10.853	4.713
+#2#	site	TCAAKTCT	R	2385	2392	TCAAGTCT	5.0	1.9e-05	-10.853	4.713
+#1#	site	TCAAKTCT	R	2385	2392	TCAAGTCT	5.0	1.9e-05	-10.853	4.713
+dyak	site	TCAAKTCT	R	2385	2392	TCGAGTCT	4.8	6.1e-05	-9.706	4.215
+;
+; Matrices
+;	matrix	name    	ncol	nrow	pseudo	Wmin	Wmax	Wrange
+;	1	TCAAKTCT	8	4	1	-5.600	5.400	11.000	a:0.303 c:0.201 g:0.199 t:0.297 
+; Number of sequences scanned	7
+; Sum of sequence lengths	24465
+; N residues           	0
+; Matches per matrix
+;	matrix	name    	matches	scored
+;	1	TCAAKTCT       	6	48832
+;		TOTAL          	6	48832
+; Host name	rsat
+; Job started	2013-09-10.141047
+; Job done	2013-09-10.141053
+; Seconds	5.97
+;	user	5.97
+;	system	0.01
+;	cuser	0
+;	csystem	0
