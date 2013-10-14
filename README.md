@@ -27,6 +27,12 @@ The analyses presented here, including the TF binding site predictions, are base
 				<li>An orthologous putative-enhancer sequence can be unambiguously identified in each species of interest.</li>
 			</ul> 
 		
+###DNase-hypersensitive sites
+
+Chromatin accessibility is represented in the database by DNase-hypersensitive sites, which were determined by DNase-seq performed on embryonic chromatin from <i>D. melanogaster</i> from five different developmental stages (Thomas et al., 2011). The list of sites was downloaded as Additional File 2 in the Supplemental Material from the <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3219966/">NCBI page</a> for the article. Each site is annotated as present at either stage 5, stage 9, stage 10, stage 11 or stage 14. 
+
+FAIRE-seq data is currently being generated using embryonic chromatin from both <i>D. pseudoobscura</i> and <i>D. melanogaster</i> and will hopefully be added soon!
+		
 		
 #Methods
 	
