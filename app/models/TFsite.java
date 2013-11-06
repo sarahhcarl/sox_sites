@@ -17,6 +17,7 @@ public class TFsite extends Model {
 		this.wscore = wscore;
 		this.species = new ArrayList<Species>();
 		this.enhancer = enhancer;
+		this.allseqs = new ArrayList<Sequence>();
 	}
 
 	public String sequence;
@@ -30,6 +31,9 @@ public class TFsite extends Model {
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	public Enhancer enhancer;
+	
+	@OneToMany(mappedBy="tfsite", cascade=CascadeType.ALL)
+	public List<Sequence> allseqs;
 
 	public void tagSpecies(Species species) {
 		this.species.add(species);
@@ -43,6 +47,12 @@ public class TFsite extends Model {
 		enhancer.TFsites.add(this);
 		enhancer.save();
 		
+	}
+	
+	public void tagSeq(Sequence sequence) {
+		this.allseqs.add(sequence);
+		sequence.tfsite = this;
+		sequence.save();
 	}
 	
 }
