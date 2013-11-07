@@ -22,8 +22,8 @@ public class BasicTest extends UnitTest {
 
 	//TODO: Figure out how to grab enhancer name from input file, automate loading of input files
 
-	@Test
-	public void loadEntities() throws NumberFormatException, IOException {
+	//@Test
+	/*public void loadEntities() throws NumberFormatException, IOException {
 		//Start off by creating one of each class to create the relations
 		Species firstSpecies = new Species("test");
 		Enhancer firstEnhancer = new Enhancer("test");
@@ -91,9 +91,9 @@ public class BasicTest extends UnitTest {
 
 		//Test that objects were created properly
 		assertEquals(7, Species.count());
-	}
+	}*/
 	
-	@Test
+	/*@Test
 	public void annotateEnhancers() {
 		new AddEnhancerInfo().now();
 		System.out.println("Annotating enhancers");
@@ -102,6 +102,19 @@ public class BasicTest extends UnitTest {
 		assertNotNull(Enhancer.find("byExpressionStage", "GBE"));
 		assertNotNull(Enhancer.find("byExpressionSubset", "neurons"));
 		
+	}*/
+	
+	@Test
+	public void TFsequenceTest() {
+		Enhancer myEnhancer = new Enhancer("testing");
+		TFsite mysite = new TFsite(myEnhancer, "Protein", "CAAGTAG", 100, 107, 4.5);
+		Sequence myseq = new Sequence("AAACAAGT", "Dmel", mysite);
+		mysite.tagSeq(myseq);
+		mysite.save();
+		
+		//Test that it's worked correctly
+		assertNotNull(mysite.allseqs);
+		assertEquals(1, mysite.allseqs.size());
 	}
 
 }
