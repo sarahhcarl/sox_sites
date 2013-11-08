@@ -14,5 +14,5 @@ SoxN_strings <- DNAStringSet(SoxN_4species_seqs)
 
 ## Calculate consensus matrix
 
-D_4species_matrix <- consensusMatrix(D_strings, baseOnly=TRUE, as.prob=TRUE)
-SoxN_4species_matrix <- consensusMatrix(SoxN_strings, baseOnly=TRUE, as.prob=TRUE)
+D_4species_matrix <- consensusMatrix(D_strings, baseOnly=TRUE)
+SoxN_4species_matrix <- consensusMatrix(SoxN_strings, baseOnly=TRUE)
