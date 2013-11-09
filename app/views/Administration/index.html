@@ -1,0 +1,10 @@
+#{extends 'main.html' /}
+#{set title:'Administration' /}
+
+<h1>Administration</h1>
+
+<ul>
+<li><a href="@{Administration.createDb()}">Create database</a></li>
+<li><a href="@{Administration.addAlignments()}">Add alignments</a></li>
+<li><a href="@{Administration.printFasta()}">Print alignments as fasta</a></li>
+</ul>

@@ -5,9 +5,9 @@ import javax.persistence.*;
 @Entity
 public class Sequence extends Model {
 	
-	public Sequence (String seq, Species species, TFsite tfsite) {
+	public Sequence (String seq, String speciesname, TFsite tfsite) {
 		this.seq = seq;
-		this.species = species;
+		this.speciesname = speciesname;
 		this.tfsite = tfsite;
 	}
 	
@@ -15,5 +15,5 @@ public class Sequence extends Model {
 	public TFsite tfsite;
 	
 	public String seq;
-	public Species species;
+	public String speciesname;
 }

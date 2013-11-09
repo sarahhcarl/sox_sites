@@ -2,19 +2,25 @@ package jobs;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import models.Alignment;
 import models.Enhancer;
 import models.Species;
 import models.TFsite;
+import models.Sequence;
 import play.Logger;
 import play.jobs.Job;
+import play.jobs.OnApplicationStart;
 
+//@OnApplicationStart
 public class AddAllSeqs extends Job {
 
-	public void doJob() {
+	public void doJob() throws NumberFormatException, IOException {
 		
 		int counter = 0;
 		//Read flat file
@@ -32,16 +38,20 @@ public class AddAllSeqs extends Job {
 						flush(TFsite.class);
 						flush(Enhancer.class);
 						flush(Species.class);
+						flush(Sequence.class);
 					}
 					Pattern p1 = Pattern.compile("/home/sarah/utilities/play-1.2.7/sox_sites/data/" + TF + "_scan90/(.+)_(.+).ft");
 					Matcher m1 = p1.matcher(childfile.getPath());
 					m1.lookingAt();
-					String enhancer = m1.group(1);
+					String enhancerName = m1.group(1);
+					Enhancer enhancer = Enhancer.find("byName", enhancerName).first();
 					
 					BufferedReader reader = new BufferedReader(new FileReader(childfile));
 					String line = null;
 					String speciesname = null;
 					String sequence = null;
+					int relstart = 0;
+					int relend = 0;
 					
 					//Read each line by line
 					while ((line = reader.readLine()) != null) {
@@ -49,17 +59,40 @@ public class AddAllSeqs extends Job {
 							String[] parts = line.split("\\s");
 							speciesname = parts[0];
 							sequence = parts[6];
-							Species thisSpecies = Species.find("byName", speciesname).first();
+							relstart = Integer.parseInt(parts[4]);
+							relend = Integer.parseInt(parts[5]);
+
+							TFsite thisTFsite = TFsite.find("byEnhancerAndRelstartAndRelend", enhancer, relstart, relend).first();
 							
-							//TODO: Write query to find this particular TF site
-							TFsite thisTFsite = TFsite.find()		
-							Sequence newsequence(sequence, thisSpecies, tfsite)
-		
+							Alignment thisAlign = null;
+							thisAlign = Alignment.find("byTfsite", thisTFsite).first();
+							if (thisAlign == null) {
+								thisAlign = new Alignment(thisTFsite);
+							}
+							thisAlign.addEntry(speciesname,  sequence);
+						}
+					}
+					reader.close();
+				}
+			}
+		}	
 	}
 	
-}
 
-	private void flush(Class<TFsite> class1) {
-		// TODO Auto-generated method stub
-		
-	}
+	private void flush(Class<?> type) {
+		Logger.info("Flushing...");
+		if(type == TFsite.class){
+			TFsite.em().flush();
+			TFsite.em().clear();
+		} else if (type == Enhancer.class){
+			Enhancer.em().flush();
+			Enhancer.em().clear();
+		} else if (type == Species.class) {
+			Species.em().flush();
+			Species.em().clear();
+		} else if (type == Alignment.class) {
+			Alignment.em().flush();
+			Alignment.em().clear();
+		}
+}
+}	

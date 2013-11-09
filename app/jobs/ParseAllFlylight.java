@@ -53,9 +53,9 @@ public class ParseAllFlylight extends Job {
 				if (thisEnhancer == null) {
 					thisEnhancer = new Enhancer(name);
 				}
-				thisEnhancer.chrom = chrom;
-				thisEnhancer.startCoords = startCoord;
-				thisEnhancer.endCoords = endCoord;
+				thisEnhancer.setChrom(chrom);
+				thisEnhancer.setStart(startCoord);
+				thisEnhancer.setEnd(endCoord);
 				
 				Pattern p1 = Pattern.compile("(.+).(.+).all.bed");
 				Matcher m1 = p1.matcher(fileName);

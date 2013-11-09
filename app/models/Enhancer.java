@@ -16,9 +16,33 @@ public class Enhancer extends Model {
 
 	public String name;
 	
-	public String chrom;
-	public int startCoords;
-	public int endCoords;
+	private String chrom;
+	private int startCoords;
+	private int endCoords;
+	
+	public void setChrom(String chrom) {
+		this.chrom = chrom;
+	}
+	
+	public String getChrom() {
+		return chrom;
+	}
+	
+	public void setStart(int startCoords) {
+		this.startCoords = startCoords;
+	}
+	
+	public int getStart() {
+		return startCoords;
+	}
+	
+	public int getEnd() {
+		return endCoords;
+	}
+	
+	public void setEnd(int endCoords) {
+		this.endCoords = endCoords;
+	}
 	
 	@ElementCollection
 	public List<String> expressionStage = new ArrayList<String>();
