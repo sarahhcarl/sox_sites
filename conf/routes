@@ -13,6 +13,10 @@ GET		/about									Application.about
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
+# Administration section to lanuch jobs
+GET     /admin                          Administration.index
+
+
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
 

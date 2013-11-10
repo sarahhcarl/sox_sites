@@ -105,16 +105,37 @@ public class BasicTest extends UnitTest {
 	}*/
 	
 	@Test
-	public void TFsequenceTest() {
+	public void alignTest() {
+		//Create a new site and corresponding alignment
 		Enhancer myEnhancer = new Enhancer("testing");
 		TFsite mysite = new TFsite(myEnhancer, "Protein", "CAAGTAG", 100, 107, 4.5);
-		Sequence myseq = new Sequence("AAACAAGT", "Dmel", mysite);
-		mysite.tagSeq(myseq);
 		mysite.save();
+		Alignment myalign = new Alignment(mysite);
+		myalign.save();
+		
+		//Create first species and sequence and add them to the hashmap
+		String species1 = "dmel";
+		String seq1 = "ACAATG";
+		myalign.addEntry(species1,  seq1);
+		
+		//Create second species and sequence and add them to the hashmap
+		String species2 = "dsim";
+		String seq2 = "ACTAAC";
+		myalign.addEntry(species2, seq2);
 		
 		//Test that it's worked correctly
-		assertNotNull(mysite.allseqs);
-		assertEquals(1, mysite.allseqs.size());
+		assertNotNull(myalign.align);
+		assertEquals(2, myalign.align.size());
+		assertEquals("ACAATG", myalign.align.get("dmel"));
+		//System.out.println(">dmel");
+		//System.out.println(myalign.align.get("dmel"));
+		myalign.printFasta();
+		
+		//Test ability to retrieve alignment by tfsite
+		Alignment testAlign = Alignment.find("byTfsite", mysite).first();
+		assertNotNull(testAlign);
+		testAlign.printFasta();
+		
 	}
 
 }
