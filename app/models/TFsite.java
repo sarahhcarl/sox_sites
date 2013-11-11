@@ -32,6 +32,9 @@ public class TFsite extends Model {
 	@ManyToOne(cascade=CascadeType.ALL)
 	public Enhancer enhancer;
 	
+	@OneToOne(mappedBy="tfsite", cascade=CascadeType.ALL)
+	public Alignment alignment;
+	
 	@OneToMany(mappedBy="tfsite", cascade=CascadeType.ALL)
 	public List<Sequence> allseqs;
 
@@ -53,6 +56,11 @@ public class TFsite extends Model {
 		this.allseqs.add(sequence);
 		sequence.tfsite = this;
 		sequence.save();
+	}
+	
+	public void tagAlign(Alignment alignment) {
+		this.alignment = alignment;
+		this.save();
 	}
 	
 }

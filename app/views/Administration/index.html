@@ -3,8 +3,13 @@
 
 <h1>Administration</h1>
 
-<ul>
+<ol>
 <li><a href="@{Administration.createDb()}">Create database</a></li>
+<li><a href="@{Administration.parseFlylight()}">Add all FlyLight enhancer data</a></li>
+<li><a href="@{Administration.addEnhancerInfo()}">Add functional annotations</a></li>
+<li><a href="@{Administration.addTFs()}">Add data for other TFs</a></li>
+<li><a href="@{Administration.addDNase()}">Add DNase-seq data</a></li>
 <li><a href="@{Administration.addAlignments()}">Add alignments</a></li>
 <li><a href="@{Administration.printFasta()}">Print alignments as fasta</a></li>
-</ul>
+<li><a href="@{Administration.parsimony()}"">Calculate parsimony cost at each position of a site</a></li>
+</ol>

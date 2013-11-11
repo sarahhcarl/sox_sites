@@ -137,6 +137,50 @@ public class BasicTest extends UnitTest {
 		testAlign.printFasta();
 		
 	}
+	
+	@Test
+	public void parsimonyTest() {
+		//Create a new site and corresponding alignment
+		Enhancer myEnhancer = new Enhancer("testing");
+		TFsite mysite = new TFsite(myEnhancer, "Protein", "CAAGTAG", 100, 107, 4.5);
+		mysite.save();
+		Alignment myalign = new Alignment(mysite);
+		myalign.save();
+		
+		//Create first species and sequence and add them to the hashmap
+		String species1 = "dmel";
+		String seq1 = "ACAATG";
+		myalign.addEntry(species1,  seq1);
+		
+		//Create second species and sequence and add them to the hashmap
+		String species2 = "dsim";
+		String seq2 = "ACAAAG";
+		myalign.addEntry(species2, seq2);
+		
+		String species3 = "dyak";
+		String seq3 = "ACAAAG";
+		myalign.addEntry(species3, seq3);
+		
+		String species4 = "dpse";
+		String seq4 = "TCAAAG";
+		myalign.addEntry(species4, seq4);
+		
+		String node1 = "1";
+		String seq5 = "ACAAAG";
+		myalign.addEntry(node1,  seq5);
+		
+		String node2 = "2";
+		String seq6 = "ACAAAG";
+		myalign.addEntry(node2, seq6);
+		
+		String node3 = "3";
+		String seq7 = "TCAAAG";
+		myalign.addEntry(node3, seq7);
+		
+		myalign.printFasta();
+		myalign.parsimonyCost();
+		
+	}
 
 }
 

@@ -5,8 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.persistence.*;
 
 import models.Alignment;
 import models.Enhancer;
@@ -14,6 +17,7 @@ import models.Species;
 import models.TFsite;
 import models.Sequence;
 import play.Logger;
+import play.db.jpa.JPA;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 
@@ -21,6 +25,10 @@ import play.jobs.OnApplicationStart;
 public class AddAllSeqs extends Job {
 
 	public void doJob() throws NumberFormatException, IOException {
+		
+		Enhancer testEnhancer = new Enhancer("testing");
+		TFsite testsite = new TFsite(testEnhancer, "Protein", "CAAGTAG", 100, 107, 4.5);
+		Alignment testalign = new Alignment(testsite);
 		
 		int counter = 0;
 		//Read flat file
@@ -69,13 +77,19 @@ public class AddAllSeqs extends Job {
 							if (thisAlign == null) {
 								thisAlign = new Alignment(thisTFsite);
 							}
-							thisAlign.addEntry(speciesname,  sequence);
+
+							thisAlign.addEntry(speciesname, sequence);
+							thisTFsite.tagAlign(thisAlign);
 						}
 					}
 					reader.close();
+					
 				}
 			}
-		}	
+		}
+		testEnhancer.delete();
+		testsite.delete();
+		testalign.delete();
 	}
 	
 
