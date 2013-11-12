@@ -79,7 +79,7 @@ public class Application extends Controller {
     }
     
     public static void tfsitesByTF(String TF) {
-    	List<TFsite> tfsites = TFsite.find("byTF", TF).fetch(25);
+    	List<TFsite> tfsites = TFsite.find("byTf", TF).fetch(25);
     	render(tfsites);
     }
     

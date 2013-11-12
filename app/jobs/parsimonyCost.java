@@ -11,9 +11,12 @@ public class parsimonyCost extends Job {
 	
 	public void doJob() {
 
+		//Set TF of interest
+		String TF = "SoxN";
+		
 		Logger.info("Job started");
 		
-		List<TFsite> mysites = TFsite.find("byTf", "SoxN").fetch();
+		List<TFsite> mysites = TFsite.find("byTf", TF).fetch();
 		Logger.info("Sites found");
 
 		for (TFsite mysite : mysites) {
@@ -28,5 +31,4 @@ public class parsimonyCost extends Job {
 			currentAlign.parsimonyCost();
 		}	
 	}
-	
 }

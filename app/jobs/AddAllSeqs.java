@@ -70,7 +70,7 @@ public class AddAllSeqs extends Job {
 							relstart = Integer.parseInt(parts[4]);
 							relend = Integer.parseInt(parts[5]);
 
-							TFsite thisTFsite = TFsite.find("byEnhancerAndRelstartAndRelend", enhancer, relstart, relend).first();
+							TFsite thisTFsite = TFsite.find("byEnhancerAndRelstartAndRelendAndTf", enhancer, relstart, relend, TF).first();
 							
 							Alignment thisAlign = null;
 							thisAlign = Alignment.find("byTfsite", thisTFsite).first();

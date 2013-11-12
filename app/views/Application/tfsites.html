@@ -1,50 +1,39 @@
 #{extends 'main.html' /}
 #{set title:'TFsites' /}
-
-	<div class="container">
-		<div class="row">
-			<div class="panel panel-default">
-				<div class="panel-heading">Filter results by:</div>
+	
+			
+<div class=container>
+		<div class="panel panel-default">
+			<div class="panel-heading">Filter results by:</div>
   				<div class="panel-body">
-  					<form role="form">
-	  					<div class="form-group">
-							<label for="selector1">TF</label>
-							<select multiple class="form-control">
-							  <option>Dichaete</option>
-							  <option>SoxN</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="checkboxes">Species</label>
-							<div class="checkbox-inline">
-					 			<label class="checkbox-inline">
-					 				<input type="checkbox" id="Species" value="option1"> D. melanogaster
-					 			</label>
-					 			<label class="checkbox-inline">
-					 				<input type="checkbox" id="Species" value="option2"> D. simulans
-					 			</label>			
-					 			<label class="checkbox-inline">
-					 				<input type="checkbox" id="Species" value="option3"> D. yakuba
-					 			</label>
-					 			<label class="checkbox-inline">
-					 				<input type="checkbox" id="Species" value="option4"> D. pseudoobscura
-					 			</label>
-					 			<p class="help-block">Note that selecting more than one species will retrieve <b>only</b> sites present in <b>all</b> of those species (AND, rather than OR logic).</p>
-					 		</div>	
-					 	</div>
-					 	<button type="submit" class="btn btn-info">Submit</button>		
-					</form>	
-	 			</div>
-	 		</div>
-	 	</div>
-	 </div>		
-			 					
+  					<form class="horizontal" action="@{Application.tfsitesByTF()}" method="GET" role="form">
+  						<div class="form-group">
+  							<label for="TFselector">Select TF(s)</label>
+		  					<button type="button" class="btn btn-info" data-toggle="button">Dichaete</button>
+		  					<button type="button" class="btn btn-info" data-toggle="button">SoxN</button>
+		  					<button type="button" class="btn btn-info" data-toggle="button">Kr</button>
+		  					<button type="button" class="btn btn-info" data-toggle="button">Vnd</button>
+		  				</div>
+		  				<div class="form-group">	
+		  					<label for="SpeciesSelector">Select species</label>
+		  					<button type="button" class="btn btn-warning" data-toggle="button">D.mel</button>
+		  					<button type="button" class="btn btn-warning" data-toggle="button">D.sim</button>
+		  					<button type="button" class="btn btn-warning" data-toggle="button">D.yak</button>
+		  					<button type="button" class="btn btn-warning" data-toggle="button">D.pse</button>
+		  					<p class="help-block">Note that selecting more than one species will retrieve <b>only</b> sites present in <b>all</b> of those species (AND, rather than OR logic).</p>
+		  				</div>		
+	  					<button type="submit" class="btn btn-default">Go!</button>	
+	  				</form>	
+			 	</div>	
+			 </div>
+</div>			 				
 
  #{if tfsites.size()}
+ 	<div class="container">
           	<div class="panel panel-default">
           		<div class="panel-heading">Browse predicted TF binding sites</div>      			
 				<table class="table table-bordered">
-        			<thead>
+        			<thead><div class="row">
 				         <tr>
 				           <th>TF</th>
 				           <th>Enhancer</th>
@@ -69,5 +58,6 @@
 				 </table>	
 			</div>	
 		</div>	
+	</div>	
 #{/if}			
 	</div>	
