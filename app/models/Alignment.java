@@ -3,8 +3,10 @@ package models;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -30,13 +32,28 @@ public class Alignment extends Model {
 		this.save();
 	}
 	
-	public void printFasta() {
+	public void printFastaSites() {
+		
+		List<String> calledSpecies = new ArrayList<String>();
+		for (Species curSpecies : this.tfsite.species) {
+			calledSpecies.add(curSpecies.name);
+		}
+		
+		for (String speciesName : calledSpecies) {
+			System.out.println(">" + speciesName);
+			System.out.println(align.get(speciesName));
+		}
+	}
+	
+	public void printFastaAll() {
+		
 		Iterator<String> keySetIterator = align.keySet().iterator();
 		while (keySetIterator.hasNext()) {
 			String species = keySetIterator.next();
 			System.out.println(">" + species);
 			System.out.println(align.get(species));
 		}	
+		
 	}
 		
 	public void parsimonyCost() {

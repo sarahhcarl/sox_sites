@@ -13,8 +13,10 @@ import jobs.AddEnhancerInfo;
 import jobs.AddTFs;
 import jobs.LoadDB;
 import jobs.ParseAllFlylight;
+import jobs.averageCost;
 import jobs.parsimonyCost;
 import jobs.printAlignments;
+import jobs.printSites;
 import play.Logger;
 import play.mvc.Controller;
 
@@ -64,17 +66,28 @@ public class Administration extends Controller {
 		index();
 	}
 
-    public static void printFasta() {
-        Logger.info("Printing all Dichaete site alignments...");
+    public static void printAllFasta() {
+        Logger.info("Printing all Dichaete alignments...");
         new printAlignments().now();
         index();
-        
     }    
+    
+    public static void printSitesFasta() {
+    	Logger.info("Printing TFsite alignments...");
+    	new printSites().now();
+    	index();
+    }
     
     public static void parsimony() {
     	Logger.info("Calculating parsimony costs...");
     	new parsimonyCost().now();
     	Logger.info("Done.");
+    	index();
+    }
+    
+    public static void avgParsimony() {
+    	Logger.info("Calculating average parsimony costs over motif...");
+    	new averageCost().now();
     	index();
     }
 }
