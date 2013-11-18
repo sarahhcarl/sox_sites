@@ -28,65 +28,71 @@ public class AddAllSeqs extends Job {
 		
 		Enhancer testEnhancer = new Enhancer("testing");
 		TFsite testsite = new TFsite(testEnhancer, "Protein", "CAAGTAG", 100, 107, 4.5);
-		Alignment testalign = new Alignment(testsite);
+		Alignment testalign = new Alignment(testsite, "D");
 		
 		int counter = 0;
 		//Read flat file
-		File dir = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/");
-		for (File childdir : dir.listFiles()) {
-			System.out.println(childdir.getName());
-			Pattern p = Pattern.compile("(.+)_scan90");
-			Matcher m = p.matcher(childdir.getName());
-			if (m.lookingAt() == true) {
-				String TF = m.group(1);
-				for (File childfile : childdir.listFiles()) {
-					counter++;
-					Logger.info("Counter: " + counter);
-					if (counter%10==0) {
-						flush(TFsite.class);
-						flush(Enhancer.class);
-						flush(Species.class);
-						flush(Sequence.class);
-					}
-					Pattern p1 = Pattern.compile("/home/sarah/utilities/play-1.2.7/sox_sites/data/" + TF + "_scan90/(.+)_(.+).ft");
-					Matcher m1 = p1.matcher(childfile.getPath());
-					m1.lookingAt();
-					String enhancerName = m1.group(1);
-					Enhancer enhancer = Enhancer.find("byName", enhancerName).first();
-					
-					BufferedReader reader = new BufferedReader(new FileReader(childfile));
-					String line = null;
-					String speciesname = null;
-					String sequence = null;
-					int relstart = 0;
-					int relend = 0;
-					
-					//Read each line by line
-					while ((line = reader.readLine()) != null) {
-						if ((line.indexOf(";") == -1) && (line.indexOf("#seq_id") == -1)) {
-							String[] parts = line.split("\\s");
-							speciesname = parts[0];
-							sequence = parts[6];
-							relstart = Integer.parseInt(parts[4]);
-							relend = Integer.parseInt(parts[5]);
+		
+		File SoxN_sites = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/all_SoxN_alignments.txt");
+		BufferedReader reader = new BufferedReader(new FileReader(SoxN_sites));
+		String line = null;
+		String enhancerName = null;
+		int relstart = 0;
+		int relend = 0;
+		Alignment thisAlign = null;
+		String speciesName = null;
+		String sequence = null;
+		
+		while ((line = reader.readLine()) != null) {
+			Pattern p1 = Pattern.compile("Enhancer: (.+)");
+			Matcher m1 = p1.matcher(line);
+			Pattern p2 = Pattern.compile("Start: (.+)");
+			Matcher m2 = p2.matcher(line);
+			Pattern p3 = Pattern.compile("End: (.+)");
+			Matcher m3 = p3.matcher(line);
+			Pattern p4 = Pattern.compile(">(.+)");
+			Matcher m4 = p4.matcher(line);
+			if (m1.lookingAt() == true) {
+				enhancerName = m1.group(1);
+			} else if (m2.lookingAt() == true) {
+				relstart = Integer.parseInt(m2.group(1));
+			} else if (m3.lookingAt() == true) {
+				relend = Integer.parseInt(m3.group(1));
+				File matrix_scan = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/SoxN_scan90/" + enhancerName + "_SoxNscan90.ft");
+				BufferedReader reader2 = new BufferedReader(new FileReader(matrix_scan));
+				String line2 = null;
+				int startCoords = 0;
+				int endCoords = 0;
+				String strand = null;
 
-							TFsite thisTFsite = TFsite.find("byEnhancerAndRelstartAndRelendAndTf", enhancer, relstart, relend, TF).first();
-							
-							Alignment thisAlign = null;
-							thisAlign = Alignment.find("byTfsite", thisTFsite).first();
-							if (thisAlign == null) {
-								thisAlign = new Alignment(thisTFsite);
-							}
-
-							thisAlign.addEntry(speciesname, sequence);
-							thisTFsite.tagAlign(thisAlign);
+				while ((line2 = reader2.readLine()) != null) {
+					if ((line2.indexOf(";") == -1) && (line2.indexOf("#seq_id") == -1)) {
+						//Logger.info(line2);
+						String[] parts = line2.split("\\s");
+						startCoords = Integer.parseInt(parts[4]);
+						endCoords = Integer.parseInt(parts[5]);
+						if ((relstart == startCoords) && (relend == endCoords)) {
+							strand = parts[3];
 						}
-					}
-					reader.close();
-					
+					}	
 				}
+				
+				Enhancer thisEnhancer = Enhancer.find("byName", enhancerName).first();
+				TFsite thisTFsite = TFsite.find("byEnhancerAndRelstartAndRelendAndTf", thisEnhancer, relstart, relend, "SoxN").first();
+				thisAlign = new Alignment(thisTFsite, strand);
+				thisTFsite.tagAlign(thisAlign);
+				counter++;
+				System.out.println(counter);
+				
+				reader2.close();
+				
+			} else if (m4.lookingAt() == true) {
+				speciesName = m4.group();
+				sequence = reader.readLine();
+				thisAlign.addEntry(speciesName, sequence);
 			}
 		}
+		reader.close();
 		testEnhancer.delete();
 		testsite.delete();
 		testalign.delete();

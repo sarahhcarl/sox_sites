@@ -15,10 +15,14 @@ import play.db.jpa.Model;
 @Entity
 public class Alignment extends Model {
 	
-	public Alignment(TFsite tfsite) {
+
+	public Alignment(TFsite tfsite, String strand) {
 		this.tfsite = tfsite;
 		this.align = new HashMap();
+		this.strand = strand;
 	}
+	
+	public String strand;
 	
 	@OneToOne
 	public TFsite tfsite;
@@ -41,7 +45,7 @@ public class Alignment extends Model {
 		
 		for (String speciesName : calledSpecies) {
 			System.out.println(">" + speciesName);
-			System.out.println(align.get(speciesName));
+			System.out.println(align.get(">" + speciesName));
 		}
 	}
 	
@@ -50,13 +54,15 @@ public class Alignment extends Model {
 		Iterator<String> keySetIterator = align.keySet().iterator();
 		while (keySetIterator.hasNext()) {
 			String species = keySetIterator.next();
-			System.out.println(">" + species);
+			System.out.println(species);
 			System.out.println(align.get(species));
 		}	
 		
 	}
-		
-	public void parsimonyCost() {
+	
+	
+	//Actually calculates cost for all alignments (regardless of TFsite status) - need to write code for only alignments that are called as sites
+	public void parsimonyCostSites() {
 		//Iterate over the hashmap to the first value in order to get the sequence length
 		int nodes = align.size();
 		if (nodes == 7) {
@@ -71,10 +77,10 @@ public class Alignment extends Model {
 			for (looper=0; looper<sites; looper++) {	
 				int cost=0;
 				//Then get the nucleotide at that position in each species and calculate the cost
-				String mel_nt = align.get("dmel").substring(looper, looper+1);
-				String sim_nt = align.get("dsim").substring(looper, looper+1);
-				String yak_nt = align.get("dyak").substring(looper, looper+1);
-				String pse_nt = align.get("dpse").substring(looper, looper+1);
+				String mel_nt = align.get(">dmel").substring(looper, looper+1);
+				String sim_nt = align.get(">dsim").substring(looper, looper+1);
+				String yak_nt = align.get(">dyak").substring(looper, looper+1);
+				String pse_nt = align.get(">dpse").substring(looper, looper+1);
 				String node_1;
 				String node_2;
 				String node_3;
@@ -106,5 +112,9 @@ public class Alignment extends Model {
 		}
 		//return parsimonyCosts;
 		System.out.println("Done.");
+	}
+	
+	public void parsimonyCostAll() {
+		
 	}
 }

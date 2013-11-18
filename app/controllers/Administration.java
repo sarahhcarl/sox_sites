@@ -14,7 +14,8 @@ import jobs.AddTFs;
 import jobs.LoadDB;
 import jobs.ParseAllFlylight;
 import jobs.averageCost;
-import jobs.parsimonyCost;
+import jobs.parsimonyCostSites;
+import jobs.parsimonyCostAll;
 import jobs.printAlignments;
 import jobs.printSites;
 import play.Logger;
@@ -80,8 +81,14 @@ public class Administration extends Controller {
     
     public static void parsimony() {
     	Logger.info("Calculating parsimony costs...");
-    	new parsimonyCost().now();
+    	new parsimonyCostSites().now();
     	Logger.info("Done.");
+    	index();
+    }
+    
+    public static void parsimonyAll() {
+    	Logger.info("Calculating parsimony costs for all alignments...");
+    	new parsimonyCostAll().now();
     	index();
     }
     

@@ -12,7 +12,7 @@ public class averageCost extends Job {
 
 	public void doJob() {
 		//Set TF of interest
-		String tf = "SoxN";
+		String tf = "D";
 		
 		//Get all sites for that TF
 		List<TFsite> mysites = TFsite.find("byTf", tf).fetch();
@@ -34,9 +34,11 @@ public class averageCost extends Job {
 			float totalScore=0;
 			float count=0;
 			for (Alignment align : myaligns) {
-				if (align.parsimonyCosts != null) {
+				if (align.strand.equals("D")) {
 					totalScore = totalScore + align.parsimonyCosts[looper];
 					count++;
+				} else if (align.strand.equals("R")) {
+					totalScore = totalScore + align.parsimonyCosts[siteLength-looper];
 				}
 			}
 			float finalCost = totalScore / count;
