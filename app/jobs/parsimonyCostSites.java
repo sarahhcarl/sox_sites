@@ -12,7 +12,7 @@ public class parsimonyCostSites extends Job {
 	public void doJob() {
 
 		//Set TF of interest
-		String TF = "D";
+		String TF = "SoxN";
 		
 		Logger.info("Job started");
 		
@@ -28,7 +28,7 @@ public class parsimonyCostSites extends Job {
 			} else if (currentAlign == null) {
 				Logger.info("Alignment is null");
 			}
-			currentAlign.parsimonyCostSites();
+			currentAlign.parsimonyCost();
 		}	
 	}
 }

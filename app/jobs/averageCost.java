@@ -8,9 +8,9 @@ import models.Alignment;
 import models.TFsite;
 import play.jobs.Job;
 
-public class averageCost extends Job {
+public class averageCost extends Job<float[]> {
 
-	public void doJob() {
+	public float[] doJobWithResult() {
 		//Set TF of interest
 		String tf = "D";
 		
@@ -38,7 +38,7 @@ public class averageCost extends Job {
 					totalScore = totalScore + align.parsimonyCosts[looper];
 					count++;
 				} else if (align.strand.equals("R")) {
-					totalScore = totalScore + align.parsimonyCosts[siteLength-looper];
+					totalScore = totalScore + align.parsimonyCosts[siteLength-looper-1];
 				}
 			}
 			float finalCost = totalScore / count;
@@ -46,5 +46,6 @@ public class averageCost extends Job {
 		}
 		System.out.println(tf);
 		System.out.println(Arrays.toString(avgCosts));
+		return avgCosts;
 	}
 }

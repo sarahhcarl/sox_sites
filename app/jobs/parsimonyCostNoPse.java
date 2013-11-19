@@ -7,11 +7,11 @@ import models.TFsite;
 import play.Logger;
 import play.jobs.Job;
 
-public class parsimonyCostAll extends Job {
+public class parsimonyCostNoPse extends Job {
 
 	public void doJob() {
 		
-		String TF = "SoxN";
+		String TF = "D";
 		
 		Logger.info("Job started");
 		
@@ -27,7 +27,8 @@ public class parsimonyCostAll extends Job {
 			} else if (currentAlign == null) {
 				Logger.info("Alignment is null");
 			}
-			currentAlign.parsimonyCostAll();
+			currentAlign.parsimonyCostNoPse();
 		}
 	}
 }
+

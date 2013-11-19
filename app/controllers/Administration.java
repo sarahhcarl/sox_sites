@@ -14,6 +14,7 @@ import jobs.AddTFs;
 import jobs.LoadDB;
 import jobs.ParseAllFlylight;
 import jobs.averageCost;
+import jobs.parsimonyCostNoPse;
 import jobs.parsimonyCostSites;
 import jobs.parsimonyCostAll;
 import jobs.printAlignments;
@@ -89,6 +90,12 @@ public class Administration extends Controller {
     public static void parsimonyAll() {
     	Logger.info("Calculating parsimony costs for all alignments...");
     	new parsimonyCostAll().now();
+    	index();
+    }
+    
+    public static void parsimonyNoPse() {
+    	Logger.info("Calculating parsimony costs for all alignments excluding D. pseudo...");
+    	new parsimonyCostNoPse().now();
     	index();
     }
     
