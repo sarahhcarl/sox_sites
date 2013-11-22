@@ -13,6 +13,7 @@ import jobs.AddEnhancerInfo;
 import jobs.AddTFs;
 import jobs.LoadDB;
 import jobs.ParseAllFlylight;
+import jobs.PrintFastaClade;
 import jobs.averageCost;
 import jobs.parsimonyCostNoPse;
 import jobs.parsimonyCostSites;
@@ -77,6 +78,12 @@ public class Administration extends Controller {
     public static void printSitesFasta() {
     	Logger.info("Printing TFsite alignments...");
     	new printSites().now();
+    	index();
+    }
+    
+    public static void printFastaClade() {
+    	Logger.info("Printing alignments for defined clade...");
+    	new PrintFastaClade().now();
     	index();
     }
     

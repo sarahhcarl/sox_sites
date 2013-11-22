@@ -1,5 +1,7 @@
 package jobs;
 
+import java.io.IOException;
+
 import models.Alignment;
 import models.TFsite;
 import play.Logger;
@@ -7,7 +9,7 @@ import play.jobs.Job;
 
 public class printSites extends Job {
 
-	public void doJob() {
+	public void doJob() throws IOException {
 		TFsite mysite = TFsite.findById(255544L);
         Logger.info("Site found");
         System.out.println(mysite);

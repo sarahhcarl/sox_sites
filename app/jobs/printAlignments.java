@@ -1,5 +1,6 @@
 package jobs;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,18 +11,18 @@ import play.jobs.Job;
 
 public class printAlignments extends Job {
     
-    public void doJob() {
-            TFsite mysite = TFsite.findById(255544L);
-            Logger.info("Site found");
-            System.out.println(mysite);
-            Alignment currentAlign = Alignment.find("byTfsite", mysite).first();
-            if (currentAlign != null) {
-            	Logger.info("Alignment found");
-            	System.out.println(currentAlign);
-            } else if (currentAlign == null) {
-            	Logger.info("Alignment is null");
-            }
-            currentAlign.printFastaAll();
-    }
-    
+	public void doJob() throws IOException {
+		TFsite mysite = TFsite.findById(255544L);
+		Logger.info("Site found");
+		System.out.println(mysite);
+		Alignment currentAlign = Alignment.find("byTfsite", mysite).first();
+		if (currentAlign != null) {
+			Logger.info("Alignment found");
+			System.out.println(currentAlign);
+		} else if (currentAlign == null) {
+			Logger.info("Alignment is null");
+		}
+		currentAlign.printFastaAll();
+	}
+
 }

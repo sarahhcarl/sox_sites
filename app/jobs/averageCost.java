@@ -5,14 +5,17 @@ import java.util.Arrays;
 import java.util.List;
 
 import models.Alignment;
+import models.Species;
 import models.TFsite;
+import play.Logger;
 import play.jobs.Job;
 
 public class averageCost extends Job<float[]> {
 
 	public float[] doJobWithResult() {
 		//Set TF of interest
-		String tf = "D";
+		String tf = "SoxN";
+		//Species mySpecies = Species.find("byName", "dmel").first();
 		
 		//Get all sites for that TF
 		List<TFsite> mysites = TFsite.find("byTf", tf).fetch();
@@ -21,10 +24,12 @@ public class averageCost extends Job<float[]> {
 		int siteLength=0;
 		List<Alignment> myaligns = new ArrayList<Alignment>();
 		for (TFsite site : mysites) {
-			String seq = site.sequence;
-			siteLength = seq.length();
-			Alignment currentAlign = Alignment.find("byTfsite", site).first();
-			myaligns.add(currentAlign);
+			//if (site.species.contains(mySpecies)) {
+				String seq = site.sequence;
+				siteLength = seq.length();
+				Alignment currentAlign = Alignment.find("byTfsite", site).first();
+				myaligns.add(currentAlign);
+			//}	
 		}
 		
 		//should be float not int!
