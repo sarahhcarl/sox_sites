@@ -105,12 +105,12 @@ public class BasicTest extends UnitTest {
 	}*/
 	
 	@Test
-	public void alignTest() {
+	public void alignTest() throws IOException {
 		//Create a new site and corresponding alignment
 		Enhancer myEnhancer = new Enhancer("testing");
 		TFsite mysite = new TFsite(myEnhancer, "Protein", "CAAGTAG", 100, 107, 4.5);
 		mysite.save();
-		Alignment myalign = new Alignment(mysite);
+		Alignment myalign = new Alignment(mysite, "D");
 		myalign.save();
 		
 		//Create first species and sequence and add them to the hashmap
@@ -129,22 +129,22 @@ public class BasicTest extends UnitTest {
 		assertEquals("ACAATG", myalign.align.get("dmel"));
 		//System.out.println(">dmel");
 		//System.out.println(myalign.align.get("dmel"));
-		myalign.printFasta();
+		myalign.printFastaAll();
 		
 		//Test ability to retrieve alignment by tfsite
 		Alignment testAlign = Alignment.find("byTfsite", mysite).first();
 		assertNotNull(testAlign);
-		testAlign.printFasta();
+		testAlign.printFastaAll();
 		
 	}
 	
 	@Test
-	public void parsimonyTest() {
+	public void parsimonyTest() throws IOException {
 		//Create a new site and corresponding alignment
 		Enhancer myEnhancer = new Enhancer("testing");
 		TFsite mysite = new TFsite(myEnhancer, "Protein", "CAAGTAG", 100, 107, 4.5);
 		mysite.save();
-		Alignment myalign = new Alignment(mysite);
+		Alignment myalign = new Alignment(mysite, "D");
 		myalign.save();
 		
 		//Create first species and sequence and add them to the hashmap
@@ -177,7 +177,7 @@ public class BasicTest extends UnitTest {
 		String seq7 = "TCAAAG";
 		myalign.addEntry(node3, seq7);
 		
-		myalign.printFasta();
+		myalign.printFastaAll();
 		myalign.parsimonyCost();
 		
 	}
