@@ -1,8 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'Enhancers' /}
 
-	<div class="container">
-		<div class="row">
+	<div class="container" style="padding-top: 50px">
 			<div class="panel panel-default">
 				<div class="panel-heading">Filter results by:</div>
   				<div class="panel-body">
@@ -41,6 +40,7 @@
 	  </div>	
 	  	
  #{if enhancers.size()}
+ 	<div class="container">
           	<div class="panel panel-default">
           		<div class="panel-heading">Browse Flylight enhancers</div>      			
 				<table class="table table-bordered">
@@ -55,7 +55,7 @@
 				       <tbody>
 				       #{list items:enhancers, as:'enhancer'}
 			         	<tr>
-				           	<td><a href="@{Application.tfsitesByEnhancer()}" data-toggle="tooltip" title="View TF binding sites">${enhancer.name}</a></td>
+				           	<td><a href="@{Application.tfsitesByEnhancer(enhancer.name, 1)}" data-toggle="tooltip" title="View TF binding sites">${enhancer.name}</a></td>
 			           		<td>${enhancer.chrom}</td>
 			           		<td>${enhancer.startCoords}</td>	
 			           		<td>${enhancer.endCoords}</td>	
@@ -65,12 +65,16 @@
 				 </table>	
 			</div>	
 		</div>
+		<div class="container">
 		<ul class="pagination">
-		  <li><a href="@{Application.enhancers(page-1)}">&laquo;</a></li>
-		  #{list items:pages, as:'page'}
-		  	<li><a href="@{Application.enhancers(page)}">${page}</a></li>
-		  #{/list}	
-		  <li><a href="@{Application.enhancers(page+1)})">&raquo;</a></li>
+			#{if page > 1}			
+		 	 	<li><a href="@{Application.enhancers(page-1)}">&laquo;</a></li>
+		 	#{/if}
+		 	#{if enhancers.size() == 100}	
+		  		<li><a href="@{Application.enhancers(page+1)}">&raquo;</a></li>
+		  	#{/if}	
 		</ul>
+		</div>
+	</div>	
 			
 #{/if}			

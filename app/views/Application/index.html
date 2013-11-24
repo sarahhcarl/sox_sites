@@ -1,25 +1,53 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-
-<div class="container">
-<p>
-<div class="panel panel-primary">
-	<div class="panel-heading">
-		<h3>Welcome to the SoxSites project!</h3>
-	</div>	
-	<div class="panel-body">
-	 		<ul>
-	 			<li><p class="lead">To view Flylight enhancer data, click on "Browse enhancers."</p></li> 
-	 			<li><p class="lead">For data on predicted TF binding sites in the enhancers, click on "Browse predicted TF sites".</p></li>
-	 			<li><p class="lead">To see the results of some evolutionary analyses performed on this data, click on "View analyses".</p></li>
-	 			<li><p class="lead">To read about where the data used in this project comes from and how it was processed, click "About".</p></li>
-	 		</ul>		
-	 </div>	
-</div>	
-</p>
+<div class="jumbotron">
+	<div class="container">
+		<h1><i class="fa fa-bug"></i> SoxSites</h1>
+		<p>A browse-able database of predicted transcription factor binding sites within experimentally-verified <i>Drosophila</i> enhancers. 
+		</p>
+	</div>
 </div>
 
+<div class="container">
+    <div class="row">
+    	<div class="col-md-4">
+    		<h2>Explore FlyLight enhancers</h2> 
+    		<p>Enhancers from the FlyLight project are annotated with expression patterns, <i>in vivo</i> Sox binding data and DNase sensitivity data.  
+    		</p> 	
+    	</div>
+    	<div class="col-md-4">
+    		<h2>Browse individual binding sites</h2>
+    		<p>View predicted sites for Dichaete, SoxNeuro and other potential cofactors.
+    		</p>
+    	</div>
+    	<div class="col-md-4">
+    		<h2>View evolutionary anayses</h2>
+    		<p>Examine some evolutionary patterns of enhancers and transcription factor binding sites.
+    		</p>	
+    	</div>
+    </div>
+</div>    
+
+<div class="container">
+    <div class="row">
+    	<div class="col-md-4">
+			<p>
+    			<a class="btn btn-info" role="button" href="@{Application.enhancers(1)}">Browse enhancers</a>
+    		</p>
+    	</div>
+    	<div class="col-md-4">
+    		<p>
+    			<a class="btn btn-info" role="button" href="@{Application.tfsites(1)}">Browse TF sites</a>
+    		</p>	
+    	</div>
+    	<div class="col-md-4">
+    		<p>
+    			<a class="btn btn-info" role="button" href="@{Application.analyses()}">View analyses</a>
+    		</p>
+    	</div>
+    </div>
+</div>    			
 	
 
 

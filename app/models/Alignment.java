@@ -73,11 +73,13 @@ public class Alignment extends Model {
 	
 	public void printFastaClade(List<String> mySpecies) throws IOException {
 		//Set file name here
-		File file = new File("/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/D_node3.fasta");
-		
+		String enhancer = this.tfsite.enhancer.name;
+		String startpos = Integer.toString(this.tfsite.relstart);
+		File file = new File("/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/" + enhancer + "." + startpos + ".fasta");
+		FileUtils.writeStringToFile(file, this.strand + "\n");
 		for (String speciesName : mySpecies) {
-			FileUtils.writeStringToFile(file, ">"+speciesName+"\n");
-			FileUtils.writeStringToFile(file, align.get(">"+speciesName) + "\n");
+			FileUtils.writeStringToFile(file, ">"+speciesName+"\n", true);
+			FileUtils.writeStringToFile(file, align.get(">"+speciesName) + "\n", true);
 		}
 	}
 	

@@ -25,16 +25,23 @@ public class PrintFastaClade extends Job {
 		for (TFsite curSite : mySites) {
 			if (curSite.species.contains(mySpecies)) {
 				Alignment curAlign = Alignment.find("byTfsite", curSite).first();
+				allNodes.clear();
 				if (ancestralNode.equals("#3#")) {
+					allNodes.add("#3#");
+					allNodes.add("#2#");
+					allNodes.add("#1#");
 					allNodes.add("dmel");
 					allNodes.add("dsim");
 					allNodes.add("dyak");
 					allNodes.add("dpse");
 				} else if (ancestralNode.equals("#2#")) {
+					allNodes.add("#2#");
+					allNodes.add("#1#");
 					allNodes.add("dmel");
 					allNodes.add("dsim");
 					allNodes.add("dyak");
 				} else if (ancestralNode.equals("#1#")) {
+					allNodes.add("#1#");
 					allNodes.add("dmel");
 					allNodes.add("dsim");
 				}

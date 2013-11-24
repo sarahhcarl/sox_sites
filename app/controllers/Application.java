@@ -20,20 +20,8 @@ public class Application extends Controller {
     }
     
     public static void enhancers(int page) {
-    	if (page == 0) {
-    		page = 1;
-    	}
-    	long enhancerCount = Enhancer.count();
-    	Logger.info(String.valueOf(enhancerCount));
-    	long numPages = enhancerCount / 100;
-    	Logger.info(String.valueOf(numPages));
-    	ArrayList<Integer> pages = new ArrayList<Integer>();
-    	for (int n=1; n<=numPages; n++) {
-    		pages.add(n);
-    	}
-    	System.out.println(pages.size());
-    	List<Enhancer> enhancers = Enhancer.all().from((page*100)-99).fetch(100);
-    	render(enhancers, pages);
+    	List<Enhancer> enhancers = Enhancer.find("order by name").from((page*100)-99).fetch(100);
+    	render(enhancers, page);
     }
     
     public static void enhancersByName(String name) {
@@ -73,20 +61,25 @@ public class Application extends Controller {
     	render(enhancers);
     }
     
-    public static void tfsites() {
-    	List<TFsite> tfsites = TFsite.all().fetch(25);
-    	render(tfsites);
+    public static void tfsites(int page) {
+    	List<TFsite> tfsites = TFsite.find("order by Tf").from(100/(page*100)).fetch(100);
+    	render(tfsites, page);
     }
     
-    public static void tfsitesByTF(String TF) {
+    public static void tfsitesByTF(String TF) { 
     	List<TFsite> tfsites = TFsite.find("byTf", TF).fetch(25);
     	render(tfsites);
     }
     
-    public static void tfsitesByEnhancer(String enhancer) {
+    public static void tfsitesByEnhancer(String enhancer, int page) {
     	Enhancer thisEnhancer = Enhancer.find("byName", enhancer).first();
-    	List<TFsite> tfsites = TFsite.find("byEnhancer", thisEnhancer).fetch();
-    	render(tfsites);
+    	List<TFsite> tfsites = TFsite.find("enhancer", thisEnhancer).from(100/(page*100)).fetch(100);
+    	render(tfsites, page, enhancer);
+    }
+    
+    public static void alignmentByTf(TFsite tfsite) {
+    	Alignment thisAlign = Alignment.find("byTfsite", tfsite).first();
+    	render(thisAlign);
     }
     
     public static void analyses() {

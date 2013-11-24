@@ -1,8 +1,7 @@
 #{extends 'main.html' /}
 #{set title:'TFsites' /}
 
-	<div class="container">
-		<div class="row">
+	<div class="container" style="padding-top: 50px">
 			<div class="panel panel-default">
 				<div class="panel-heading">Filter results by:</div>
   				<div class="panel-body">
@@ -36,9 +35,9 @@
 					</form>	
 	 			</div>
 	 		</div>
-	 	</div>
 	 </div>		
 
+<div class="container">
  #{if tfsites.size()}
           	<div class="panel panel-default">
           		<div class="panel-heading">Browse predicted TF binding sites</div>      			
@@ -67,12 +66,23 @@
 				      </tbody>
 				 </table>	
 			</div>	
-		</div>	
+		</div>
+	<div class="container">	
+		<ul class="pagination">
+			#{if page > 1}			
+		 	 	<li><a href="@{Application.tfsitesByEnhancer(enhancer, page-1)}">&laquo;</a></li>
+		 	#{/if}	
+		 	#{if tfsites.size() == 100}
+		  		<li><a href="@{Application.tfsitesByEnhancer(enhancer, page+1)}">&raquo;</a></li>
+		  	#{/if}	
+		</ul>	
+	</div>	
 #{/if}	
 
 #{else}
 	<p>
-		<h4>Sorry, no TF sites have been predicted for this enhancer.</h4>
+		<h3>Sorry, no TF sites have been predicted for this enhancer.</h3>
 	</p>
 #{/else}			
-	</div>				 			
+	</div>	
+</div>				 			
