@@ -89,7 +89,7 @@ calc_dS <- function(nt1, nt2, pos, bg_freqs, D_matrix) {
   g_nt2 <- bg_freqs[, nt2]
   f_nt1 <- f[pos, nt1]
   f_nt2 <- f[pos, nt2]
-  dS <- log10(f_nt2/g_nt2) - log10(f_nt1/g_nt1)
+  dS <- log(f_nt2/g_nt2) - log(f_nt1/g_nt1)
   return(dS)
 }
 
