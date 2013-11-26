@@ -36,51 +36,51 @@ if (alignment[1] == "R") {
   pse <- reverseComplement(pse)
 }
 
-align <- DNAStringSet(c(node3, node2, node1, mel, sim, yak, pse))
-dS_list <- 0
+
 # Identify substitutions (what to do for gaps?)
 
-find_subst <- function(col, dS_list) {
-  node3_nt <- node3[col]
-  node2_nt <- node2[col]
-  node1_nt <- node1[col]
-  mel_nt <- mel[col]
-  sim_nt <- sim[col]
-  yak_nt <- yak[col]
-  pse_nt <- pse[col]
+find_subst <- function(col, dS_total, dS_counter) {
+  node3_nt <- as.character(node3[col])
+  node2_nt <- as.character(node2[col])
+  node1_nt <- as.character(node1[col])
+  mel_nt <- as.character(mel[col])
+  sim_nt <- as.character(sim[col])
+  yak_nt <- as.character(yak[col])
+  pse_nt <- as.character(pse[col])
   
-  if (pse_nt == node3_nt) {
-  } else {
+  if (pse_nt != node3_nt) {
     nt1 <- node3_nt
     nt2 <- pse_nt
     pos <- col
     dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
-    dS_list <- c(dS_list, dS)
+    dS_total <- dS_total + dS
+    dS_counter = dS_counter + 1
   }
-  if (yak_nt == node2_nt) {
-  } else {
+  if (yak_nt != node2_nt) {
     nt1 <- node2_nt
     nt2 <- yak_nt
     pos <- col
     dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
-    dS_list <- c(dS_list, dS)
+    dS_total <- dS_total + dS
+    dS_counter <- dS_counter + 1
   }
-  if (sim_nt == node1_nt) {
-  } else {
+  if (sim_nt != node1_nt) {
     nt1 <- node1_nt
     nt2 <- sim_nt
     pos <- col
     dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
-    dS_list <- c(dS_list, dS)
+    dS_total <- dS_total + dS
+    dS_counter <- dS_counter + 1
   }
-  if (mel_nt == node1_nt) {
-  } else {
+  if (mel_nt != node1_nt) {
     nt1 <- node1_nt
     nt2 <- mel_nt
     pos <- col
     dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
-    dS_list <- c(dS_list, dS)
+    dS_total <- dS_total + dS
+    dS_counter <- dS_counter + 1
   }
+  dS_list <- c(dS_total, dS_counter)
   return(dS_list)
 }
 
@@ -89,28 +89,29 @@ calc_dS <- function(nt1, nt2, pos, bg_freqs, D_matrix) {
   g_nt2 <- bg_freqs[, nt2]
   f_nt1 <- f[pos, nt1]
   f_nt2 <- f[pos, nt2]
-  dS <- log(f_nt2/g_nt2) - log(f_nt1/g_nt1)
+  dS <- log10(f_nt2/g_nt2) - log10(f_nt1/g_nt1)
   return(dS)
 }
 
-nts <- c(1:length(mel))
+#nts <- c(1:length(mel))
 ##dS_list <- sapply(nts, find_subst, dS_list)
 
 
 ##Trying to do: for each position, get all the values of dS for any substitution at that position, add them to a list, then repeat, always appending values to the same list.
+dS_total <- 0
+dS_counter <- 0
 for (col in 1:length(mel)) {
-  dS_list <- c(dS_list, find_subst(col, dS_list))
+  dS_list <- find_subst(col, dS_total, dS_counter)
+  dS_total <- dS_list[1] + dS_total
+  dS_counter <- dS_list[2] + dS_counter
 }
 
-
+dS_avg = dS_total / dS_counter
 
 # Calculate dS for each substitution where a directional change can be identified
 # Take average dS for alignment(s)
 # Perform Z-test against E[S] statistic
 
-#nt1 <- 
-#nt2 <-
-#pos <-
 
 
 
