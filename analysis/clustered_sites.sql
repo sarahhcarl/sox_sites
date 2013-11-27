@@ -1,3 +1,0 @@
-﻿select t1.enhancer_id as enhancer, t1.id as id1, t1.tf as tf1, t1.relstart as start1, t1.relend as end1, t1.wscore as wscore1, t2.id as id2, t2.tf as tf2, t2.relstart as start2, t2.relend as end2, t2.wscore as wscore2 from 
-(select * from tfsite t1 where t1.tf = 'D') as t1
-join (select * from tfsite t2 where t2.tf = 'SoxN') as t2 on t1.enhancer_id = t2.enhancer_id AND (0 < t2.relstart-t1.relstart) AND (t1.relend-t2.relstart > 0);

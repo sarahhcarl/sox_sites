@@ -1,0 +1,7 @@
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  SoxN_non_dhs_enhancers$wscore and SoxN_dmel_dhs_enhancers$wscore 
+W = 13623018, p-value = 0.0403
+alternative hypothesis: true location shift is not equal to 0 
+

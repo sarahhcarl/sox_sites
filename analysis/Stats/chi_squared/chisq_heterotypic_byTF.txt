@@ -1,0 +1,84 @@
+
+	Pearson's Chi-squared test
+
+data:  D_het_vnd 
+X-squared = 16.2025, df = 6, p-value = 0.01271
+
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap         77        11         9         8
+  Proximal       112        16        31        20
+  Distal        3459       595       965       965
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap    61.1104  10.41959  16.83551  16.63449
+  Proximal  104.1787  17.76292  28.70054  28.35785
+  Distal   3482.7109 593.81749 959.46394 948.00766
+          cons
+position     1 species   2 species   3 species   4 species
+  Overlap   2.03261599  0.17980773 -1.90965225 -2.11705453
+  Proximal  0.76628499 -0.41828865  0.42922039 -1.56948762
+  Distal   -0.40178115  0.04852661  0.17872535  0.55188338
+
+	Pearson's Chi-squared test
+
+data:  D_het_Kr 
+X-squared = 24.1513, df = 6, p-value = 0.0004898
+
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap        358        61       100        52
+  Proximal       377        74       108       126
+  Distal        3459       595       965       965
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap   330.7699  57.57320  92.51146  90.14544
+  Proximal  396.8080  69.06768 110.98135 108.14296
+  Distal   3466.4221 603.35912 969.50718 944.71160
+          cons
+position    1 species  2 species  3 species  4 species
+  Overlap   1.4972228  0.4516250  0.7785726 -4.0176376
+  Proximal -0.9943760  0.5934906 -0.2830013  1.7171588
+  Distal   -0.1260625 -0.3403082 -0.1447537  0.6600824
+
+	Pearson's Chi-squared test
+
+data:  SoxN_het_vnd 
+X-squared = 16.1008, df = 6, p-value = 0.01322
+
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap        156        24        26        10
+  Proximal       264        37        53        21
+  Distal        7032      1130      1575      1046
+          cons
+position   1 species  2 species  3 species  4 species
+  Overlap   141.5186   22.61790   31.41059   20.45296
+  Proximal  245.6919   39.26719   54.53227   35.50862
+  Distal   7064.7895 1129.11491 1568.05715 1021.03842
+          cons
+position     1 species   2 species   3 species   4 species
+  Overlap   1.21732161  0.29061175 -0.96539768 -2.31132647
+  Proximal  1.16801157 -0.36180344 -0.20749496 -2.43477659
+  Distal   -0.39010853  0.02634012  0.17533030  0.78117981
+
+	Pearson's Chi-squared test
+
+data:  SoxN_het_Kr 
+X-squared = 178.4241, df = 6, p-value < 2.2e-16
+
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap       2615       522       510       131
+  Proximal       843       179       207       106
+  Distal        7032      1130      1575      1046
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap  2493.1568  435.1735  544.7393  304.9304
+  Proximal  880.9858  153.7736  192.4899  107.7507
+  Distal   7115.8574 1242.0529 1554.7708  870.3189
+          cons
+position    1 species  2 species  3 species  4 species
+  Overlap   2.4402067  4.1621819 -1.4884244 -9.9603632
+  Proximal -1.2797839  2.0342979  1.0458403 -0.1686552
+  Distal   -0.9940953 -3.1794579  0.5130343  5.9550563

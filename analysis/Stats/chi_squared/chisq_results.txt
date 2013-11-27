@@ -1,0 +1,62 @@
+
+	Pearson's Chi-squared test
+
+data:  D 
+X-squared = 22.1899, df = 6, p-value = 0.001119
+
+            cons
+binding        4-species   3-species   2-species   1-species
+  Dunique    -1.27608695 -1.39287378  0.02517583  1.38227998
+  SoxNunique -0.92777786 -1.04944573  0.09241302  0.99352598
+  common      2.01195311  2.23451446 -0.11717020 -2.16740308
+
+	Pearson's Chi-squared test
+
+data:  SoxN 
+X-squared = 9.745, df = 6, p-value = 0.1358
+
+            cons
+binding       4-species  3-species  2-species  1-species
+  Dunique    -0.1153651 -0.4261143  1.2178972 -0.2681405
+  SoxNunique -0.8664121 -0.7610110 -1.2427491  1.1741455
+  common      1.0392875  1.1735141  0.3804753 -1.0677514
+
+	Pearson's Chi-squared test
+
+data:  D1 
+X-squared = 11.6025, df = 3, p-value = 0.008877
+
+             cons
+class           4-species   3-species   2-species   1-species
+  Transcomp    1.97266535  1.75485742 -0.22365347 -1.79751230
+  NoTranscomp -0.71597580 -0.63692275  0.08117468  0.65240427
+
+	Pearson's Chi-squared test
+
+data:  SoxN1 
+X-squared = 14.2851, df = 3, p-value = 0.002542
+
+             cons
+class          4-species  3-species  2-species  1-species
+  Transcomp    2.1926558  2.2328626 -0.8527043 -1.4375965
+  NoTranscomp -0.8053031 -0.8200699  0.3131752  0.5279903
+
+	Pearson's Chi-squared test
+
+data:  Ddhs 
+X-squared = 12.9141, df = 3, p-value = 0.004826
+
+        cons
+clas      4-species  3-species  2-species  1-species
+  DHS     1.1260402  0.4905432 -0.8307545 -1.7137189
+  no DHS -1.3858205 -0.6037128  1.0224117  2.1090782
+
+	Pearson's Chi-squared test
+
+data:  SoxNdhs 
+X-squared = 12.0931, df = 3, p-value = 0.007071
+
+        cons
+clas      4-species  3-species  2-species  1-species
+  DHS     1.4423274 -0.1386712  0.2382533 -1.6188323
+  no DHS -1.7849746  0.1716147 -0.2948541  2.0034109

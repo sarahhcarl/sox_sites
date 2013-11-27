@@ -15,8 +15,14 @@ SoxN_matrix <- matrix(c(0.355,0.217,0.274,0.155, 0.208,0.213,0.521,0.058, 0.253,
 # Define which PWM model to use
 f <- D_matrix
 
+# Make a data frame to hold everything
+dS_data <- data.frame(Name=character(),
+                      Start=integer(),
+                      dS=double(),
+                      stringsAsFactors=FALSE)
+
 #Definition of find_subst function
-find_subst <- function(col, dS_total, dS_counter) {
+find_subst <- function(col, dS_total, dS_counter, dS_data, enhancer, startcoord) {
   node3_nt <- as.character(node3[col])
   node2_nt <- as.character(node2[col])
   node1_nt <- as.character(node1[col])
@@ -30,6 +36,7 @@ find_subst <- function(col, dS_total, dS_counter) {
     nt2 <- pse_nt
     pos <- col
     dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
+    dS_data <- rbind(dS_data, data.frame(Name=enhancer, Start=startcoord, dS=dS))
     dS_total <- dS_total + dS
     dS_counter = dS_counter + 1
   }
@@ -38,6 +45,7 @@ find_subst <- function(col, dS_total, dS_counter) {
     nt2 <- yak_nt
     pos <- col
     dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
+    dS_data <- rbind(dS_data, data.frame(Name=enhancer, Start=startcoord, dS=dS))
     dS_total <- dS_total + dS
     dS_counter <- dS_counter + 1
   }
@@ -46,6 +54,7 @@ find_subst <- function(col, dS_total, dS_counter) {
     nt2 <- sim_nt
     pos <- col
     dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
+    dS_data <- rbind(dS_data, data.frame(Name=enhancer, Start=startcoord, dS=dS))
     dS_total <- dS_total + dS
     dS_counter <- dS_counter + 1
   }
@@ -54,11 +63,12 @@ find_subst <- function(col, dS_total, dS_counter) {
     nt2 <- mel_nt
     pos <- col
     dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
+    dS_data <- rbind(dS_data, data.frame(Name=enhancer, Start=startcoord, dS=dS))
     dS_total <- dS_total + dS
     dS_counter <- dS_counter + 1
   }
   dS_list <- c(dS_total, dS_counter)
-  return(dS_list)
+  return(dS_data)
 }  
 
 #Definition of calc_dS function
@@ -76,6 +86,8 @@ calc_dS <- function(nt1, nt2, pos, bg_freqs, D_matrix) {
 files <- list.files(path="/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete", pattern=".fasta", all.files=T, full.names=T)
 for (myfile in files) {
   #print(myfile)
+  enhancer <- sub(".*Dichaete/(.*)\\.(.*)\\..*", "\\1", myfile)
+  startcoord <- sub(".*Dichaete/(.*)\\.(.*)\\..*", "\\2", myfile)
   con <- file(myfile)
   alignment <- readLines(con)
   
@@ -96,13 +108,13 @@ for (myfile in files) {
   n_pse <- grepl("N", alignment[15])
   
   if ((gap3 == TRUE) | (gap2 == TRUE) | (gap1 == TRUE) | (gap_mel == TRUE) | (gap_sim == TRUE) | (gap_yak == TRUE) | (gap_pse == TRUE)) {
-    cat(myfile, file="all_Dichaete_gaps.txt", sep=" ", fill=TRUE, append=TRUE)
-    cat("Gaps detected", file="all_Dichaete_gaps.txt", sep=" ", fill=TRUE, append=TRUE)
+    #cat(myfile, file="all_Dichaete_gaps.txt", sep=" ", fill=TRUE, append=TRUE)
+    #cat("Gaps detected", file="all_Dichaete_gaps.txt", sep=" ", fill=TRUE, append=TRUE)
     close(con)
   } 
   else if ((n3 == TRUE) | (n2 == TRUE) | (n1 == TRUE) | (n_mel == TRUE) | (n_sim == TRUE) | (n_yak == TRUE) | (n_pse == TRUE)) {
-    cat(myfile, file="all_Dichaete_n.txt", sep=" ", fill=TRUE, append=TRUE)
-    cat("N detected", file="all_Dichaete_n.txt", sep=" ", fill=TRUE, append=TRUE)
+    #cat(myfile, file="all_Dichaete_n.txt", sep=" ", fill=TRUE, append=TRUE)
+    #cat("N detected", file="all_Dichaete_n.txt", sep=" ", fill=TRUE, append=TRUE)
     close(con)
   }
   else if ((gap3 == FALSE) & (gap2 == FALSE) & (gap1 == FALSE) & (gap_mel == FALSE) & (gap_sim == FALSE) & (gap_yak == FALSE) & (gap_pse == FALSE) & (n3 == FALSE) & (n2 == FALSE) & (n1 == FALSE) & (n_mel == FALSE) & (n_sim == FALSE) & (n_yak == FALSE) & (n_pse == FALSE)) {
@@ -133,14 +145,14 @@ for (myfile in files) {
     dS_total <- 0
     dS_counter <- 0
     for (col in 1:length(mel)) {
-      dS_list <- find_subst(col, dS_total, dS_counter)
+      dS_data <- find_subst(col, dS_total, dS_counter, dS_data, enhancer, startcoord)
       dS_total <- dS_list[1] + dS_total
       dS_counter <- dS_list[2] + dS_counter
     }
     
     dS_avg = dS_total / dS_counter
-    cat(myfile, file="all_Dichaete_dS.txt", sep=" ", fill=TRUE, append=TRUE)
-    cat(dS_avg, file="all_Dichaete_dS.txt", sep=" ", fill=TRUE, append=TRUE)
+    #cat(myfile, file="all_Dichaete_dS.txt", sep=" ", fill=TRUE, append=TRUE)
+    #cat(dS_avg, file="all_Dichaete_dS.txt", sep=" ", fill=TRUE, append=TRUE)
     close(con)
   }  
 }  

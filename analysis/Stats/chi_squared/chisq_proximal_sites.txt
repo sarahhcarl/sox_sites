@@ -1,0 +1,48 @@
+
+	Pearson's Chi-squared test
+
+data:  SoxN_proximal_2 
+X-squared = 47.3836, df = 9, p-value = 3.329e-07
+
+         const
+type      1 species 2 species 3 species 4 species
+  Hom           658       116       224       144
+  Het Sox       551        98       157        69
+  Het vnd       264        37        53        21
+  Het Kr        843       179       207       106
+         const
+type      1 species 2 species 3 species 4 species
+  Hom      709.6517 131.75745 196.41052 104.18031
+  Het Sox  543.7349 100.95251 150.48967  79.82291
+  Het vnd  233.0292  43.26536  64.49557  34.20982
+  Het Kr   829.5841 154.02468 229.60424 121.78696
+         const
+type       1 species  2 species  3 species  4 species
+  Hom     -1.9389305 -1.3727714  1.9686168  3.9012619
+  Het Sox  0.3115642 -0.2938547  0.5307007 -1.2113800
+  Het vnd  2.0288342 -0.9525240 -1.4314153 -2.2585074
+  Het Kr   0.4657888  2.0124070 -1.4917634 -1.4305338
+
+	Pearson's Chi-squared test
+
+data:  D_proximal 
+X-squared = 15.8752, df = 9, p-value = 0.06953
+
+         const
+type      1 species 2 species 3 species 4 species
+  Hom           184        40        79        81
+  Het Sox       426        85       133       139
+  Het vnd       112        16        31        20
+  Het Kr        377        74       108       126
+         const
+type      1 species 2 species 3 species 4 species
+  Hom     207.78730  40.64993  66.36337  69.19941
+  Het Sox 423.69129  82.88774 135.31905 141.10192
+  Het vnd  96.85918  18.94879  30.93501  32.25702
+  Het Kr  370.66224  72.51354 118.38257 123.44165
+         const
+type        1 species   2 species   3 species   4 species
+  Hom     -1.65019625 -0.10193753  1.55119764  1.41857584
+  Het Sox  0.11216195  0.23200760 -0.19935701 -0.17694968
+  Het vnd  1.53843418 -0.67741312  0.01168527 -2.15810547
+  Het Kr   0.32919023  0.17455956 -0.95424742  0.23026522

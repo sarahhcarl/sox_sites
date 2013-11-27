@@ -1,0 +1,66 @@
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/apt.49A05.1967.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Awh.33E05.3346.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Awh.33E05.3364.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Awh.33E05.3982.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/bab2.40E05.3919.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG11206.48E02.1001.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG11206.48E02.1098.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG12029.41H09.2413.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG13624.60A09.4387.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG32432.48G01.566.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG32432.48G01.748.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG4168.48E10.1718.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG4168.48E10.1953.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/CG4168.48E10.2238.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/dpr5.52B06.3785.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Dr.19D05.3211.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/dys.12F11.7517.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Gycbeta100B.13C01.4727.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/hth.44C06.2753.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/hth.44C06.2805.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/kn.13B06.541.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Lmpt.37B04.4081.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/nAcRalpha-30D.20G02.794.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/nAcRalpha-96Aa.22G10.815.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/opa.77B03.3448.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/opa.77B03.3656.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Pdp1.41G04.4447.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/pnt.45B10.2491.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Rdl.70F01.5032.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/ss.14E12.515.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/ss.15E11.4561.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/tna.59F09.2720.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/Ubx.32E11.2997.fasta
+N detected

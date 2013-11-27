@@ -1,19 +1,21 @@
 #{extends 'main.html' /}
 #{set title:'Administration' /}
 
-<h1>Administration</h1>
+<div class="container">
+	<h1>Administration</h1>
 
-<ol>
-<li><a href="@{Administration.createDb()}">Create database</a></li>
-<li><a href="@{Administration.parseFlylight()}">Add all FlyLight enhancer data</a></li>
-<li><a href="@{Administration.addEnhancerInfo()}">Add functional annotations</a></li>
-<li><a href="@{Administration.addTFs()}">Add data for other TFs</a></li>
-<li><a href="@{Administration.addDNase()}">Add DNase-seq data</a></li>
-<li><a href="@{Administration.addAlignments()}">Add alignments</a></li>
-<li><a href="@{Administration.printAllFasta()}">Print all alignments as fasta</a></li>
-<li><a href="@{Administration.printSitesFasta()}">Print alignments of TFsites as fasta</a></li>
-<li><a href="@{Administration.printFastaClade()}">Print alignments of TFsites called within a defined clade</a></li>
-<li><a href="@{Administration.parsimonyAll()}">Calculate parsimony cost at each position of all sites</a></li>
-<li><a href="@{Administration.parsimonyNoPse()}">Calculate parsimony cost at each position of all sites excluding D. pseudoobscura sequence</a></li>
-<li><a href="@{Administration.avgParsimony()}">Calculate average parsimony cost at each position of a motif</a></li>
-</ol>
+		<ol>
+	<li><a href="@{Administration.createDb()}">Create database</a></li>
+	<li><a href="@{Administration.parseFlylight()}">Add all FlyLight enhancer data</a></li>
+	<li><a href="@{Administration.addEnhancerInfo()}">Add functional annotations</a></li>
+	<li><a href="@{Administration.addTFs()}">Add data for other TFs</a></li>
+	<li><a href="@{Administration.addDNase()}">Add DNase-seq data</a></li>
+	<li><a href="@{Administration.addAlignments()}">Add alignments</a></li>
+	<li><a href="@{Administration.printAllFasta()}">Print all alignments as fasta</a></li>
+	<li><a href="@{Administration.printSitesFasta()}">Print alignments of TFsites as fasta</a></li>
+	<li><a href="@{Administration.printFastaClade()}">Print alignments of TFsites called within a defined clade</a></li>
+	<li><a href="@{Administration.parsimonyAll()}">Calculate parsimony cost at each position of all sites</a></li>
+	<li><a href="@{Administration.parsimonyNoPse()}">Calculate parsimony cost at each position of all sites excluding D. pseudoobscura sequence</a></li>
+	<li><a href="@{Administration.avgParsimony()}">Calculate average parsimony cost at each position of a motif</a></li>
+	</ol>
+</div>

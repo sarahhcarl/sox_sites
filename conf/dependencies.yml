@@ -4,3 +4,5 @@ require:
     - play
     - org.hibernate -> hibernate-core 3.6.8.Final :
         force: true
+    - commons-io -> commons-io 2.4 :
+        force: true

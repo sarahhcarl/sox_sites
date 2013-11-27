@@ -1,3 +1,0 @@
-﻿select * from tfsite t, enhancers_dhs edhs, tfsite_species ts, species s where
-t.enhancer_id = edhs.enhancer_id AND t.tf='D' AND ((((startcoords + relstart) <= dhs_start) AND ((startcoords + relend) >= dhs_start)) OR (((startcoords + relstart) <= dhs_end) AND (startcoords + relend) >= dhs_end) OR (((startcoords + relstart) >= dhs_start) AND ((startcoords + relend) <= dhs_end)))
-AND t.id = ts.tfsites_id AND ts.species_id = s.id AND s.name='dmel';

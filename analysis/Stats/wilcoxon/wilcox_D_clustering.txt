@@ -1,0 +1,21 @@
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  D_overlap_score and D_prox_score 
+W = 11186, p-value = 0.02633
+alternative hypothesis: true location shift is not equal to 0 
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  D_overlap_score and D_dist_score 
+W = 1781937, p-value = 0.03587
+alternative hypothesis: true location shift is not equal to 0 
+
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  D_prox_score and D_dist_score 
+W = 13262416, p-value = 0.3703
+alternative hypothesis: true location shift is not equal to 0 
+

@@ -1,0 +1,8 @@
+
+Call:
+lm(formula = ratios ~ br_lens)
+
+Coefficients:
+(Intercept)      br_lens  
+      1.046       -1.899  
+

@@ -1,0 +1,42 @@
+
+	Pearson's Chi-squared test
+
+data:  D_SoxN 
+X-squared = 24.3269, df = 6, p-value = 0.0004547
+
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap        262        58        70        38
+  Proximal       426        85       133       139
+  Distal        3687       613      1009       992
+          cons
+position   1 species 2 species  3 species 4 species
+  Overlap   249.2678  43.07348   69.05431  66.60437
+  Proximal  456.0204  78.80032  126.33067 121.84864
+  Distal   3669.7118 634.12620 1016.61502 980.54699
+          cons
+position    1 species  2 species  3 species  4 species
+  Overlap   0.8064344  2.2743301  0.1138025 -3.5049432
+  Proximal -1.4058011  0.6984018  0.5933730  1.5537751
+  Distal    0.2853868 -0.8389450 -0.2388320  0.3657509
+
+	Pearson's Chi-squared test
+
+data:  SoxN_D 
+X-squared = 18.9797, df = 6, p-value = 0.004198
+
+          cons
+position   1 species 2 species 3 species 4 species
+  Overlap        293        64        64        21
+  Proximal       551        98       157        69
+  Distal       10023      1723      2149      1223
+          cons
+position   1 species  2 species  3 species  4 species
+  Overlap   292.2552   50.69486   63.73836   35.31159
+  Proximal  578.5595  100.35747  126.17889   69.90417
+  Distal   9996.1853 1733.94767 2180.08275 1207.78424
+          cons
+position     1 species   2 species   3 species   4 species
+  Overlap   0.04356784  1.86869119  0.03277165 -2.40840365
+  Proximal -1.14576872 -0.23532665  2.74381597 -0.10814279
+  Distal    0.26819780 -0.26290800 -0.66570673  0.43782337
