@@ -35,7 +35,7 @@ find_subst <- function(col, dS_total, dS_counter, dS_data, enhancer, startcoord)
     nt1 <- node3_nt
     nt2 <- pse_nt
     pos <- col
-    dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
+    dS <- calc_dS(nt1, nt2, pos, bg_freqs, f)
     dS_data <- rbind(dS_data, data.frame(Name=enhancer, Start=startcoord, dS=dS))
     dS_total <- dS_total + dS
     dS_counter = dS_counter + 1
@@ -44,7 +44,7 @@ find_subst <- function(col, dS_total, dS_counter, dS_data, enhancer, startcoord)
     nt1 <- node2_nt
     nt2 <- yak_nt
     pos <- col
-    dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
+    dS <- calc_dS(nt1, nt2, pos, bg_freqs, f)
     dS_data <- rbind(dS_data, data.frame(Name=enhancer, Start=startcoord, dS=dS))
     dS_total <- dS_total + dS
     dS_counter <- dS_counter + 1
@@ -53,7 +53,7 @@ find_subst <- function(col, dS_total, dS_counter, dS_data, enhancer, startcoord)
     nt1 <- node1_nt
     nt2 <- sim_nt
     pos <- col
-    dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
+    dS <- calc_dS(nt1, nt2, pos, bg_freqs, f)
     dS_data <- rbind(dS_data, data.frame(Name=enhancer, Start=startcoord, dS=dS))
     dS_total <- dS_total + dS
     dS_counter <- dS_counter + 1
@@ -62,7 +62,7 @@ find_subst <- function(col, dS_total, dS_counter, dS_data, enhancer, startcoord)
     nt1 <- node1_nt
     nt2 <- mel_nt
     pos <- col
-    dS <- calc_dS(nt1, nt2, pos, bg_freqs, D_matrix)
+    dS <- calc_dS(nt1, nt2, pos, bg_freqs, f)
     dS_data <- rbind(dS_data, data.frame(Name=enhancer, Start=startcoord, dS=dS))
     dS_total <- dS_total + dS
     dS_counter <- dS_counter + 1
@@ -72,7 +72,7 @@ find_subst <- function(col, dS_total, dS_counter, dS_data, enhancer, startcoord)
 }  
 
 #Definition of calc_dS function
-calc_dS <- function(nt1, nt2, pos, bg_freqs, D_matrix) {
+calc_dS <- function(nt1, nt2, pos, bg_freqs, f) {
   g_nt1 <- bg_freqs[, nt1]
   g_nt2 <- bg_freqs[, nt2]
   f_nt1 <- f[pos, nt1]
@@ -151,8 +151,8 @@ for (myfile in files) {
     }
     
     dS_avg = dS_total / dS_counter
-    #cat(myfile, file="all_Dichaete_dS.txt", sep=" ", fill=TRUE, append=TRUE)
-    #cat(dS_avg, file="all_Dichaete_dS.txt", sep=" ", fill=TRUE, append=TRUE)
+    #cat(myfile, file="all_SoxN_dS.txt", sep=" ", fill=TRUE, append=TRUE)
+    #cat(dS_avg, file="all_SoxN_dS.txt", sep=" ", fill=TRUE, append=TRUE)
     close(con)
   }  
 }  
@@ -161,6 +161,26 @@ for (myfile in files) {
 # Take average dS for alignment(s)
 # Perform Z-test against E[S] statistic
 
+enhancer_pvalues <- data.frame(Name=character(),
+                               Z=double(),
+                               p=double(),
+                               stringsAsFactors=FALSE)
 
+enhancers <- unique(dS_data$Name, )
+
+for (e in enhancers) {
+  enhancer <- dS_data[dS_data$Name==e, ]
+  N <- nrow(enhancer)
+  E_dS <- -3.71980334172789
+  V_dS <- 9.06507252807775
+  
+  sum <- 0
+  for (k in 1:N) {
+    sum = (enhancer[k, 3] - E_dS) + sum
+  }
+  Z <- ((1/N)*sum)/sqrt(V_dS/N)
+  p <- pnorm(Z, lower.tail=FALSE)
+  enhancer_pvalues <- rbind(enhancer_pvalues, data.frame(Name=e, Z=Z, p=p))
+}
 
 
