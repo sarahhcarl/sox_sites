@@ -11,6 +11,7 @@
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/hibernate-core-3.6.8.Final.jar" sourcepath="/home/sarah/.ivy2/cache/org.hibernate/hibernate-core/sources/hibernate-core-3.6.8.Final-sources.jar"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/jboss-jacc-api_JDK4-1.1.0.jar"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/ant-1.6.5.jar"/>
+	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/commons-io-2.4.jar" sourcepath="/home/sarah/.ivy2/cache/commons-io/commons-io/sources/commons-io-2.4-sources.jar"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/sox_sites/lib/asm-3.1.jar"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/framework/lib/ehcache-core-2.4.3.jar"/>
 	<classpathentry kind="lib" path="/home/sarah/utilities/play-1.2.7/framework/lib/jj-textile.jar"/>

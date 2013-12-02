@@ -1226,7 +1226,7 @@ NaN
 0.7516577
 /home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/chn.26B09.2968.fasta
 NaN
-/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/chn.27A10.2022.fasta
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/chn.27A10.2022.fasta
 NaN
 /home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete/chn.27A10.310.fasta
 NaN
