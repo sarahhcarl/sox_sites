@@ -1,46 +1,11 @@
 #{extends 'main.html' /}
 #{set title:'TFsites' /}
 
-	<div class="container" style="padding-top: 50px">
-			<div class="panel panel-default">
-				<div class="panel-heading">Filter results by:</div>
-  				<div class="panel-body">
-  					<form role="form">
-	  					<div class="form-group">
-							<label for="selector1">TF</label>
-							<select multiple class="form-control">
-							  <option>Dichaete</option>
-							  <option>SoxN</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="checkboxes">Species</label>
-							<div class="checkbox-inline">
-					 			<label class="checkbox-inline">
-					 				<input type="checkbox" id="Species" value="option1"> D. melanogaster
-					 			</label>
-					 			<label class="checkbox-inline">
-					 				<input type="checkbox" id="Species" value="option2"> D. simulans
-					 			</label>			
-					 			<label class="checkbox-inline">
-					 				<input type="checkbox" id="Species" value="option3"> D. yakuba
-					 			</label>
-					 			<label class="checkbox-inline">
-					 				<input type="checkbox" id="Species" value="option4"> D. pseudoobscura
-					 			</label>
-					 			<p class="help-block">Note that selecting more than one species will retrieve <b>only</b> sites present in <b>all</b> of those species (AND, rather than OR logic).</p>
-					 		</div>	
-					 	</div>
-					 	<button type="submit" class="btn btn-info">Submit</button>		
-					</form>	
-	 			</div>
-	 		</div>
-	 </div>		
 
-<div class="container">
+<div class="container" style="padding-top: 60px">
  #{if tfsites.size()}
           	<div class="panel panel-default">
-          		<div class="panel-heading">Browse predicted TF binding sites</div>      			
+          		<div class="panel-heading"><h4>Predicted TF binding sites for ${enhancer}:</h4></div>      			
 				<table class="table table-bordered">
         			<thead>
 				         <tr>
@@ -48,6 +13,7 @@
 				           <th>Enhancer</th>
 				           <th>Relative start position</th>
 				           <th>Relative end position</th>
+				           <th>Species in which present</th>
 				           <th>Sequence</th>
 				           <th>PWM score</th>
 				         </tr>
@@ -59,6 +25,21 @@
 			           		<td><a href="@{Application.enhancersByName(tfsite.enhancer.name)}">${tfsite.enhancer.name}</a></td>
 			           		<td>${tfsite.relstart}</td>	
 			           		<td>${tfsite.relend}</td>
+			           		<td>
+			           			#{list items:tfsite.species.name, as:'species'}
+			           				#{if species == 'dmel'}
+			           					<span class="label label-warning">D. mel</span>
+			           				#{/if}
+			           				#{elseif species == 'dsim'}
+			           					<span class="label label-info">D. sim</span>
+			           				#{/elseif}	
+			           				#{elseif species == 'dyak'}
+			           					<span class="label label-success">D. yak</span>
+			           				#{/elseif}	
+			           				#{elseif species == 'dpse'}
+			           					<span class="label label-danger">D. pse</span>
+			           				#{/elseif}
+			           			#{/list}	
 			           		<td>${tfsite.sequence}</td>
 			           		<td>${tfsite.wscore}</td>	
 			           </tr>
@@ -83,6 +64,8 @@
 	<p>
 		<h3>Sorry, no TF sites have been predicted for this enhancer.</h3>
 	</p>
+	<p>
+		<a class="btn btn-info" role="button" href="@{Application.enhancers(1)}"><span class="glyphicon glyphicon-chevron-left"></span> Back to browsing enhancers</a>
 #{/else}			
 	</div>	
 </div>				 			

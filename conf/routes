@@ -5,9 +5,7 @@
 # Home page
 GET     /                                       Application.index
 GET     /enhancers                              Application.enhancers
-GET     /enhancers/{name}                       Application.enhancersByName
-GET		/tfsites								Application.tfsites  
-GET		/tfsites/{TF}							Application.tfsitesByTF 
+GET     /enhancers/{name}                       Application.enhancersByName 
 GET		/tfsites/byenhancer/{enhancer}			Application.tfsitesByEnhancer  
 GET		/about									Application.about 
 GET		/tfsites/{TF}/align						Application.alignmentByTf  

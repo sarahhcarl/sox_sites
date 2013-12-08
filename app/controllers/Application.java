@@ -16,7 +16,13 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+    	List<TFsite> tfsites = TFsite.find("byTf", "D").fetch();
+    	SortedSet<String> enhancers = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+    	for (TFsite site : tfsites) {
+    		String e_name = site.enhancer.name;
+    		enhancers.add(e_name);
+    	}
+        render(enhancers);
     }
     
     public static void enhancers(int page) {
@@ -25,20 +31,27 @@ public class Application extends Controller {
     }
     
     public static void enhancersByName(String name) {
+    	Logger.info(name);
     	Enhancer enhancer = Enhancer.find("byName", name).first();
+    	if (enhancer == null) {
+    		Logger.info("Enhancer not found");
+    	} else {
+    		Logger.info("Enhancer is" + name);
+    	}
     	render(enhancer);
     }
     
     public static void enhancersByInput(String soxBind, String expStage, String expSubset) {
     	if (soxBind.equals("Dichaete unique")){
-    		soxBind = "D_unique";
+    		soxBind = "Dunique";
     	} else if (soxBind.equals("SoxN unique")){
-    		soxBind = "SoxN_unique";
+    		soxBind = "SoxNunique";
     	} else if (soxBind.equals("Common")) {
     		soxBind = "common";
     	} else if (soxBind.equals("All")) {
     		soxBind = null;
     	}
+    	Logger.info(soxBind);
     	if (expStage.equals("GBE")){
     		expStage = "GBE";
     	} else if (expStage.equals("Stage 16")){
@@ -46,6 +59,7 @@ public class Application extends Controller {
     	} else if (expStage.equals("All")){
     		expStage = null;
     	}
+    	Logger.info(expStage);
     	if (expSubset.equals("NBs")) {
     		expSubset = "NB";
     	} else if (expSubset.equals("Neurons")) {
@@ -55,21 +69,11 @@ public class Application extends Controller {
     	} else if (expSubset.equals("All")) {
     		expSubset = null;
     	}
-    	List<Enhancer> enhancers = Enhancer.find(
-    			"select e from Enhancer e where e.soxBindPattern = soxBind and expStage member of e.expressionStage and expSubset member of e.expressionSubset"
-    			).fetch(20);
+    	Logger.info(expSubset);
+    	List<Enhancer> enhancers = Enhancer.find("bySoxBindPattern", soxBind).fetch(20);
     	render(enhancers);
     }
     
-    public static void tfsites(int page) {
-    	List<TFsite> tfsites = TFsite.find("order by Tf").from(100/(page*100)).fetch(100);
-    	render(tfsites, page);
-    }
-    
-    public static void tfsitesByTF(String TF) { 
-    	List<TFsite> tfsites = TFsite.find("byTf", TF).fetch(25);
-    	render(tfsites);
-    }
     
     public static void tfsitesByEnhancer(String enhancer, int page) {
     	Enhancer thisEnhancer = Enhancer.find("byName", enhancer).first();

@@ -3,7 +3,7 @@
 
 	<div class="container" style="padding-top: 50px">
 			<div class="panel panel-default">
-				<div class="panel-heading">Filter results by:</div>
+				<div class="panel-heading"><h4>Filter results by:</h4></div>
   				<div class="panel-body">
 					<form class="form-inline" action="@{Application.enhancersByInput()}" method="GET" role="form">
 							<div class="form-group">
@@ -42,7 +42,7 @@
  #{if enhancers.size()}
  	<div class="container">
           	<div class="panel panel-default">
-          		<div class="panel-heading">Browse Flylight enhancers</div>      			
+          		<div class="panel-heading"><h4>Browse Flylight enhancers</h4></div>      			
 				<table class="table table-bordered">
         			<thead>
 				         <tr>
@@ -50,6 +50,14 @@
 				           <th>Chromosome</th>
 				           <th>Start</th>
 				           <th>End</th>
+				           <th>Sox binding pattern
+				               <a title="The Sox binding pattern refers to whether an enhancer is bound in vivo by Dichaete alone, SoxN alone, or both proteins in common."
+				               	data-toggle="tooltip">[?]</a>
+				           </th>
+				           <th>Sox transcompensation
+				           		<a title="Sox transcompensation refers to whether or not Dichaete or SoxN bind an enhancer in a compensatory manner in a reciprocal mutant background."
+				               	data-toggle="tooltip">[?]</a>
+				           </th>
 				         </tr>
 				       </thead>
 				       <tbody>
@@ -58,7 +66,9 @@
 				           	<td><a href="@{Application.tfsitesByEnhancer(enhancer.name, 1)}" data-toggle="tooltip" title="View TF binding sites">${enhancer.name}</a></td>
 			           		<td>${enhancer.chrom}</td>
 			           		<td>${enhancer.startCoords}</td>	
-			           		<td>${enhancer.endCoords}</td>	
+			           		<td>${enhancer.endCoords}</td>
+			           		<td>${enhancer.soxBindPattern}</td>	
+			           		<td>${enhancer.transcomp}</td>
 			           </tr>
 			           #{/list} 		
 				      </tbody>
