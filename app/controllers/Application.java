@@ -103,7 +103,7 @@ public class Application extends Controller {
     	else if (soxBind != null && expStage != null && expSubset != null) {
     		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ? and e.soxBindPattern = ?", expStage, expSubset, soxBind).fetch(100);
     	}
-    	render(enhancers);
+    	render(enhancers, soxBind, expStage, expSubset);
     }
     
     

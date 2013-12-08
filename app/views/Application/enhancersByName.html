@@ -12,7 +12,13 @@
 				           <th>Start</th>
 				           <th>End</th>
 				           <th>Sox binding pattern</th>
+				           		<a title="The Sox binding pattern refers to whether an enhancer is bound in vivo by Dichaete alone, SoxN alone, or both proteins in common."
+				               	data-toggle="tooltip">[?]</a>
 				           <th>Sox transcompensation</th>
+				           		<a title="Sox transcompensation refers to whether or not Dichaete or SoxN bind an enhancer in a compensatory manner in a reciprocal mutant background."
+				               	data-toggle="tooltip">[?]</a>
+				           <th>Expression stage</th>
+				           <th>Expression subset</th>
 				         </tr>
 				       </thead>
 				       <tbody>
@@ -23,6 +29,12 @@
 			           		<td>${enhancer.endCoords}</td>
 			           		<td>${enhancer.soxBindPattern}</td>	
 			           		<td>${enhancer.transcomp}</td>	
+			           		<td>#{list items:enhancer.expressionStage, as:'expStage'}
+			           			${expStage}    
+			           			#{/list}</td>
+			           		<td>#{list items:enhancer.expressionSubset, as:'expSubset'}
+			           			${expSubset}
+			           			#{/list}</td>
 			           </tr>		
 				      </tbody>
 				 </table>

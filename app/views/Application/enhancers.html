@@ -8,28 +8,28 @@
 					<form class="form-inline" action="@{Application.enhancersByInput()}" method="GET" role="form">
 							<div class="form-group">
 								<label for="selector1">Sox binding pattern</label>
-								<select multiple class="form-control" name="soxBind">
+								<select class="form-control" name="soxBind">
 								  <option>Dichaete unique</option>
 								  <option>SoxN unique</option>
 								  <option>Common</option>
-								  <option>All</option>
+								  <option selected="selected">All</option>
 								</select>
 							</div>
 							<div class="form-group">	
 					  			<label for="selector2">Expression stage</label>
-								<select multiple class="form-control" name="expStage">
+								<select class="form-control" name="expStage">
 								  <option>GBE</option>
 								  <option>Stage 16</option>
-								  <option>All</option>
+								  <option selected="selected">All</option>
 								</select>
 							</div>
 							<div class="form-group">	
 								<label for="selector3">Expression subset</label>
-								<select multiple class="form-control" name="expSubset">
+								<select class="form-control" name="expSubset">
 								  <option>NBs</option>
 								  <option>Neurons</option>
 								  <option>Midline</option>
-								  <option>All</option>
+								  <option selected="selected">All</option>
 								</select>
 							</div>	
 					 		<button type="submit" class="btn btn-info">Submit</button>	
@@ -58,6 +58,8 @@
 				           		<a title="Sox transcompensation refers to whether or not Dichaete or SoxN bind an enhancer in a compensatory manner in a reciprocal mutant background."
 				               	data-toggle="tooltip">[?]</a>
 				           </th>
+				           <th>Expression stage</th>
+				           <th>Expression subset</th>
 				         </tr>
 				       </thead>
 				       <tbody>
@@ -69,6 +71,12 @@
 			           		<td>${enhancer.endCoords}</td>
 			           		<td>${enhancer.soxBindPattern}</td>	
 			           		<td>${enhancer.transcomp}</td>
+			           		<td>#{list items:enhancer.expressionStage, as:'expStage'}
+			           			${expStage}    
+			           			#{/list}</td>
+			           		<td>#{list items:enhancer.expressionSubset, as:'expSubset'}
+			           			${expSubset}
+			           			#{/list}</td>	
 			           </tr>
 			           #{/list} 		
 				      </tbody>

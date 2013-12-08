@@ -8,28 +8,83 @@
 					<form class="form-inline" action="@{Application.enhancersByInput()}" method="GET" role="form">
 							<div class="form-group">
 								<label for="selector1">Sox binding pattern</label>
-								<select multiple class="form-control" name="soxBind">
+								<select class="form-control" name="soxBind">
+								#{if soxBind == 'Dunique'}
+								  <option selected="selected">Dichaete unique</option>
+								 #{/if}
+								 #{else}
 								  <option>Dichaete unique</option>
+								 #{/else}
+								 #{if soxBind == 'SoxNunique'} 
+								  <option selected="selected">SoxN unique</option>
+								 #{/if} 
+								 #{else}
 								  <option>SoxN unique</option>
-								  <option>Common</option>
+								 #{/else}
+								 #{if soxBind == 'common'}  
+								  <option selected="selected">Common</option>
+								 #{/if}
+								 #{else}
+								  <option>Common</option> 
+								 #{/else}
+								 #{if soxBind == null} 
+								  <option selected="selected">All</option>
+								 #{/if}
+								 #{else}
 								  <option>All</option>
+								 #{/else}  
 								</select>
 							</div>
 							<div class="form-group">	
 					  			<label for="selector2">Expression stage</label>
-								<select multiple class="form-control" name="expStage">
+								<select class="form-control" name="expStage">
+								 #{if expStage == 'GBE'}
+								  <option selected="selected">GBE</option>
+								 #{/if}
+								 #{else}
 								  <option>GBE</option>
+								 #{/else}
+								 #{if expStage == 'St16'}  
+								  <option selected="selected">Stage 16</option>
+								 #{/if}
+								 #{else}
 								  <option>Stage 16</option>
+								 #{/else}
+								 #{if expStage == null}  
+								  <option selected="selected">All</option>
+								 #{/if}
+								 #{else}
 								  <option>All</option>
+								 #{/else}  
 								</select>
 							</div>
 							<div class="form-group">	
 								<label for="selector3">Expression subset</label>
-								<select multiple class="form-control" name="expSubset">
+								<select class="form-control" name="expSubset">
+								 #{if expSubset == 'NB'}
+								  <option selected="selected">NBs</option>
+								 #{/if}
+								 #{else}
 								  <option>NBs</option>
+								 #{/else}
+								 #{if expSubset == 'neurons'}	   
+								  <option selected="selected">Neurons</option>
+								 #{/if}
+								 #{else}
 								  <option>Neurons</option>
+								 #{/else}
+								 #{if expSubset == 'midline'} 
+								  <option selected="selected">Midline</option>
+								 #{/if}
+								 #{else}
 								  <option>Midline</option>
+								 #{/else}
+								 #{if expSubset == null}  
+								  <option selected="selected">All</option>
+								 #{/if}
+								 #{else}
 								  <option>All</option>
+								 #{/else}  
 								</select>
 							</div>	
 					 		<button type="submit" class="btn btn-info">Submit</button>	
@@ -39,7 +94,7 @@
 	  </div>
 	  
 	  <div class="container" style="padding-bottom: 30px">
-	  	<a class="btn btn-info" href="@{Application.enhancers(1)}"><span class="glyphicon glyphicon-chevron-left"></span>Back to viewing all enhancers</a>
+	  	<a class="btn btn-info" href="@{Application.enhancers(1)}"><span class="glyphicon glyphicon-chevron-left"></span>  Back to viewing all enhancers</a>
 	  </div>	
 	  
 	  #{if enhancers.size()}
@@ -61,17 +116,25 @@
 				           		<a title="Sox transcompensation refers to whether or not Dichaete or SoxN bind an enhancer in a compensatory manner in a reciprocal mutant background."
 				               	data-toggle="tooltip">[?]</a>
 				           </th>
+				           <th>Expression stage</th>
+				           <th>Expression subset</th>
 				         </tr>
 				       </thead>
 				       <tbody>
 				       #{list items:enhancers, as:'enhancer'}
 			         	<tr>
-				           	<td>${enhancer.name}</td>
+				           	<td><a href="@{Application.tfsitesByEnhancer(enhancer.name, 1)}" data-toggle="tooltip" title="View TF binding sites">${enhancer.name}</td>
 			           		<td>${enhancer.chrom}</td>
 			           		<td>${enhancer.startCoords}</td>	
 			           		<td>${enhancer.endCoords}</td>
 			           		<td>${enhancer.soxBindPattern}</td>	
 			           		<td>${enhancer.transcomp}</td>	
+			           		<td>#{list items:enhancer.expressionStage, as:'expStage'}
+			           			${expStage}    
+			           			#{/list}</td>
+			           		<td>#{list items:enhancer.expressionSubset, as:'expSubset'}
+			           			${expSubset}
+			           			#{/list}</td>
 			           </tr>
 			           #{/list} 		
 				      </tbody>
