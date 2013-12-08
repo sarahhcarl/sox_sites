@@ -33,8 +33,8 @@ public class AddAllSeqs extends Job {
 		int counter = 0;
 		//Read flat file
 		
-		File SoxN_sites = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/all_SoxN_alignments.txt");
-		BufferedReader reader = new BufferedReader(new FileReader(SoxN_sites));
+		File D_sites = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/all_D_alignments.txt");
+		BufferedReader reader = new BufferedReader(new FileReader(D_sites));
 		String line = null;
 		String enhancerName = null;
 		int relstart = 0;
@@ -58,7 +58,7 @@ public class AddAllSeqs extends Job {
 				relstart = Integer.parseInt(m2.group(1));
 			} else if (m3.lookingAt() == true) {
 				relend = Integer.parseInt(m3.group(1));
-				File matrix_scan = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/SoxN_scan90/" + enhancerName + "_SoxNscan90.ft");
+				File matrix_scan = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/D_scan90/" + enhancerName + "_Dscan90.ft");
 				BufferedReader reader2 = new BufferedReader(new FileReader(matrix_scan));
 				String line2 = null;
 				int startCoords = 0;
@@ -78,7 +78,7 @@ public class AddAllSeqs extends Job {
 				}
 				
 				Enhancer thisEnhancer = Enhancer.find("byName", enhancerName).first();
-				TFsite thisTFsite = TFsite.find("byEnhancerAndRelstartAndRelendAndTf", thisEnhancer, relstart, relend, "SoxN").first();
+				TFsite thisTFsite = TFsite.find("byEnhancerAndRelstartAndRelendAndTf", thisEnhancer, relstart, relend, "D").first();
 				thisAlign = new Alignment(thisTFsite, strand);
 				thisTFsite.tagAlign(thisAlign);
 				counter++;

@@ -1,0 +1,2 @@
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/D_node2/lola.45A04.3865.fasta
+N detected

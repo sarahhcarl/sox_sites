@@ -75,7 +75,7 @@ public class Alignment extends Model {
 		//Set file name here
 		String enhancer = this.tfsite.enhancer.name;
 		String startpos = Integer.toString(this.tfsite.relstart);
-		File file = new File("/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN/" + enhancer + "." + startpos + ".fasta");
+		File file = new File("/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/" + enhancer + "." + startpos + ".fasta");
 		FileUtils.writeStringToFile(file, this.strand + "\n");
 		for (String speciesName : mySpecies) {
 			FileUtils.writeStringToFile(file, ">"+speciesName+"\n", true);

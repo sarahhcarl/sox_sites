@@ -1,0 +1,28 @@
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/Cbp53E.67C01.2468.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/CG13624.60A09.4656.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/croc.34H07.1481.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/dnc.12G10.2358.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/dys.12F11.7788.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/OdsH.42D05.1165.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/opa.77B04.1800.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/opa.77B04.6223.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/opa.77B04.6233.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/retn.9F05.4933.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/Sema-1a.34D05.1187.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/Sox21b.73C01.2939.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/stg.32E06.1693.fasta
+N detected
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node1/stg.32E06.1791.fasta
+N detected

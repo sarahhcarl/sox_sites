@@ -16,7 +16,7 @@ public class PrintFastaClade extends Job {
 	public void doJob() throws IOException{
 		//Set ancestral node and TF
 		String ancestralNode = "#3#";
-		String TF = "SoxN";
+		String TF = "D";
 		List<String> allNodes = new ArrayList<String>();
 		
 		Species mySpecies = Species.find("byName", ancestralNode).first();

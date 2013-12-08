@@ -1,7 +1,7 @@
 ##Implementation of Alan Moses' affinity-based model of selection on TF binding sites
 
 #Currently takes alignments for every site which is present in the common ancestory (node 3), regardless of whether it is present in all descendants.
-#Need to filter for gaps in alignments.
+#Excludes alignments with any gaps.
 
 library(Biostrings)
 
@@ -13,7 +13,7 @@ D_matrix <- matrix(c(0.001,0.569,0.264,0.166, 0.007,0.797,0.071,0.125, 0.435,0.0
 SoxN_matrix <- matrix(c(0.355,0.217,0.274,0.155, 0.208,0.213,0.521,0.058, 0.253,0.284,0.399,0.064, 0.805,0.087,0.107,0.001, 0.304,0.614,0.001,0.081, 0.997,0.001,0.001,0.001, 0.997,0.001,0.001,0.001, 0.838,0.001,0.001,0.160, 0.312,0.082,0.502,0.104, 0.001,0.001,0.965,0.033), nrow=10, ncol=4, byrow=TRUE, dimnames= list(c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"), c("A", "C", "G","T")))
 
 # Define which PWM model to use
-f <- SoxN_matrix
+f <- D_matrix
 
 # Make a data frame to hold everything
 dS_data <- data.frame(Name=character(),
@@ -83,11 +83,11 @@ calc_dS <- function(nt1, nt2, pos, bg_freqs, f) {
 
 # Read in alignments, store as biostrings
 
-files <- list.files(path="/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN", pattern=".fasta", all.files=T, full.names=T)
+files <- list.files(path="/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/Dichaete", pattern=".fasta", all.files=T, full.names=T)
 for (myfile in files) {
   #print(myfile)
-  enhancer <- sub(".*SoxN/(.*)\\.(.*)\\..*", "\\1", myfile)
-  startcoord <- sub(".*SoxN/(.*)\\.(.*)\\..*", "\\2", myfile)
+  enhancer <- sub(".*Dichaete/(.*)\\.(.*)\\..*", "\\1", myfile)
+  startcoord <- sub(".*Dichaete/(.*)\\.(.*)\\..*", "\\2", myfile)
   con <- file(myfile)
   alignment <- readLines(con)
   

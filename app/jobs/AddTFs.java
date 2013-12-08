@@ -26,8 +26,8 @@ public class AddTFs extends Job {
 		//Set filepath and TF name for each TF to be added
 		
 		int counter = 0;
-		File dir = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/vnd_scan_90/");
-		String TF = "vnd";
+		File dir = new File("/home/sarah/utilities/play-1.2.7/sox_sites/data/Kr_scan_90/");
+		String TF = "Kr";
 		
 		for (File childfile : dir.listFiles()) {
 			counter++;

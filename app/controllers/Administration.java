@@ -34,32 +34,32 @@ public class Administration extends Controller {
 
 	public static void createDb() {
 		Logger.info("Creating DB...");
-		//new LoadDb().now();
+		new LoadDB().now();
 		index();
 	}
 	
 	public static void parseFlylight() {
 		Logger.info("Adding all FlyLight enhancers...");
-		//new ParseAllFlylight().now();
+		new ParseAllFlylight().now();
 		index();
 	}
 	
 	public static void addEnhancerInfo() {
 		Logger.info("Adding functional annotations to enhancers...");
-		//new AddEnhancerInfo().now();
+		new AddEnhancerInfo().now();
 		index();
 	}
 	
 	public static void addTFs() {
 		Logger.info("Adding other predicted TFs...");
-		//new AddTFs().now();
+		new AddTFs().now();
 		index();
 		
 	}
 	
 	public static void addDNase() {
 		Logger.info("Adding DNase-seq data...");
-		//new AddDNaseData().now();
+		new AddDNaseData().now();
 		index();
 	}
 	

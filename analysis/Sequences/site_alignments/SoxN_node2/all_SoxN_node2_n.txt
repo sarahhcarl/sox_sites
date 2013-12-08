@@ -1,0 +1,2 @@
+/home/sarah/utilities/play-1.2.7/sox_sites/analysis/Sequences/site_alignments/SoxN_node2/Sox21b.73C01.2291.fasta
+N detected
