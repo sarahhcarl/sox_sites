@@ -42,35 +42,67 @@ public class Application extends Controller {
     }
     
     public static void enhancersByInput(String soxBind, String expStage, String expSubset) {
-    	if (soxBind.equals("Dichaete unique")){
-    		soxBind = "Dunique";
-    	} else if (soxBind.equals("SoxN unique")){
-    		soxBind = "SoxNunique";
-    	} else if (soxBind.equals("Common")) {
-    		soxBind = "common";
-    	} else if (soxBind.equals("All")) {
-    		soxBind = null;
-    	}
+    	if (soxBind == null) {
+    	} else {
+	    	if (soxBind.equals("Dichaete unique")){
+	    		soxBind = "Dunique";
+	    	} else if (soxBind.equals("SoxN unique")){
+	    		soxBind = "SoxNunique";
+	    	} else if (soxBind.equals("Common")) {
+	    		soxBind = "common";
+	    	} else {
+	    		soxBind = null;
+	    	}
+    	}	
     	Logger.info(soxBind);
-    	if (expStage.equals("GBE")){
-    		expStage = "GBE";
-    	} else if (expStage.equals("Stage 16")){
-    		expStage = "St16";
-    	} else if (expStage.equals("All")){
-    		expStage = null;
+    	if (expStage == null) {	
+    	} else {
+	    	if (expStage.equals("GBE")){
+	    		expStage = "GBE";
+	    	} else if (expStage.equals("Stage 16")){
+	    		expStage = "St16";
+	    	} else {
+	    		expStage = null;
+	    	}
     	}
-    	Logger.info(expStage);
-    	if (expSubset.equals("NBs")) {
-    		expSubset = "NB";
-    	} else if (expSubset.equals("Neurons")) {
-    		expSubset = "neurons";
-    	} else if (expSubset.equals("Midline")) {
-    		expSubset = "midline";
-    	} else if (expSubset.equals("All")) {
-    		expSubset = null;
+    	if (expSubset == null) {
+    	} else {
+	    	if (expSubset.equals("NBs")) {
+	    		expSubset = "NB";
+	    	} else if (expSubset.equals("Neurons")) {
+	    		expSubset = "neurons";
+	    	} else if (expSubset.equals("Midline")) {
+	    		expSubset = "midline";
+	    	} else {
+	    		expSubset = null;
+	    	}
     	}
     	Logger.info(expSubset);
-    	List<Enhancer> enhancers = Enhancer.find("bySoxBindPattern", soxBind).fetch(20);
+    	List<Enhancer> enhancers = new ArrayList<>();
+    	if (soxBind == null && expStage == null && expSubset == null) {
+    		Application.enhancers(1);
+    	}
+    	else if (soxBind != null && expStage == null && expSubset == null) {
+    		enhancers = Enhancer.find("bySoxBindPattern", soxBind).fetch(20);
+    	}
+    	else if (soxBind == null && expStage != null && expSubset == null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ?", expStage).fetch(100);
+    	}
+    	else if (soxBind == null && expStage == null && expSubset != null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ?", expSubset).fetch(100);
+    	}
+    	else if (soxBind != null && expStage != null && expSubset == null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ? and e.soxBindPattern = ?", expStage, soxBind).fetch(100);
+    	}
+    	else if (soxBind != null && expStage == null && expSubset != null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ? and e.soxBindPattern = ?", expSubset, soxBind).fetch(100);
+    	}
+    	else if (soxBind == null && expStage != null && expSubset != null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ?", expStage, expSubset).fetch(100);
+    	}
+    	else if (soxBind != null && expStage != null && expSubset != null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ? and e.soxBindPattern = ?", expStage, expSubset, soxBind).fetch(100);
+    	}
     	render(enhancers);
     }
     
