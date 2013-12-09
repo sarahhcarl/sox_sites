@@ -7,7 +7,7 @@
   				<div class="panel-body">
 					<form class="form-inline" action="@{Application.enhancersByInput()}" method="GET" role="form">
 							<div class="form-group">
-								<label for="selector1">Sox binding pattern</label>
+								<label for="soxBind">Sox binding pattern</label>
 								<select class="form-control" name="soxBind">
 								#{if soxBind == 'Dunique'}
 								  <option selected="selected">Dichaete unique</option>
@@ -36,7 +36,7 @@
 								</select>
 							</div>
 							<div class="form-group">	
-					  			<label for="selector2">Expression stage</label>
+					  			<label for="expStage">Expression stage</label>
 								<select class="form-control" name="expStage">
 								 #{if expStage == 'GBE'}
 								  <option selected="selected">GBE</option>
@@ -59,7 +59,7 @@
 								</select>
 							</div>
 							<div class="form-group">	
-								<label for="selector3">Expression subset</label>
+								<label for="expSubset">Expression subset</label>
 								<select class="form-control" name="expSubset">
 								 #{if expSubset == 'NB'}
 								  <option selected="selected">NBs</option>
@@ -87,14 +87,14 @@
 								 #{/else}  
 								</select>
 							</div>	
-					 		<button type="submit" class="btn btn-info">Submit</button>	
+					 		<button type="submit" class="btn btn-info" style="margin-top: 25px">Submit</button>	
 			 		</form>	
 			 	</div>
 			 </div>						
 	  </div>
 	  
 	  <div class="container" style="padding-bottom: 30px">
-	  	<a class="btn btn-info" href="@{Application.enhancers(1)}"><span class="glyphicon glyphicon-chevron-left"></span>  Back to viewing all enhancers</a>
+	  	<a class="btn btn-info" onclick="history.back();" value="Back"><span class="glyphicon glyphicon-chevron-left"></span>  Back to viewing all enhancers</a>
 	  </div>	
 	  
 	  #{if enhancers.size()}
