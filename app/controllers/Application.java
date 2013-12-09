@@ -110,7 +110,17 @@ public class Application extends Controller {
     public static void tfsitesByEnhancer(String enhancer, int page) {
     	Enhancer thisEnhancer = Enhancer.find("byName", enhancer).first();
     	List<TFsite> tfsites = TFsite.find("enhancer", thisEnhancer).from(100/(page*100)).fetch(100);
-    	render(tfsites, page, enhancer);
+    	List<Alignment> alignments = new ArrayList<>();
+    	for (TFsite site : tfsites) {
+    		//Doesn't retain correct order
+    		Alignment thisAlign = Alignment.find("byTfsite", site).first();
+	    	if (thisAlign != null) {
+	    		System.out.println("Alignment:" + thisAlign);
+	    		alignments.add(thisAlign);
+	    	}
+    	}
+    	System.out.println("Alignments found:" + alignments.size());
+    	render(tfsites, alignments, page, enhancer);
     }
     
     public static void alignmentByTf(TFsite tfsite) {
