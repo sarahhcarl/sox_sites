@@ -6,7 +6,6 @@ import java.util.List;
 
 import models.Alignment;
 import models.TFsite;
-
 import jobs.AddAllSeqs;
 import jobs.AddDNaseData;
 import jobs.AddEnhancerInfo;
@@ -14,6 +13,7 @@ import jobs.AddTFs;
 import jobs.LoadDB;
 import jobs.ParseAllFlylight;
 import jobs.PrintFastaClade;
+import jobs.TagAlignments;
 import jobs.averageCost;
 import jobs.parsimonyCostNoPse;
 import jobs.parsimonyCostSites;
@@ -109,6 +109,11 @@ public class Administration extends Controller {
     public static void avgParsimony() {
     	Logger.info("Calculating average parsimony costs over motif...");
     	new averageCost().now();
+    	index();
+    }
+    
+    public static void tagAlign() {
+    	new TagAlignments().now();
     	index();
     }
 }

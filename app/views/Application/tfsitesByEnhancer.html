@@ -4,7 +4,6 @@
 
 <div class="container" style="padding-top: 50px">
  #{if tfsites.size()}
- #{if alignments.size()}
           	<div class="panel panel-default">
           		<div class="panel-heading"><h4>Predicted TF binding sites for ${enhancer}:</h4></div>      			
 				<table class="table table-bordered">
@@ -12,9 +11,9 @@
 				         <tr>
 				           <th>TF</th>
 				           <th>Enhancer</th>
-				           <th>Relative start position</th>
-				           <th>Relative end position</th>
-				           <th>Species in which present</th>
+				           <th>Start position in alignment</th>
+				           <th>End position in alignment</th>
+				           <th>Species in which site predicted</th>
 				           <th>Sequence</th>
 				           <th>PWM score</th>
 				           <th>Alignment</th>
@@ -22,7 +21,6 @@
 				       </thead>
 				       <tbody>
 				       #{list items:tfsites, as:'tfsite'}
-				       #{list items:alignments, as:'alignment'}
 			         	<tr>
 				           	<td>${tfsite.TF}</td>
 			           		<td><a href="@{Application.enhancersByName(tfsite.enhancer.name)}">${tfsite.enhancer.name}</a></td>
@@ -45,9 +43,19 @@
 			           			#{/list}	
 			           		<td>${tfsite.sequence}</td>
 			           		<td>${tfsite.wscore}</td>
-			           		<td>${alignment.align}</td>	
+			           		#{if (tfsite.alignment != null)}
+			           		<td>
+			           			<p>>D. mel<br>
+			           			${tfsite.alignment.align.get(">dmel")}<br>
+			           			>D. sim<br>
+			           			${tfsite.alignment.align.get(">dsim")}<br>
+			           			>D. yak<br>
+			           			${tfsite.alignment.align.get(">dyak")}<br>
+			           			>D. pse</br>
+			           			${tfsite.alignment.align.get(">dpse")}</p>
+			           		</td>
+			           		#{/if}	
 			           </tr>
-			           #{/list}
 			           #{/list} 		
 				      </tbody>
 				 </table>	
@@ -64,7 +72,6 @@
 		</ul>	
 	</div>	
 #{/if}	
-#{/if}
 
 #{else}
 	<p>

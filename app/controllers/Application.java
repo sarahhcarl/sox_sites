@@ -17,11 +17,13 @@ public class Application extends Controller {
 
     public static void index() {
     	List<TFsite> tfsites = TFsite.find("byTf", "D").fetch();
+    	Logger.info("Starting...");
     	SortedSet<String> enhancers = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
     	for (TFsite site : tfsites) {
     		String e_name = site.enhancer.name;
     		enhancers.add(e_name);
     	}
+    	Logger.info("Done.");
         render(enhancers);
     }
     
@@ -109,18 +111,21 @@ public class Application extends Controller {
     
     public static void tfsitesByEnhancer(String enhancer, int page) {
     	Enhancer thisEnhancer = Enhancer.find("byName", enhancer).first();
-    	List<TFsite> tfsites = TFsite.find("enhancer", thisEnhancer).from(100/(page*100)).fetch(100);
-    	List<Alignment> alignments = new ArrayList<>();
+    	System.out.println(enhancer);
+    	List<TFsite> tfsites = TFsite.find("byEnhancer", thisEnhancer).from(100/(page*100)).fetch(100);
+    	//SortedSet<Alignment> alignments = new TreeSet<Alignment>();
     	for (TFsite site : tfsites) {
+    		System.out.println(site);
+    		System.out.println(site.alignment);
     		//Doesn't retain correct order
-    		Alignment thisAlign = Alignment.find("byTfsite", site).first();
-	    	if (thisAlign != null) {
-	    		System.out.println("Alignment:" + thisAlign);
-	    		alignments.add(thisAlign);
-	    	}
-    	}
-    	System.out.println("Alignments found:" + alignments.size());
-    	render(tfsites, alignments, page, enhancer);
+    		//Alignment thisAlign = Alignment.find("byTfsite", site).first();
+	    	//if (thisAlign != null) {
+	    	//	System.out.println("Alignment:" + thisAlign);
+	    	//	alignments.add(thisAlign);
+	    	//	}
+    		}
+    	//System.out.println("Alignments found:" + alignments.size());
+    	render(tfsites, page, enhancer);
     }
     
     public static void alignmentByTf(TFsite tfsite) {
