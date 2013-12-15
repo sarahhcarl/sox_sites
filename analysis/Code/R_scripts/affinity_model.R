@@ -1,4 +1,4 @@
-##Implementation of Alan Moses' affinity-based model of selection on TF binding sites
+#Implementation of Alan Moses' affinity-based model of selection on TF binding sites
 
 #Currently takes alignments for every site which is present in the common ancestory (node 3), regardless of whether it is present in all descendants.
 #Excludes alignments with any gaps.
