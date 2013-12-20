@@ -4,8 +4,10 @@
 
 # Home page
 GET     /                                       Application.index
-GET     /enhancers                              Application.enhancers
-GET     /enhancers/{name}                       Application.enhancersByName 
+GET		/enhancers/{<[0-9]+>page}				Application.enhancers
+GET     /enhancers		                        Application.enhancers
+GET     /enhancers/{EnhancerInput}              Application.enhancersByName 
+GET		/enhancers/{enhancer}/tfsites/{<[0-9]+>page}		Application.tfsitesByEnhancer
 GET		/tfsites/byenhancer/{name}				Application.tfsitesByEnhancer  
 GET		/about									Application.about 
 GET		/tfsites/{TF}/align						Application.alignmentByTf  
