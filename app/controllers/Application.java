@@ -6,6 +6,7 @@ import play.mvc.*;
 
 import java.io.IOException;
 import java.util.*;
+import java.io.*;
 
 import javax.persistence.*;
 
@@ -16,15 +17,15 @@ import models.*;
 public class Application extends Controller {
 
     public static void index() {
-    	List<TFsite> tfsites = TFsite.find("byTf", "D").fetch();
-    	Logger.info("Starting...");
-    	SortedSet<String> enhancers = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
-    	for (TFsite site : tfsites) {
-    		String e_name = site.enhancer.name;
-    		enhancers.add(e_name);
-    	}
-    	Logger.info("Done.");
-        render(enhancers);
+//    	List<TFsite> tfsites = TFsite.find("byTf", "D").fetch();
+//    	Logger.info("Starting...");
+//    	SortedSet<String> enhancers = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+//    	for (TFsite site : tfsites) {
+//    		String e_name = site.enhancer.name;
+//    		enhancers.add(e_name);
+//    	}
+//    	Logger.info("Done.");
+        render();
     }
     
     public static void enhancers(int page) {
@@ -32,13 +33,13 @@ public class Application extends Controller {
     	render(enhancers, page);
     }
     
-    public static void enhancersByName(String name) {
-    	Logger.info(name);
-    	Enhancer enhancer = Enhancer.find("byName", name).first();
+    public static void enhancersByName(String EnhancerInput) {
+    	Logger.info(EnhancerInput);
+    	Enhancer enhancer = Enhancer.find("byNameElike", EnhancerInput).first();
     	if (enhancer == null) {
     		Logger.info("Enhancer not found");
     	} else {
-    		Logger.info("Enhancer is" + name);
+    		Logger.info("Enhancer is" + EnhancerInput);
     	}
     	render(enhancer);
     }
@@ -132,6 +133,13 @@ public class Application extends Controller {
     	Alignment thisAlign = Alignment.find("byTfsite", tfsite).first();
     	render(thisAlign);
     }
+    
+   // public static void downloadBed(List<Enhancer> enhancers) {
+   // 	for (Enhancer enhancer: enhancers) {
+   // 		java.io.InputStream binaryData()
+   // 		renderBinary(enhancer.chrom, "FlyLight.bed");
+   // 	}
+    //}
     
     public static void analyses() {
     	render();

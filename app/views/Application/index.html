@@ -14,14 +14,10 @@
 		<div class="panel-body">
 			<form action="@{Application.enhancersByName()}" method="GET" role="form">
 				<div class="form-group">
-					<label for="EnhancerSelector"><h2>Choose an enhancer to view: </h2></label>
-					<select name="name" class="form-control">
-						#{list items:enhancers, as:'enhancer'}
-				  		<option value=${enhancer}>${enhancer}</option>
-				  		#{/list}
-					</select>
-					<button type="submit" class="btn btn-info">View</button>
-				</div>
+					<label for="EnhancerInput"><h2>Enter an enhancer to view: </h2></label>
+					<input type="name" class="form-control" name="EnhancerInput" placeholder="Enhancer">
+				</div>		
+				<button type="submit" class="btn btn-info">View</button>
 			</form>	
 		</div>
 	</div>	
