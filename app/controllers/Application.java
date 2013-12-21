@@ -44,7 +44,10 @@ public class Application extends Controller {
     	render(enhancer);
     }
     
-    public static void enhancersByInput(String soxBind, String expStage, String expSubset) {
+    public static void enhancersByInput(String soxBind, String expStage, String expSubset, int page) {
+    	if (page == 0) {
+    		page = 1;
+    	}
     	if (soxBind == null) {
     	} else {
 	    	if (soxBind.equals("Dichaete unique")){
@@ -86,34 +89,34 @@ public class Application extends Controller {
     		Application.enhancers(1);
     	}
     	else if (soxBind != null && expStage == null && expSubset == null) {
-    		enhancers = Enhancer.find("bySoxBindPattern", soxBind).fetch(20);
+    		enhancers = Enhancer.find("bySoxBindPattern", soxBind).from((page*100)-99).fetch(100);
     	}
     	else if (soxBind == null && expStage != null && expSubset == null) {
-    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ?", expStage).fetch(100);
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ?", expStage).from((page*100)-99).fetch(100);
     	}
     	else if (soxBind == null && expStage == null && expSubset != null) {
-    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ?", expSubset).fetch(100);
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ?", expSubset).from((page*100)-99).fetch(100);
     	}
     	else if (soxBind != null && expStage != null && expSubset == null) {
-    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ? and e.soxBindPattern = ?", expStage, soxBind).fetch(100);
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ? and e.soxBindPattern = ?", expStage, soxBind).from((page*100)-99).fetch(100);
     	}
     	else if (soxBind != null && expStage == null && expSubset != null) {
-    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ? and e.soxBindPattern = ?", expSubset, soxBind).fetch(100);
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ? and e.soxBindPattern = ?", expSubset, soxBind).from((page*100)-99).fetch(100);
     	}
     	else if (soxBind == null && expStage != null && expSubset != null) {
-    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ?", expStage, expSubset).fetch(100);
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ?", expStage, expSubset).from((page*100)-99).fetch(100);
     	}
     	else if (soxBind != null && expStage != null && expSubset != null) {
-    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ? and e.soxBindPattern = ?", expStage, expSubset, soxBind).fetch(100);
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ? and e.soxBindPattern = ?", expStage, expSubset, soxBind).from((page*100)-99).fetch(100);
     	}
-    	render(enhancers, soxBind, expStage, expSubset);
+    	render(enhancers, soxBind, expStage, expSubset, page);
     }
     
     
     public static void tfsitesByEnhancer(String enhancer, int page) {
     	Enhancer thisEnhancer = Enhancer.find("byName", enhancer).first();
     	System.out.println(enhancer);
-    	List<TFsite> tfsites = TFsite.find("byEnhancer", thisEnhancer).from(100/(page*100)).fetch(100);
+    	List<TFsite> tfsites = TFsite.find("byEnhancer", thisEnhancer).from((page*100)-99).fetch(100);
     	//SortedSet<Alignment> alignments = new TreeSet<Alignment>();
     	for (TFsite site : tfsites) {
     		System.out.println(site);

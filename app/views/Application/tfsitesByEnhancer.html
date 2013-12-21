@@ -64,10 +64,10 @@
 	<div class="container">	
 		<ul class="pagination">
 			#{if page > 1}			
-		 	 	<li><a href="@{Application.tfsitesByEnhancer(enhancer, page-1)}">&laquo;</a></li>
+		 	 	<li><a href="@{Application.tfsitesByEnhancer(enhancer, page-1)}">&laquo; Previous</a></li>
 		 	#{/if}	
 		 	#{if tfsites.size() == 100}
-		  		<li><a href="@{Application.tfsitesByEnhancer(enhancer, page+1)}">&raquo;</a></li>
+		  		<li><a href="@{Application.tfsitesByEnhancer(enhancer, page+1)}">Next &raquo;</a></li>
 		  	#{/if}	
 		</ul>	
 	</div>	

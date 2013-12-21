@@ -130,17 +130,27 @@
 			           		<td>${enhancer.endCoords}</td>
 			           		<td>${enhancer.soxBindPattern}</td>	
 			           		<td>${enhancer.transcomp}</td>	
-			           		<td>#{list items:enhancer.expressionStage, as:'expStage'}
-			           			${expStage}    
+			           		<td>#{list items:enhancer.expressionStage, as:'expressionStage'}
+			           			${expressionStage}    
 			           			#{/list}</td>
-			           		<td>#{list items:enhancer.expressionSubset, as:'expSubset'}
-			           			${expSubset}
+			           		<td>#{list items:enhancer.expressionSubset, as:'expressionSubset'}
+			           			${expressionSubset}
 			           			#{/list}</td>
 			           		<td><a href="http://genome-euro.ucsc.edu/cgi-bin/hgTracks?hgHubConnect.destUrl=..%2Fcgi-bin%2FhgTracks&clade=insect&org=D.+melanogaster&db=dm3&position=${enhancer.chrom}%3A${enhancer.startCoords}-${enhancer.endCoords}&hgt.positionInput=${enhancer.chrom}%3A${enhancer.startCoords}-${enhancer.endCoords}&hgt.suggestTrack=refGene&Submit=submit&hgsid=195141675" target="_blank">View in UCSC Genome Browser</a></td>	
 			           </tr>
 			           #{/list} 		
 				      </tbody>
 				 </table>	
+				</div>
+				<div class="container">
+				<ul id="pagination" class="pagination">
+					#{if page > 1}			
+				 	 	<li id="previous"><a href="@{Application.enhancersByInput(soxBind, expStage, expSubset, page-1)}">&laquo; Previous 100</a></li>
+				 	#{/if}
+				 	#{if enhancers.size() == 100}	
+				  		<li id="next"><a href="@{Application.enhancersByInput(soxBind, expStage, expSubset, page+1)}">Next 100 &raquo;</a></li>
+				  	#{/if}	
+				</ul>
 				</div>	
 			</div>
 		</div>		

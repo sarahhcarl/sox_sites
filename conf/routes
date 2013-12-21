@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                                       Application.index
+GET		/enhancers/common/{<[0-9]+>page}		Application.enhancersByInput(soxBind: 'common')
 GET		/enhancers/{<[0-9]+>page}				Application.enhancers
 GET     /enhancers		                        Application.enhancers
 GET     /enhancers/{EnhancerInput}              Application.enhancersByName 

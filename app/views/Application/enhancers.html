@@ -86,12 +86,12 @@
 			</div>	
 		</div>
 		<div class="container">
-		<ul class="pagination">
+		<ul id="pagination" class="pagination">
 			#{if page > 1}			
-		 	 	<li><a href="@{Application.enhancers(page-1)}">&laquo;</a></li>
+		 	 	<li id="previous"><a href="@{Application.enhancers(page-1)}">&laquo; Previous 100</a></li>
 		 	#{/if}
 		 	#{if enhancers.size() == 100}	
-		  		<li><a href="@{Application.enhancers(page+1)}">&raquo;</a></li>
+		  		<li id="next"><a href="@{Application.enhancers(page+1)}">Next 100 &raquo;</a></li>
 		  	#{/if}	
 		</ul>
 		</div>

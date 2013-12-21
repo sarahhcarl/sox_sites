@@ -56,5 +56,14 @@ public class Enhancer extends Model {
 		}	
 	}
 	
+	public List<Enhancer> previous(int page) {
+		List<Enhancer> enhancers = Enhancer.find("order by name").from((page*100)-200).fetch(100);
+		return enhancers;
+	}
+	
+	public List<Enhancer> next(int page) {
+		List<Enhancer> enhancers = Enhancer.find("order by name").from((page*100)+1).fetch(100);
+		return enhancers;
+	}
 		
 }
