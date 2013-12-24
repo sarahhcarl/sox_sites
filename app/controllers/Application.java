@@ -44,7 +44,7 @@ public class Application extends Controller {
     	render(enhancer);
     }
     
-    public static void enhancersByInput(String soxBind, String expStage, String expSubset, int page) {
+    public static void enhancersByInput(String soxBind, String soxTrans, String expStage, String expSubset, int page) {
     	if (page == 0) {
     		page = 1;
     	}
@@ -61,6 +61,17 @@ public class Application extends Controller {
 	    	}
     	}	
     	Logger.info(soxBind);
+    	Boolean transcomp = null;
+    	if (soxTrans == null) {
+    	} else {
+    		if (soxTrans.equals("Transcompensation")){
+    			transcomp = true;
+    		} else if (soxTrans.equals("No transcompensation")) {
+    			transcomp = false;
+    		} else {
+    			transcomp = null;
+    		}
+    	}
     	if (expStage == null) {	
     	} else {
 	    	if (expStage.equals("GBE")){
@@ -85,31 +96,55 @@ public class Application extends Controller {
     	}
     	Logger.info(expSubset);
     	List<Enhancer> enhancers = new ArrayList<>();
-    	if (soxBind == null && expStage == null && expSubset == null) {
+    	if (soxBind == null && transcomp == null && expStage == null && expSubset == null) {
     		Application.enhancers(1);
     	}
-    	else if (soxBind != null && expStage == null && expSubset == null) {
+    	else if (soxBind != null && transcomp == null && expStage == null && expSubset == null) {
     		enhancers = Enhancer.find("bySoxBindPattern", soxBind).from((page*100)-99).fetch(100);
     	}
-    	else if (soxBind == null && expStage != null && expSubset == null) {
+    	else if (soxBind == null && transcomp != null && expStage == null && expSubset == null) {
+    		enhancers = Enhancer.find("byTranscomp", transcomp).from((page*100)-99).fetch(100);
+    	}
+    	else if (soxBind == null && transcomp == null && expStage != null && expSubset == null) {
     		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ?", expStage).from((page*100)-99).fetch(100);
     	}
-    	else if (soxBind == null && expStage == null && expSubset != null) {
+    	else if (soxBind == null && transcomp == null && expStage == null && expSubset != null) {
     		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ?", expSubset).from((page*100)-99).fetch(100);
     	}
-    	else if (soxBind != null && expStage != null && expSubset == null) {
+    	else if (soxBind != null && transcomp != null && expStage == null && expSubset == null) {
+    		enhancers = Enhancer.find("bySoxBindPatternAndTranscomp", soxBind, transcomp).from((page*100)-99).fetch(100);
+    	}
+    	else if (soxBind != null && transcomp == null && expStage != null && expSubset == null) {
     		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ? and e.soxBindPattern = ?", expStage, soxBind).from((page*100)-99).fetch(100);
     	}
-    	else if (soxBind != null && expStage == null && expSubset != null) {
+    	else if (soxBind != null && transcomp == null && expStage == null && expSubset != null) {
     		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ? and e.soxBindPattern = ?", expSubset, soxBind).from((page*100)-99).fetch(100);
     	}
-    	else if (soxBind == null && expStage != null && expSubset != null) {
+    	else if (soxBind == null && transcomp != null && expStage != null && expSubset == null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ? and e.transcomp = ?", expStage, transcomp).from((page*100)-99).fetch(100);
+    	}
+    	else if (soxBind == null && transcomp != null && expStage == null && expSubset != null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ? and e.transcomp = ?", expSubset, transcomp).from((page*100)-99).fetch(100);
+    	}
+    	else if (soxBind == null && transcomp == null && expStage != null && expSubset != null) {
     		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ?", expStage, expSubset).from((page*100)-99).fetch(100);
     	}
-    	else if (soxBind != null && expStage != null && expSubset != null) {
+    	else if (soxBind != null && transcomp != null && expStage != null && expSubset == null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st where st = ? and e.soxBindPattern = ? and e.transcomp = ?", expStage, soxBind, transcomp).from((page*100)-99).fetch(100);
+    	}
+    	else if (soxBind != null && transcomp != null && expStage == null && expSubset != null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionSubset as sb where sb = ? and e.soxBindPattern = ? and e.transcomp = ?", expSubset, soxBind, transcomp).from((page*100)-99).fetch(100);
+    	}
+    	else if (soxBind != null && transcomp == null && expStage != null && expSubset != null) {
     		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ? and e.soxBindPattern = ?", expStage, expSubset, soxBind).from((page*100)-99).fetch(100);
     	}
-    	render(enhancers, soxBind, expStage, expSubset, page);
+    	else if (soxBind == null && transcomp != null && expStage != null && expSubset != null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ? and e.transcomp = ?", expStage, expSubset, transcomp).from((page*100)-99).fetch(100);
+    	}
+    	else if (soxBind != null && transcomp != null && expStage != null && expSubset != null) {
+    		enhancers = Enhancer.find("select e from Enhancer e join e.expressionStage as st join e.expressionSubset as sb where st = ? and sb = ? and e.soxBindPattern = ? and e.transcomp = ?", expStage, expSubset, soxBind, transcomp).from((page*100)-99).fetch(100);
+    	}
+    	render(enhancers, soxBind, transcomp, expStage, expSubset, page);
     }
     
     

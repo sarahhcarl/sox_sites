@@ -35,6 +35,29 @@
 								 #{/else}  
 								</select>
 							</div>
+							<div class="form-group">
+								<label for="soxTranscomp">Sox transcompensation</label>
+								<select class="form-control" name="soxTrans">
+								#{if transcomp == true}
+									<option selected="selected">Transcompensation</option>
+								#{/if}
+								#{else}
+									<option>Transcompensation</option>
+								#{/else}
+								#{if transcomp == false}
+									<option selected="selected">No transcompensation</option>
+								#{/if}
+								#{else}
+									<option>No transcompensation</option>
+								#{/else}
+								#{if transcomp == null}
+									<option selected="selected">All</option>
+								#{/if}
+								#{else}
+									<option>All</option>
+								#{/else}
+								</select>
+							</div>							
 							<div class="form-group">	
 					  			<label for="expStage">Expression stage</label>
 								<select class="form-control" name="expStage">
@@ -144,11 +167,27 @@
 				</div>
 				<div class="container">
 				<ul id="pagination" class="pagination">
-					#{if page > 1}			
-				 	 	<li id="previous"><a href="@{Application.enhancersByInput(soxBind, expStage, expSubset, page-1)}">&laquo; Previous 100</a></li>
+					#{if page > 1}
+					#{if transcomp == true}			
+				 	 	<li id="previous"><a href="@{Application.enhancersByInput(soxBind, "Transcompensation", expStage, expSubset, page-1)}">&laquo; Previous 100</a></li>
 				 	#{/if}
-				 	#{if enhancers.size() == 100}	
-				  		<li id="next"><a href="@{Application.enhancersByInput(soxBind, expStage, expSubset, page+1)}">Next 100 &raquo;</a></li>
+				 	#{if transcomp == false}			
+				 	 	<li id="previous"><a href="@{Application.enhancersByInput(soxBind, "No transcompensation", expStage, expSubset, page-1)}">&laquo; Previous 100</a></li>
+				 	#{/if}
+				 	#{if transcomp == null}			
+				 	 	<li id="previous"><a href="@{Application.enhancersByInput(soxBind, "All", expStage, expSubset, page-1)}">&laquo; Previous 100</a></li>
+				 	#{/if}
+				 	#{/if}
+				 	#{if enhancers.size() == 100}
+				 	#{if transcomp == true}	
+				  		<li id="next"><a href="@{Application.enhancersByInput(soxBind, "Transcompensation", expStage, expSubset, page+1)}">Next 100 &raquo;</a></li>
+				  	#{/if}
+				  	#{if transcomp == false}	
+				  		<li id="next"><a href="@{Application.enhancersByInput(soxBind, "No transcompensation", expStage, expSubset, page+1)}">Next 100 &raquo;</a></li>
+				  	#{/if}
+				  	#{if transcomp == null}	
+				  		<li id="next"><a href="@{Application.enhancersByInput(soxBind, "All", expStage, expSubset, page+1)}">Next 100 &raquo;</a></li>
+				  	#{/if}
 				  	#{/if}	
 				</ul>
 				</div>	
